@@ -23,9 +23,10 @@ public class OperatorListener implements ActionListener {
 			display.setText(Integer.toString(calc.getResult()));
 		} else if (command.equals("C")) {
 			calc.pressDelete();
-			display.setText(calc.getResult);
+			display.setText(calc.getDisplay());
 		} else {
-
+			calc.pressOperator(command.charAt(0));
+			display.setText(calc.getDisplay());
 		}
 	}
 }
