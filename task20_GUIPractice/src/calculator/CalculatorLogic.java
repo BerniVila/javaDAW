@@ -7,10 +7,12 @@ public class CalculatorLogic {
 	private int result;
 	private char operator;
 	private boolean isFirstOperand = true;
+	private int accumulator = 0;
 
 	public CalculatorLogic() {
 
 	}
+	
 
 	/**
 	 * Returns the information that should be shown at the display of the calculator
@@ -91,10 +93,12 @@ public class CalculatorLogic {
 	 * operators.)
 	 *
 	 */
-	/*
-	 * public void pressReset() { accumulator = 0; expectNewOperand(OPERATOR_NONE);
-	 * }
-	 */
+	
+	 public void pressReset() { 
+		 accumulator = 0; 
+		 //expectNewOperand(OPERATOR_NONE);
+	  }
+	 
 
 	private void performOperation() {
 		switch (operator) {

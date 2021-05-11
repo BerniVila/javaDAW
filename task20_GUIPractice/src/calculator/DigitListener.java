@@ -3,16 +3,17 @@ package calculator;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class DigitListener implements ActionListener {
 
 	private CalculatorLogic calc;
-	private JTextField display;
+	private JLabel display;
 
-	public DigitListener(CalculatorLogic calc, JTextField display) {
+	public DigitListener(CalculatorLogic calc, JLabel lblShowResult) {
 		this.calc = calc;
-		this.display = display;
+		this.display = lblShowResult;
 	}
 
 	public void actionPerformed(ActionEvent e) {

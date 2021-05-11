@@ -16,10 +16,15 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Cursor;
+import javax.swing.border.LineBorder;
 
 public class CalculatorGUI {
 
 	private JFrame frmCalculatorGUI;
+	CalculatorLogic calc = new CalculatorLogic();
+	//ActionListener digitL = new DigitListener(calc,textField);
+	//ActionListener opL = new OperatorListener(calc, textField);
 	
 	//added to use from main window
 	public JFrame getFrmCalculatorGUI() {
@@ -30,9 +35,6 @@ public class CalculatorGUI {
 		this.frmCalculatorGUI = frmCalculatorGUI;
 	}
 	
-	//Calculator calc = new Calculator();
-	//ActionListener digitL = new DigitListener(calc,textField);
-	//ActionListener opL = new OperatorListener(calc, textField);
 
 
 	/**
@@ -75,7 +77,7 @@ public class CalculatorGUI {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		frmCalculatorGUI.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel lblShowResult = new JLabel("RESULT");
+		JLabel lblShowResult = new JLabel(calc.getDisplay());
 		lblShowResult.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 50));
 		lblShowResult.setBackground(new Color(0, 0, 204));
 		GridBagConstraints gbc_lblShowResult = new GridBagConstraints();
@@ -85,7 +87,7 @@ public class CalculatorGUI {
 		gbc_lblShowResult.gridy = 0;
 		frmCalculatorGUI.getContentPane().add(lblShowResult, gbc_lblShowResult);
 		
-		JLabel lblShowOperation = new JLabel("Operation");
+		JLabel lblShowOperation = new JLabel("0");
 		lblShowOperation.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 25));
 		lblShowOperation.setBackground(new Color(153, 102, 204));
 		GridBagConstraints gbc_lblShowOperation = new GridBagConstraints();
@@ -96,8 +98,11 @@ public class CalculatorGUI {
 		frmCalculatorGUI.getContentPane().add(lblShowOperation, gbc_lblShowOperation);
 		
 		JButton btn_AC = new JButton("AC");
-		btn_AC.setBackground(new Color(204, 204, 255));
 		btn_AC.setBorderPainted(false);
+		btn_AC.setBorder(null);
+		btn_AC.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_AC.setOpaque(true);
+		btn_AC.setBackground(new Color(102, 204, 153));
 		btn_AC.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		GridBagConstraints gbc_btn_AC = new GridBagConstraints();
 		gbc_btn_AC.fill = GridBagConstraints.BOTH;
@@ -106,9 +111,9 @@ public class CalculatorGUI {
 		gbc_btn_AC.gridy = 2;
 		frmCalculatorGUI.getContentPane().add(btn_AC, gbc_btn_AC);
 		
-		JButton btn_negative = new JButton("+/-");
-		btn_negative.setBackground(new Color(204, 204, 255));
-		btn_negative.setBorderPainted(false);
+		JButton btn_negative = new JButton("DEL");
+		btn_negative.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_negative.setBackground(new Color(102, 51, 204));
 		btn_negative.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		GridBagConstraints gbc_btn_negative = new GridBagConstraints();
 		gbc_btn_negative.fill = GridBagConstraints.BOTH;
@@ -119,7 +124,6 @@ public class CalculatorGUI {
 		
 		JButton btn_perCent = new JButton("%");
 		btn_perCent.setBackground(new Color(204, 204, 255));
-		btn_perCent.setBorderPainted(false);
 		btn_perCent.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		GridBagConstraints gbc_btn_perCent = new GridBagConstraints();
 		gbc_btn_perCent.fill = GridBagConstraints.BOTH;
@@ -131,7 +135,6 @@ public class CalculatorGUI {
 		JButton btn_division = new JButton("\t\u00F7");
 		btn_division.setFont(new Font("Tahoma", Font.PLAIN, 55));
 		btn_division.setBackground(new Color(153, 102, 204));
-		btn_division.setBorderPainted(false);
 		GridBagConstraints gbc_btn_division = new GridBagConstraints();
 		gbc_btn_division.fill = GridBagConstraints.BOTH;
 		gbc_btn_division.insets = new Insets(0, 0, 5, 0);
@@ -174,7 +177,6 @@ public class CalculatorGUI {
 		
 		JButton btn_multiplication = new JButton("x");
 		btn_multiplication.setBackground(new Color(204, 204, 255));
-		btn_multiplication.setBorderPainted(false);
 		btn_multiplication.setFont(new Font("Tahoma", Font.PLAIN, 55));
 		GridBagConstraints gbc_btn_multiplication = new GridBagConstraints();
 		gbc_btn_multiplication.fill = GridBagConstraints.BOTH;
@@ -218,7 +220,6 @@ public class CalculatorGUI {
 		
 		JButton btn_substraction = new JButton("-");
 		btn_substraction.setBackground(new Color(204, 204, 255));
-		btn_substraction.setBorderPainted(false);
 		btn_substraction.setFont(new Font("Tahoma", Font.PLAIN, 55));
 		GridBagConstraints gbc_btn_substraction = new GridBagConstraints();
 		gbc_btn_substraction.fill = GridBagConstraints.BOTH;
@@ -262,7 +263,6 @@ public class CalculatorGUI {
 		
 		JButton btn_addition = new JButton("+");
 		btn_addition.setBackground(new Color(204, 204, 255));
-		btn_addition.setBorderPainted(false);
 		btn_addition.setFont(new Font("Tahoma", Font.PLAIN, 55));
 		GridBagConstraints gbc_btn_addition = new GridBagConstraints();
 		gbc_btn_addition.fill = GridBagConstraints.BOTH;
@@ -283,6 +283,7 @@ public class CalculatorGUI {
 		frmCalculatorGUI.getContentPane().add(btn_0, gbc_btn_0);
 		
 		JButton btn_point = new JButton(".");
+		btn_point.setBorderPainted(false);
 		btn_point.setBackground(new Color(204, 204, 255));
 		btn_0.setBorderPainted(false);
 		btn_point.setFont(new Font("Tahoma", Font.PLAIN, 55));
@@ -305,7 +306,20 @@ public class CalculatorGUI {
 		gbc_btn_equal.gridy = 6;
 		frmCalculatorGUI.getContentPane().add(btn_equal, gbc_btn_equal);
 		
+		//logic implementation
 		
+		
+		btn_AC.addActionListener(new DigitListener(calc, lblShowResult) {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btn_1.addActionListener(new DigitListener(calc, lblShowResult) {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 	}
 
