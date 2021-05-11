@@ -79,7 +79,7 @@ public class MainMenuWindow {
 		frmMainMenu.getContentPane().add(btn_ColourChooser, gbc_btn_ColourChooser);
 
 		JButton btn_Calculator = new JButton("Calculator");
-		btn_Calculator.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/colourChooserIcon.png")));
+		btn_Calculator.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/calculatorIcon.png")));
 		btn_Calculator.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		GridBagConstraints gbc_btn_Calculator = new GridBagConstraints();
 		gbc_btn_Calculator.fill = GridBagConstraints.BOTH;
@@ -91,7 +91,7 @@ public class MainMenuWindow {
 		frmMainMenu.getContentPane().add(btn_Calculator, gbc_btn_Calculator);
 
 		JButton btn_TextEditor = new JButton("Text Editor");
-		btn_TextEditor.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/colourChooserIcon.png")));
+		btn_TextEditor.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/TextEditorIcon.png")));
 		btn_TextEditor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		GridBagConstraints gbc_btn_TextEditor = new GridBagConstraints();
 		gbc_btn_TextEditor.fill = GridBagConstraints.BOTH;
