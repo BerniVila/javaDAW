@@ -20,6 +20,17 @@ public class FileReading {
 
 	private JFrame frmSelectAText;
 	private JTextField textFilePath;
+	
+	
+	//added to use from main window
+	public JFrame getFrmSelectAText() {
+		return frmSelectAText;
+	}
+	
+	public void setFrmSelectAText(JFrame frmSelectAText) {
+		this.frmSelectAText = frmSelectAText;
+	}
+	
 
 	/**
 	 * Launch the application.
@@ -36,6 +47,7 @@ public class FileReading {
 			}
 		});
 	}
+
 
 	/**
 	 * Create the application.

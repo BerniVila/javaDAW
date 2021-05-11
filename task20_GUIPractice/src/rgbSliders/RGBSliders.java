@@ -26,6 +26,15 @@ public class RGBSliders {
 	private JTextField textRedValue;
 	private JTextField textGreenValue;
 	private JTextField textBlueValue;
+	
+	//added to use from main window
+		public JFrame getFrmRgbColorChooser() {
+			return frmRgbColorChooser;
+		}
+
+		public void setFrmRgbColorChooser(JFrame frmRgbColorChooser) {
+			this.frmRgbColorChooser = frmRgbColorChooser;
+		}
 
 	/**
 	 * Launch the application.
@@ -35,7 +44,7 @@ public class RGBSliders {
 			public void run() {
 				try {
 					RGBSliders window = new RGBSliders();
-					window.frmRgbColorChooser.setVisible(true);
+					window.getFrmRgbColorChooser().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,13 +63,13 @@ public class RGBSliders {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmRgbColorChooser = new JFrame();
-		frmRgbColorChooser.setTitle("RGB Color Chooser");
-		frmRgbColorChooser.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
-		frmRgbColorChooser.getContentPane().setBackground(Color.DARK_GRAY);
-		frmRgbColorChooser.setBounds(100, 100, 408, 473);
-		frmRgbColorChooser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmRgbColorChooser.getContentPane().setLayout(null);
+		setFrmRgbColorChooser(new JFrame());
+		getFrmRgbColorChooser().setTitle("RGB Color Chooser");
+		getFrmRgbColorChooser().getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
+		getFrmRgbColorChooser().getContentPane().setBackground(Color.DARK_GRAY);
+		getFrmRgbColorChooser().setBounds(100, 100, 408, 473);
+		getFrmRgbColorChooser().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrmRgbColorChooser().getContentPane().setLayout(null);
 
 		JSlider redSlider = new JSlider();
 
@@ -78,7 +87,7 @@ public class RGBSliders {
 		redSlider.setMaximum(255);
 		redSlider.setBackground(Color.GRAY);
 		redSlider.setBounds(10, 33, 364, 67);
-		frmRgbColorChooser.getContentPane().add(redSlider);
+		getFrmRgbColorChooser().getContentPane().add(redSlider);
 
 		JSlider greenSlider = new JSlider();
 
@@ -96,7 +105,7 @@ public class RGBSliders {
 		greenSlider.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		greenSlider.setBackground(Color.GRAY);
 		greenSlider.setBounds(10, 111, 364, 67);
-		frmRgbColorChooser.getContentPane().add(greenSlider);
+		getFrmRgbColorChooser().getContentPane().add(greenSlider);
 
 		JSlider blueSlider = new JSlider();
 		blueSlider.setBorder(new TitledBorder(
@@ -113,51 +122,51 @@ public class RGBSliders {
 		blueSlider.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		blueSlider.setBackground(Color.GRAY);
 		blueSlider.setBounds(10, 189, 364, 67);
-		frmRgbColorChooser.getContentPane().add(blueSlider);
+		getFrmRgbColorChooser().getContentPane().add(blueSlider);
 
 		JLabel lblHeader = new JLabel("CHOOSE A COLOUR");
 		lblHeader.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblHeader.setForeground(Color.WHITE);
 		lblHeader.setBounds(107, 0, 180, 30);
-		frmRgbColorChooser.getContentPane().add(lblHeader);
+		getFrmRgbColorChooser().getContentPane().add(lblHeader);
 
 		JPanel jPanelColor = new JPanel();
 		jPanelColor.setBounds(107, 268, 267, 141);
-		frmRgbColorChooser.getContentPane().add(jPanelColor);
+		getFrmRgbColorChooser().getContentPane().add(jPanelColor);
 		
 		JLabel lblRedValueLabel = new JLabel("RED");
 		lblRedValueLabel.setForeground(Color.WHITE);
 		
 		lblRedValueLabel.setBounds(10, 279, 41, 27);
-		frmRgbColorChooser.getContentPane().add(lblRedValueLabel);
+		getFrmRgbColorChooser().getContentPane().add(lblRedValueLabel);
 		
 		textRedValue = new JTextField();
 				
 		
 		textRedValue.setBounds(64, 283, 33, 20);
-		frmRgbColorChooser.getContentPane().add(textRedValue);
+		getFrmRgbColorChooser().getContentPane().add(textRedValue);
 		textRedValue.setColumns(10);
 		
 		JLabel lblGreenValueLabel = new JLabel("GREEN");
 		lblGreenValueLabel.setForeground(Color.WHITE);
 		lblGreenValueLabel.setBounds(10, 318, 51, 27);
-		frmRgbColorChooser.getContentPane().add(lblGreenValueLabel);
+		getFrmRgbColorChooser().getContentPane().add(lblGreenValueLabel);
 		
 		textGreenValue = new JTextField();
 		textGreenValue.setColumns(10);
 		textGreenValue.setBounds(64, 322, 31, 20);
-		frmRgbColorChooser.getContentPane().add(textGreenValue);
+		getFrmRgbColorChooser().getContentPane().add(textGreenValue);
 
 		JLabel lblBlueValueLabel = new JLabel("BLUE");
 		lblBlueValueLabel.setForeground(Color.WHITE);
 		lblBlueValueLabel.setBounds(10, 362, 41, 27);
-		frmRgbColorChooser.getContentPane().add(lblBlueValueLabel);
+		getFrmRgbColorChooser().getContentPane().add(lblBlueValueLabel);
 		
 		
 		textBlueValue = new JTextField();
 		textBlueValue.setColumns(10);
 		textBlueValue.setBounds(64, 366, 33, 20);
-		frmRgbColorChooser.getContentPane().add(textBlueValue);
+		getFrmRgbColorChooser().getContentPane().add(textBlueValue);
 
 		redSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
@@ -218,6 +227,7 @@ public class RGBSliders {
 		});
 
 	}
+ 
 }
 
 
