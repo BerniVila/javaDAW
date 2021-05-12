@@ -80,6 +80,7 @@ public class MainMenuWindow {
 		frmMainMenu.getContentPane().add(btn_ColourChooser, gbc_btn_ColourChooser);
 
 		JButton btn_Calculator = new JButton("");
+		btn_Calculator.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/calculatorIcon.png")));
 		btn_Calculator.setToolTipText("Calculator");
 		//btn_Calculator.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/calculatorIcon.png")));
 		btn_Calculator.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -93,6 +94,7 @@ public class MainMenuWindow {
 		frmMainMenu.getContentPane().add(btn_Calculator, gbc_btn_Calculator);
 
 		JButton btn_TextEditor = new JButton("");
+		btn_TextEditor.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/TextEditorIcon.png")));
 		btn_TextEditor.setToolTipText("Text Editor");
 		//btn_TextEditor.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/TextEditorIcon.png")));
 		btn_TextEditor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
