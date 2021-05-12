@@ -57,7 +57,7 @@ public class MainMenuWindow {
 		frmMainMenu = new JFrame();
 		frmMainMenu.getContentPane().setMaximumSize(new Dimension(550, 550));
 		frmMainMenu.setTitle("Main Menu");
-		frmMainMenu.setBounds(100, 100, 552, 454);
+		frmMainMenu.setBounds(100, 100, 552, 475);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 91, 91, 91, 91, 91, 91 };
@@ -66,7 +66,8 @@ public class MainMenuWindow {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0 };
 		frmMainMenu.getContentPane().setLayout(gridBagLayout);
 
-		JButton btn_ColourChooser = new JButton("Colour Chooser");
+		JButton btn_ColourChooser = new JButton("");
+		btn_ColourChooser.setToolTipText("Colour Chooser");
 		btn_ColourChooser.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/colourChooserIcon.png")));
 		btn_ColourChooser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		GridBagConstraints gbc_btn_ColourChooser = new GridBagConstraints();
@@ -78,8 +79,9 @@ public class MainMenuWindow {
 		gbc_btn_ColourChooser.gridy = 1;
 		frmMainMenu.getContentPane().add(btn_ColourChooser, gbc_btn_ColourChooser);
 
-		JButton btn_Calculator = new JButton("Calculator");
-		btn_Calculator.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/calculatorIcon.png")));
+		JButton btn_Calculator = new JButton("");
+		btn_Calculator.setToolTipText("Calculator");
+		//btn_Calculator.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/calculatorIcon.png")));
 		btn_Calculator.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		GridBagConstraints gbc_btn_Calculator = new GridBagConstraints();
 		gbc_btn_Calculator.fill = GridBagConstraints.BOTH;
@@ -90,8 +92,9 @@ public class MainMenuWindow {
 		gbc_btn_Calculator.gridy = 1;
 		frmMainMenu.getContentPane().add(btn_Calculator, gbc_btn_Calculator);
 
-		JButton btn_TextEditor = new JButton("Text Editor");
-		btn_TextEditor.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/TextEditorIcon.png")));
+		JButton btn_TextEditor = new JButton("");
+		btn_TextEditor.setToolTipText("Text Editor");
+		//btn_TextEditor.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/TextEditorIcon.png")));
 		btn_TextEditor.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		GridBagConstraints gbc_btn_TextEditor = new GridBagConstraints();
 		gbc_btn_TextEditor.fill = GridBagConstraints.BOTH;
@@ -112,22 +115,35 @@ public class MainMenuWindow {
 		gbc_toolBar_Messages.gridy = 4;
 		frmMainMenu.getContentPane().add(toolBar_Messages, gbc_toolBar_Messages);
 
-		JButton btn_Accept = new JButton("Accept");
+		JButton btn_Accept = new JButton("");
+		btn_Accept.setToolTipText("Accept");
+		btn_Accept.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_Accept.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/Good-mark.png")));
 		toolBar_Messages.add(btn_Accept);
 
-		JButton btn_AcceptTitle = new JButton("Accept w/Title");
+		JButton btn_AcceptTitle = new JButton("");
+		btn_AcceptTitle.setToolTipText("Accept w/Message");
+		btn_AcceptTitle.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/About.png")));
 		toolBar_Messages.add(btn_AcceptTitle);
 
-		JButton btn_Error = new JButton("Error");
+		JButton btn_Error = new JButton("");
+		btn_Error.setToolTipText("Error ");
+		btn_Error.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/Turn off.png")));
 		toolBar_Messages.add(btn_Error);
 
-		JButton btn_Warning = new JButton("Warning");
+		JButton btn_Warning = new JButton("");
+		btn_Warning.setToolTipText("Warning");
+		btn_Warning.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/Warning.png")));
 		toolBar_Messages.add(btn_Warning);
 
-		JButton btn_ImputingData = new JButton("Imputing Data");
+		JButton btn_ImputingData = new JButton("");
+		btn_ImputingData.setToolTipText("Input Data");
+		btn_ImputingData.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/Report.png")));
 		toolBar_Messages.add(btn_ImputingData);
 
-		JButton btn_ImputingCombo = new JButton("Imputing Data w/ ComboBox");
+		JButton btn_ImputingCombo = new JButton("");
+		btn_ImputingCombo.setToolTipText("Input w/Combo Box");
+		btn_ImputingCombo.setIcon(new ImageIcon(MainMenuWindow.class.getResource("/images/Home.png")));
 		toolBar_Messages.add(btn_ImputingCombo);
 
 		JMenuBar menuBar = new JMenuBar();

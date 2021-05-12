@@ -2,12 +2,12 @@ package calculator;
 
 public class CalculatorLogic {
 
-	private int operand1;
-	private int operand2;
-	private int result;
+	private double operand1;
+	private double operand2;
+	private double result;
 	private char operator;
 	private boolean isFirstOperand = true;
-	private int accumulator = 0;
+	private double accumulator;
 
 	public CalculatorLogic() {
 
@@ -24,13 +24,14 @@ public class CalculatorLogic {
 	public String getDisplay() {
 		String display;
 		if (isFirstOperand) {
-			display = Integer.toString(operand1);
+			display = Double.toString(operand1);
 		} else {
 
-			display = Integer.toString(operand2);
+			display = Double.toString(operand2);
 		}
 		return display;
 	}
+
 
 	/**
 	 * Notifies that the user has pressed a button with a digit.
@@ -39,7 +40,7 @@ public class CalculatorLogic {
 	 *
 	 */
 
-	public void pressDigit(int digit) {
+	public void pressDigit(double digit) {
 		if (isFirstOperand) {
 			operand1 = operand1 * 10 + digit;
 		} else {
@@ -52,7 +53,7 @@ public class CalculatorLogic {
 		isFirstOperand = false;
 	}
 
-	public int getOperand() {
+	public double getOperand() {
 		if (isFirstOperand)
 			return operand1;
 		else
@@ -70,7 +71,7 @@ public class CalculatorLogic {
 
 	}
 
-	public int getResult() {
+	public double getResult() {
 		return result;
 	}
 
@@ -95,7 +96,9 @@ public class CalculatorLogic {
 	 */
 	
 	 public void pressReset() { 
-		 accumulator = 0; 
+		 accumulator = 0;
+		 operand1 = 0;
+		 operand2 = 0;
 		 //expectNewOperand(OPERATOR_NONE);
 	  }
 	 
@@ -108,13 +111,16 @@ public class CalculatorLogic {
 		case '-':
 			result = operand1 - operand2;
 			break;
-		case '*':
+		case 'x':
 			result = operand1 * operand2;
 			break;
-		case '/':
+		case '\u00F7':
 			// here we should take into account the possible division by 0
 			result = operand1 / operand2;
 			break;
+		case '%':
+			result = operand1 * (operand2 / 100);
+			break;	
 
 		}
 		operand1 = result;

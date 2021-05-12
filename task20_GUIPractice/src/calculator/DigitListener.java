@@ -10,6 +10,7 @@ public class DigitListener implements ActionListener {
 
 	private CalculatorLogic calc;
 	private JLabel display;
+	private JLabel opDisplay;
 
 	public DigitListener(CalculatorLogic calc, JLabel lblShowResult) {
 		this.calc = calc;
@@ -17,8 +18,8 @@ public class DigitListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		calc.pressDigit(Integer.parseInt(e.getActionCommand()));
-		Integer n = calc.getOperand();
+		calc.pressDigit(Double.parseDouble(e.getActionCommand()));
+		Double n = calc.getOperand();
 		display.setText(n.toString());
 	}
 }

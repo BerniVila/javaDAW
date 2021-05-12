@@ -3,14 +3,15 @@ package calculator;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class OperatorListener implements ActionListener {
 
 	private CalculatorLogic calc;
-	private JTextField display;
+	private JLabel display;
 
-	public OperatorListener(CalculatorLogic calc, JTextField display) {
+	public OperatorListener(CalculatorLogic calc, JLabel display) {
 		this.calc = calc;
 		this.display = display;
 	}
@@ -18,15 +19,24 @@ public class OperatorListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 
-		if (command.equals("=")) {
+		switch (command.charAt(0)) {
+		case '=':
 			calc.pressEqual();
-			display.setText(Integer.toString(calc.getResult()));
-		} else if (command.equals("C")) {
+			display.setText(Double.toString(calc.getResult()));
+			break;
+		case 'D':
 			calc.pressDelete();
 			display.setText(calc.getDisplay());
-		} else {
+			break;
+		case 'A':
+			calc.pressReset();
+			display.setText(calc.getDisplay());
+			break;
+		default:
 			calc.pressOperator(command.charAt(0));
 			display.setText(calc.getDisplay());
+
 		}
+
 	}
-}
+}// añadir cpdigo para agregar AC, mejor con un switch

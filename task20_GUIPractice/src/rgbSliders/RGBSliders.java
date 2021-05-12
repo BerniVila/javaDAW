@@ -68,7 +68,7 @@ public class RGBSliders {
 		getFrmRgbColorChooser().getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 13));
 		getFrmRgbColorChooser().getContentPane().setBackground(Color.DARK_GRAY);
 		getFrmRgbColorChooser().setBounds(100, 100, 408, 473);
-		getFrmRgbColorChooser().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrmRgbColorChooser().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getFrmRgbColorChooser().getContentPane().setLayout(null);
 
 		JSlider redSlider = new JSlider();

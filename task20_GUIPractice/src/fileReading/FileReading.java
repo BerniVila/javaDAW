@@ -64,7 +64,7 @@ public class FileReading {
 		frmSelectAText.getContentPane().setBackground(Color.GRAY);
 		frmSelectAText.setTitle("Select a text file");
 		frmSelectAText.setBounds(100, 100, 612, 529);
-		frmSelectAText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSelectAText.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmSelectAText.getContentPane().setLayout(null);
 
 		JLabel lblFile = new JLabel("File: ");
