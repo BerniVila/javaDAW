@@ -7,7 +7,7 @@ public class CalculatorLogic {
 	private double result;
 	private char operator;
 	private boolean isFirstOperand = true;
-	private double accumulator;
+	//private double accumulator;
 
 	public CalculatorLogic() {
 
@@ -31,7 +31,8 @@ public class CalculatorLogic {
 		}
 		return display;
 	}
-
+	
+	
 
 	/**
 	 * Notifies that the user has pressed a button with a digit.
@@ -53,6 +54,10 @@ public class CalculatorLogic {
 		isFirstOperand = false;
 	}
 
+	public char getOperator() {
+		return operator;
+	}
+	
 	public double getOperand() {
 		if (isFirstOperand)
 			return operand1;
@@ -81,10 +86,17 @@ public class CalculatorLogic {
 	 *
 	 */
 	public void pressDelete() {
-		if (isFirstOperand)
-			operand1 /= 10;
-		else
+		if (isFirstOperand) {
+			operand1 = operand1/10;
+			if (operand1 <= 1) {
+				operand1 = 0;
+			}
+		}else {
 			operand2 /= 10;
+			if (operand2 <= 1) {
+				operand2 = 0;
+			}
+		}
 
 	}
 
@@ -96,12 +108,21 @@ public class CalculatorLogic {
 	 */
 	
 	 public void pressReset() { 
-		 accumulator = 0;
+		// accumulator = 0;
 		 operand1 = 0;
 		 operand2 = 0;
 		 //expectNewOperand(OPERATOR_NONE);
 	  }
 	 
+	 public void pressPoint() {
+		 if (isFirstOperand)
+				operand1 /= 10;
+			else
+				operand2 /= 10;
+	 }
+	 
+	 
+
 
 	private void performOperation() {
 		switch (operator) {
@@ -123,9 +144,15 @@ public class CalculatorLogic {
 			break;	
 
 		}
+		result = (Math.round(result * 1000000))/1000000.0;
 		operand1 = result;
 		operand2 = 0;
 		operator = ' ';
 		isFirstOperand = true;
 	}
+
+
+	
+
+
 }

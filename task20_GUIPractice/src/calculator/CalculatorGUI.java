@@ -316,8 +316,8 @@ public class CalculatorGUI {
 		
 		//logic implementation
 		CalculatorLogic calc = new CalculatorLogic();
-		ActionListener digitL = new DigitListener(calc,lblShowResult);
-		ActionListener opL = new OperatorListener(calc, lblShowResult);
+		ActionListener digitL = new DigitListener(calc,lblShowResult, lblShowOperation);
+		ActionListener opL = new OperatorListener(calc, lblShowResult, lblShowOperation);
 		
 		btn_0.addActionListener(digitL);
 		btn_1.addActionListener(digitL);
@@ -338,6 +338,7 @@ public class CalculatorGUI {
 		btn_multiplication.addActionListener(opL);
 		btn_division.addActionListener(opL);
 		btn_perCent.addActionListener(opL);
+		btn_point.addActionListener(opL);
 		
 	}
 

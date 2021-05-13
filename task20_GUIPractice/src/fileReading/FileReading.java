@@ -4,7 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import mainMenuWindow.MainMenuWindow;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
@@ -12,6 +16,8 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 import java.util.Scanner;
@@ -20,17 +26,16 @@ public class FileReading {
 
 	private JFrame frmSelectAText;
 	private JTextField textFilePath;
-	
-	
-	//added to use from main window
+	File file;
+
+	// added to use from main window
 	public JFrame getFrmSelectAText() {
 		return frmSelectAText;
 	}
-	
+
 	public void setFrmSelectAText(JFrame frmSelectAText) {
 		this.frmSelectAText = frmSelectAText;
 	}
-	
 
 	/**
 	 * Launch the application.
@@ -47,7 +52,6 @@ public class FileReading {
 			}
 		});
 	}
-
 
 	/**
 	 * Create the application.
@@ -85,7 +89,7 @@ public class FileReading {
 		textArea.setRows(20);
 		textArea.setBounds(28, 84, 542, 387);
 		frmSelectAText.getContentPane().add(textArea);
-		
+
 		JButton btnSaveButton = new JButton("Save");
 		btnSaveButton.setBounds(505, 21, 65, 25);
 		frmSelectAText.getContentPane().add(btnSaveButton);
@@ -95,13 +99,13 @@ public class FileReading {
 				JFileChooser fileChooser = new JFileChooser();
 				int selectDialog = fileChooser.showOpenDialog(fileChooser);
 
-			//	Scanner fileContent;
+				// Scanner fileContent;
 				if (selectDialog == JFileChooser.APPROVE_OPTION) {
-					File file = new File(fileChooser.getSelectedFile().toString());
+					file = new File(fileChooser.getSelectedFile().toString());
 					try {
-						//textFilePath.setText(fileChooser.getSelectedFile().toString());
+						// textFilePath.setText(fileChooser.getSelectedFile().toString());
 						textFilePath.setText(file.getAbsolutePath());
-						
+
 						Scanner fileContent = new Scanner(fileChooser.getSelectedFile());
 
 						String currentLine;
@@ -113,6 +117,24 @@ public class FileReading {
 					} catch (FileNotFoundException e1) {
 						e1.printStackTrace();
 					}
+				}
+			}
+		});
+
+		btnSaveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileWriter savedFile = new FileWriter(file.getAbsolutePath());
+					textArea.write(savedFile);
+
+					JFrame frame = new JFrame();
+					JOptionPane.showMessageDialog(frame.getContentPane(), "File Saved!");
+					//ImageIcon icon =new ImageIcon(MainMenuWindow.class.getResource("/images/calculatorIcon.png"));
+					//JOptionPane.showMessageDialog(frame.getContentPane(), frame, "File Saved!", 1, icon);
+
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		});
