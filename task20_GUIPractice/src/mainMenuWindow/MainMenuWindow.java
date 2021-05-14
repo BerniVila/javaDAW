@@ -22,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.JSeparator;
+import java.awt.event.KeyEvent;
 
 public class MainMenuWindow {
 
@@ -154,8 +156,22 @@ public class MainMenuWindow {
 		JMenu mn_BerniMenu = new JMenu("Berni's Multi App");
 		mn_BerniMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		menuBar.add(mn_BerniMenu);
+		
+		JMenuItem mntmColourChooser = new JMenuItem("Colour Chooser");
+		mntmColourChooser.setMnemonic(KeyEvent.VK_CONTROL);
+		mn_BerniMenu.add(mntmColourChooser);
+		
+		JMenuItem mntmCalculator = new JMenuItem("Calculator");
+		mn_BerniMenu.add(mntmCalculator);
+		
+		JMenuItem mntmFileEditor = new JMenuItem("File Editor");
+		mn_BerniMenu.add(mntmFileEditor);
+		
+		JSeparator separator = new JSeparator();
+		mn_BerniMenu.add(separator);
 
 		JMenuItem mntm_About = new JMenuItem("About");
+		mntm_About.setFocusable(true);
 		mn_BerniMenu.add(mntm_About);
 
 		JMenu mn_File = new JMenu("File");
@@ -169,6 +185,41 @@ public class MainMenuWindow {
 		JMenu mn_Help = new JMenu("Help");
 		mn_Help.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		menuBar.add(mn_Help);
+		
+		
+		
+		//menu events
+		mntm_About.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame frame = new JFrame();
+				JOptionPane.showMessageDialog(frame.getContentPane(), "Coded & Designed by Berni Vila");
+			}
+		});
+		
+		
+		mntmColourChooser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RGBSliders window = new RGBSliders();
+				window.getFrmRgbColorChooser().setVisible(true);
+			}
+		});
+		
+		mntmCalculator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CalculatorGUI window = new CalculatorGUI();
+				window.getFrmCalculatorGUI().setVisible(true);
+
+			}
+		});
+		
+		mntmFileEditor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FileReading window = new FileReading();
+				window.getFrmSelectAText().setVisible(true);
+			}
+		});
+		
+		
 
 		// message events
 
