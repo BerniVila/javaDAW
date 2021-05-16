@@ -87,17 +87,16 @@ public class CalculatorLogic {
 	 */
 	public void pressDelete() {
 		if (isFirstOperand) {
-			operand1 = operand1/10;
-			if (operand1 <= 1) {
-				operand1 = 0;
-			}
+			String op1 = String.valueOf(operand1);
+			op1 = op1.substring(0, op1.length() - 1);
+			operand1 =  Double.parseDouble(op1);
+			
 		}else {
-			operand2 /= 10;
-			if (operand2 <= 1) {
-				operand2 = 0;
-			}
+			String op2 = String.valueOf(operand1);
+			op2 = op2.substring(0, op2.length() - 1);
+			operand2 =  Double.parseDouble(op2);
+			
 		}
-
 	}
 
 	/**

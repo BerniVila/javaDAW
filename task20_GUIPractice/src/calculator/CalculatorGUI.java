@@ -81,21 +81,22 @@ public class CalculatorGUI {
 		lblShowResult.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 50));
 		lblShowResult.setBackground(new Color(0, 0, 204));
 		GridBagConstraints gbc_lblShowResult = new GridBagConstraints();
+		gbc_lblShowResult.gridheight = 2;
 		gbc_lblShowResult.gridwidth = 4;
 		gbc_lblShowResult.insets = new Insets(0, 0, 5, 0);
 		gbc_lblShowResult.gridx = 0;
 		gbc_lblShowResult.gridy = 0;
 		frmCalculatorGUI.getContentPane().add(lblShowResult, gbc_lblShowResult);
 		
-		JLabel lblShowOperation = new JLabel("0");
-		lblShowOperation.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 25));
-		lblShowOperation.setBackground(new Color(153, 102, 204));
-		GridBagConstraints gbc_lblShowOperation = new GridBagConstraints();
-		gbc_lblShowOperation.gridwidth = 4;
-		gbc_lblShowOperation.insets = new Insets(0, 0, 5, 0);
-		gbc_lblShowOperation.gridx = 0;
-		gbc_lblShowOperation.gridy = 1;
-		frmCalculatorGUI.getContentPane().add(lblShowOperation, gbc_lblShowOperation);
+//		JLabel lblShowOperation = new JLabel("0");
+//		lblShowOperation.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 25));
+//		lblShowOperation.setBackground(new Color(153, 102, 204));
+//		GridBagConstraints gbc_lblShowOperation = new GridBagConstraints();
+//		gbc_lblShowOperation.gridwidth = 4;
+//		gbc_lblShowOperation.insets = new Insets(0, 0, 5, 0);
+//		gbc_lblShowOperation.gridx = 0;
+//		gbc_lblShowOperation.gridy = 1;
+//		frmCalculatorGUI.getContentPane().add(lblShowOperation, gbc_lblShowOperation);
 		
 		JButton btn_AC = new JButton("AC");
 		btn_AC.setBorderPainted(false);
@@ -117,22 +118,12 @@ public class CalculatorGUI {
 		btn_del.setBackground(new Color(153, 102, 255));
 		btn_del.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		GridBagConstraints gbc_btn_del = new GridBagConstraints();
+		gbc_btn_del.gridwidth = 2;
 		gbc_btn_del.fill = GridBagConstraints.BOTH;
 		gbc_btn_del.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_del.gridx = 1;
 		gbc_btn_del.gridy = 2;
 		frmCalculatorGUI.getContentPane().add(btn_del, gbc_btn_del);
-		
-		JButton btn_perCent = new JButton("%");
-		btn_perCent.setBorderPainted(false);
-		btn_perCent.setBackground(new Color(153, 102, 255));
-		btn_perCent.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		GridBagConstraints gbc_btn_perCent = new GridBagConstraints();
-		gbc_btn_perCent.fill = GridBagConstraints.BOTH;
-		gbc_btn_perCent.insets = new Insets(0, 0, 5, 5);
-		gbc_btn_perCent.gridx = 2;
-		gbc_btn_perCent.gridy = 2;
-		frmCalculatorGUI.getContentPane().add(btn_perCent, gbc_btn_perCent);
 		
 		JButton btn_division = new JButton("\u00F7");
 		btn_division.setBorderPainted(false);
@@ -316,8 +307,11 @@ public class CalculatorGUI {
 		
 		//logic implementation
 		CalculatorLogic calc = new CalculatorLogic();
-		ActionListener digitL = new DigitListener(calc,lblShowResult, lblShowOperation);
-		ActionListener opL = new OperatorListener(calc, lblShowResult, lblShowOperation);
+		ActionListener digitL = new DigitListener(calc,lblShowResult);
+		ActionListener opL = new OperatorListener(calc, lblShowResult);
+		
+		//ActionListener digitL = new DigitListener(calc,lblShowResult, lblShowOperation);
+		//ActionListener opL = new OperatorListener(calc, lblShowResult, lblShowOperation);
 		
 		btn_0.addActionListener(digitL);
 		btn_1.addActionListener(digitL);
@@ -337,7 +331,6 @@ public class CalculatorGUI {
 		btn_substraction.addActionListener(opL);
 		btn_multiplication.addActionListener(opL);
 		btn_division.addActionListener(opL);
-		btn_perCent.addActionListener(opL);
 		btn_point.addActionListener(opL);
 		
 	}

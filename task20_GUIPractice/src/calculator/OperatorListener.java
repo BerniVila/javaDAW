@@ -17,6 +17,11 @@ public class OperatorListener implements ActionListener {
 		this.display = display;
 		this.opDisplay = lblShowOperation;
 	}
+	
+	public OperatorListener(CalculatorLogic calc, JLabel display) {
+		this.calc = calc;
+		this.display = display;
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
@@ -45,8 +50,7 @@ public class OperatorListener implements ActionListener {
 		default:
 			calc.pressOperator(command.charAt(0));
 			display.setText(calc.getDisplay());
-			//opDisplay.setText(Double.toString(calc.getResult()));
-			//opDisplay.setText(Double.toString(calc.getOperand() + calc.getOperator()));
+			opDisplay.setText(opDisplay.getText() + calc.getDisplay());
 		}
 
 	}

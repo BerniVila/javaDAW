@@ -17,11 +17,17 @@ public class DigitListener implements ActionListener {
 		this.display = lblShowResult;
 		this.opDisplay = lblShowOperation;
 	}
+	
+	public DigitListener(CalculatorLogic calc, JLabel lblShowResult) {
+		this.calc = calc;
+		this.display = lblShowResult;
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		calc.pressDigit(Double.parseDouble(e.getActionCommand()));
 		Double n = calc.getOperand();
 		display.setText(n.toString());
-		opDisplay.setText(n.toString() + calc.getOperator());
+		opDisplay.setText(n.toString());
+		
 	}
 }
