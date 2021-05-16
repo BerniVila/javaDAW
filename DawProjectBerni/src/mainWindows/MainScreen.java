@@ -17,9 +17,6 @@ import java.awt.event.ActionEvent;
 public class MainScreen {
 
 	private JFrame frame;
-	//Dimension screenSize = new Dimension();
-	//int screenWidth = screenSize.width;
-	//int screenHeight = screenSize.height;
 
 	/**
 	 * Launch the application.
@@ -50,9 +47,9 @@ public class MainScreen {
 	private void initialize() {
 		frame = new JFrame();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize(screenSize.width, screenSize.height);
+		frame.setSize(screenSize.width/2, screenSize.height/2);
 		frame.getContentPane().setBackground(new Color(255, 251, 243));
-	//	frame.setBounds(100, 100, 800, 600);
+		frame.setBounds(screenSize.width/4, screenSize.height/4, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -61,16 +58,17 @@ public class MainScreen {
 		lblAprendeJugando.setBounds(93, 87, 622, 125);
 		frame.getContentPane().add(lblAprendeJugando);
 		
-		JLabel lblNewLabel_1 = new JLabel("Copyright © 2021 BerniVilaDev. All rights reserved");
-		lblNewLabel_1.setBounds(242, 534, 323, 24);
-		frame.getContentPane().add(lblNewLabel_1);
-		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setIcon(new ImageIcon(MainScreen.class.getResource("/images/empezar.gif")));
 		btnNewButton.setBounds(263, 309, 285, 97);
 		frame.getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("Copyright © 2021 BerniVilaDev. All rights reserved");
+		lblNewLabel_1.setBounds(242, 534, 323, 24);
+		frame.getContentPane().add(lblNewLabel_1);
+		
 		
 		
 		btnNewButton.addActionListener(new ActionListener() {

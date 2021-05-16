@@ -6,8 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 
 public class SelectionScreen {
 
@@ -50,8 +52,10 @@ public class SelectionScreen {
 	 */
 	private void initialize() {
 		frmSelectionScreen = new JFrame();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		frmSelectionScreen.setSize(screenSize.width/2, screenSize.height/2);
 		frmSelectionScreen.getContentPane().setBackground(new Color(0, 153, 102));
-		frmSelectionScreen.setBounds(100, 100, 800, 600);
+		frmSelectionScreen.setBounds(screenSize.width/4, screenSize.height/4, 800, 600);
 		frmSelectionScreen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmSelectionScreen.getContentPane().setLayout(null);
 
