@@ -24,6 +24,12 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 import java.awt.event.KeyEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.KeyStroke;
+import java.awt.event.InputEvent;
 
 public class MainMenuWindow {
 
@@ -61,6 +67,15 @@ public class MainMenuWindow {
 		frmMainMenu.setTitle("Main Menu");
 		frmMainMenu.setBounds(100, 100, 552, 475);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPopupMenu popupMenu = new JPopupMenu();
+		addPopup(frmMainMenu.getContentPane(), popupMenu);
+		
+		JMenu mnNewMenu = new JMenu("New menu");
+		popupMenu.add(mnNewMenu);
+		
+		JMenu mnNewMenu_1 = new JMenu("New menu");
+		mnNewMenu.add(mnNewMenu_1);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 91, 91, 91, 91, 91, 91 };
 		gridBagLayout.rowHeights = new int[] { 50, 110, 110, 110, 50 };
@@ -152,12 +167,14 @@ public class MainMenuWindow {
 
 		JMenuBar menuBar = new JMenuBar();
 		frmMainMenu.setJMenuBar(menuBar);
+		menuBar.setSize(300, 20);
 
 		JMenu mn_BerniMenu = new JMenu("Berni's Multi App");
 		mn_BerniMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		menuBar.add(mn_BerniMenu);
 		
 		JMenuItem mntmColourChooser = new JMenuItem("Colour Chooser");
+		mntmColourChooser.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 		mntmColourChooser.setMnemonic(KeyEvent.VK_CONTROL);
 		mn_BerniMenu.add(mntmColourChooser);
 		
@@ -291,4 +308,21 @@ public class MainMenuWindow {
 		});
 	}
 
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }
