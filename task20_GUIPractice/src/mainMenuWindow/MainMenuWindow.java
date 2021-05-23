@@ -68,20 +68,55 @@ public class MainMenuWindow {
 		frmMainMenu.setBounds(100, 100, 552, 475);
 		frmMainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		JPopupMenu popupMenu = new JPopupMenu();
 		addPopup(frmMainMenu.getContentPane(), popupMenu);
 		
-		JMenu mnNewMenu = new JMenu("New menu");
-		popupMenu.add(mnNewMenu);
+		JMenuItem mntmPopAbout = new JMenuItem("About");
+		mntmPopAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame frame = new JFrame();
+				JOptionPane.showMessageDialog(frame.getContentPane(), "Coded & Designed by Berni Vila");	
+			}
+		});
 		
-		JMenu mnNewMenu_1 = new JMenu("New menu");
-		mnNewMenu.add(mnNewMenu_1);
+		JMenuItem mntmPopColourChooser = new JMenuItem("Colour Chooser");
+		mntmPopColourChooser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RGBSliders window = new RGBSliders();
+				window.getFrmRgbColorChooser().setVisible(true);	
+			}
+		});
+		
+		JMenuItem mntmPopCalculator = new JMenuItem("Calculator");
+		mntmPopCalculator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CalculatorGUI window = new CalculatorGUI();
+				window.getFrmCalculatorGUI().setVisible(true);	
+			}
+		});
+		
+		JMenuItem mntmPopFileReader = new JMenuItem("File Reader");
+		mntmPopFileReader.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FileReading window = new FileReading();
+				window.getFrmSelectAText().setVisible(true);	
+			}
+		});
+		
+		popupMenu.add(mntmPopAbout);
+		popupMenu.add(mntmPopColourChooser);
+		popupMenu.add(mntmPopCalculator);
+		popupMenu.add(mntmPopFileReader);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 91, 91, 91, 91, 91, 91 };
 		gridBagLayout.rowHeights = new int[] { 50, 110, 110, 110, 50 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0 };
 		frmMainMenu.getContentPane().setLayout(gridBagLayout);
+
+	
+		
 
 		JButton btn_ColourChooser = new JButton("");
 		btn_ColourChooser.setToolTipText("Colour Chooser");
@@ -119,7 +154,7 @@ public class MainMenuWindow {
 		gbc_btn_TextEditor.fill = GridBagConstraints.BOTH;
 		gbc_btn_TextEditor.gridheight = 3;
 		gbc_btn_TextEditor.gridwidth = 2;
-		gbc_btn_TextEditor.insets = new Insets(0, 0, 5, 5);
+		gbc_btn_TextEditor.insets = new Insets(0, 0, 5, 0);
 		gbc_btn_TextEditor.gridx = 4;
 		gbc_btn_TextEditor.gridy = 1;
 		frmMainMenu.getContentPane().add(btn_TextEditor, gbc_btn_TextEditor);
@@ -129,7 +164,6 @@ public class MainMenuWindow {
 		toolBar_Messages.setName("Messages");
 		GridBagConstraints gbc_toolBar_Messages = new GridBagConstraints();
 		gbc_toolBar_Messages.gridwidth = 6;
-		gbc_toolBar_Messages.insets = new Insets(0, 0, 0, 5);
 		gbc_toolBar_Messages.gridx = 0;
 		gbc_toolBar_Messages.gridy = 4;
 		frmMainMenu.getContentPane().add(toolBar_Messages, gbc_toolBar_Messages);
@@ -179,9 +213,13 @@ public class MainMenuWindow {
 		mn_BerniMenu.add(mntmColourChooser);
 		
 		JMenuItem mntmCalculator = new JMenuItem("Calculator");
+		mntmCalculator.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_MASK));
+		mntmCalculator.setMnemonic(KeyEvent.VK_CONTROL);
 		mn_BerniMenu.add(mntmCalculator);
 		
 		JMenuItem mntmFileEditor = new JMenuItem("File Editor");
+		mntmFileEditor.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK));
+		mntmFileEditor.setMnemonic(KeyEvent.VK_CONTROL);
 		mn_BerniMenu.add(mntmFileEditor);
 		
 		JSeparator separator = new JSeparator();
@@ -308,11 +346,13 @@ public class MainMenuWindow {
 		});
 	}
 
+
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (e.isPopupTrigger()) {
 					showMenu(e);
+					
 				}
 			}
 			public void mouseReleased(MouseEvent e) {
@@ -324,5 +364,10 @@ public class MainMenuWindow {
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		});
+		
+		
+
+		
+
 	}
 }
