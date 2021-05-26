@@ -45,6 +45,7 @@ public class ChatWindow {
 	private final int NOT_CONNECTED = 1;
 	private final int CONNECTED = 2;
 	private int state = NOT_CONNECTED;
+	private JScrollPane scrollPane;
 	
 	
 
@@ -79,25 +80,28 @@ public class ChatWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 720, 500);
+		frame.setBounds(100, 100, 680, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 128, 128, 128, 128, 128, 10 };
-		gridBagLayout.rowHeights = new int[] {30, 48, 96, 96, 96, 48, 48, 10};
+		gridBagLayout.columnWidths = new int[] {80, 80, 80, 80, 80, 80, 80, 80, 80};
+		gridBagLayout.rowHeights = new int[] {48, 96, 96, 96, 48};
 		gridBagLayout.columnWeights = new double[] { 1.0 };
-		gridBagLayout.rowWeights = new double[] { 1.0 };
+		gridBagLayout.rowWeights = new double[] { };
 		frame.getContentPane().setLayout(gridBagLayout);
+		
+		scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridheight = 4;
+		gbc_scrollPane.gridwidth = 6;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.gridx = 3;
+		gbc_scrollPane.gridy = 0;
+		frame.getContentPane().add(scrollPane, gbc_scrollPane);
 
 		textChatPanel = new JTextArea(20, 20);
+		scrollPane.setViewportView(textChatPanel);
 		textChatPanel.setEditable(false);
-		GridBagConstraints gbc_textChatPanel = new GridBagConstraints();
-		gbc_textChatPanel.gridheight = 5;
-		gbc_textChatPanel.gridwidth = 4;
-		gbc_textChatPanel.insets = new Insets(0, 0, 5, 5);
-		gbc_textChatPanel.fill = GridBagConstraints.BOTH;
-		gbc_textChatPanel.gridx = 1;
-		gbc_textChatPanel.gridy = 1;
-		frame.getContentPane().add(textChatPanel, gbc_textChatPanel);
 
 		
 
@@ -107,10 +111,11 @@ public class ChatWindow {
 		btnConnectServer.setOpaque(true);
 		btnConnectServer.setBackground(new Color(0, 153, 102));
 		GridBagConstraints gbc_btnConnectServer = new GridBagConstraints();
+		gbc_btnConnectServer.gridwidth = 2;
 		gbc_btnConnectServer.fill = GridBagConstraints.BOTH;
 		gbc_btnConnectServer.insets = new Insets(0, 0, 5, 5);
-		gbc_btnConnectServer.gridx = 0;
-		gbc_btnConnectServer.gridy = 2;
+		gbc_btnConnectServer.gridx = 1;
+		gbc_btnConnectServer.gridy = 1;
 		frame.getContentPane().add(btnConnectServer, gbc_btnConnectServer);
 		
 
@@ -119,10 +124,11 @@ public class ChatWindow {
 		btnConnectClient.setBorderPainted(false);
 		btnConnectClient.setBackground(new Color(51, 153, 204));
 		GridBagConstraints gbc_btnConnectClient = new GridBagConstraints();
+		gbc_btnConnectClient.gridwidth = 2;
 		gbc_btnConnectClient.fill = GridBagConstraints.BOTH;
 		gbc_btnConnectClient.insets = new Insets(0, 0, 5, 5);
-		gbc_btnConnectClient.gridx = 0;
-		gbc_btnConnectClient.gridy = 3;
+		gbc_btnConnectClient.gridx = 1;
+		gbc_btnConnectClient.gridy = 2;
 		frame.getContentPane().add(btnConnectClient, gbc_btnConnectClient);
 		
 		btnDisconnect = new JButton("Disconnect");
@@ -132,18 +138,19 @@ public class ChatWindow {
 		btnDisconnect.setBackground(new Color(153, 51, 51));
 		btnDisconnect.setForeground(Color.WHITE);
 		GridBagConstraints gbc_btnDisconnect = new GridBagConstraints();
+		gbc_btnDisconnect.gridwidth = 2;
 		gbc_btnDisconnect.insets = new Insets(0, 0, 5, 5);
-		gbc_btnDisconnect.gridx = 0;
-		gbc_btnDisconnect.gridy = 4;
+		gbc_btnDisconnect.gridx = 1;
+		gbc_btnDisconnect.gridy = 3;
 		frame.getContentPane().add(btnDisconnect, gbc_btnDisconnect);
 
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 3;
+		gbc_textField.gridwidth = 5;
 		gbc_textField.insets = new Insets(0, 0, 0, 5);
 		gbc_textField.fill = GridBagConstraints.BOTH;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 6;
+		gbc_textField.gridx = 3;
+		gbc_textField.gridy = 4;
 		frame.getContentPane().add(textField, gbc_textField);
 		textField.setColumns(10);
 		textField.setVisible(true);
@@ -160,9 +167,8 @@ public class ChatWindow {
 		btnSend.setOpaque(true);
 		GridBagConstraints gbc_btnSend = new GridBagConstraints();
 		gbc_btnSend.fill = GridBagConstraints.BOTH;
-		gbc_btnSend.insets = new Insets(0, 0, 0, 5);
-		gbc_btnSend.gridx = 4;
-		gbc_btnSend.gridy = 6;
+		gbc_btnSend.gridx = 8;
+		gbc_btnSend.gridy = 4;
 		frame.getContentPane().add(btnSend, gbc_btnSend);
 
 		// events
