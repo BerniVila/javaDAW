@@ -1,17 +1,15 @@
 package chatWindow;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JTextArea;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
-
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -25,8 +23,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyAdapter;
+
 
 public class ChatWindow {
 
@@ -34,16 +31,22 @@ public class ChatWindow {
 	private JTextField textField;
 	private JButton btnConnectServer;
 	private JButton btnConnectClient;
-	JTextArea textChatPanel;
 	private int port;
 	private String serverIP;
 	private BufferedReader input;
 	private PrintStream output;
 	private String user;
 	private JButton btnDisconnect;
+
+	JTextArea textChatPanel;
 	Socket socket;
 	Socket client;
 
+	private final int NOT_CONNECTED = 1;
+	private final int CONNECTED = 2;
+	private int state = NOT_CONNECTED;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -59,7 +62,10 @@ public class ChatWindow {
 				}
 			}
 		});
+		
 	}
+	
+	
 
 	/**
 	 * Create the application.
@@ -73,16 +79,17 @@ public class ChatWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 720, 480);
+		frame.setBounds(100, 100, 720, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 128, 128, 128, 128, 128, 10 };
-		gridBagLayout.rowHeights = new int[] { 48, 48, 96, 96, 96, 48, 48 };
+		gridBagLayout.rowHeights = new int[] {30, 48, 96, 96, 96, 48, 48, 10};
 		gridBagLayout.columnWeights = new double[] { 1.0 };
 		gridBagLayout.rowWeights = new double[] { 1.0 };
 		frame.getContentPane().setLayout(gridBagLayout);
 
-		textChatPanel = new JTextArea();
+		textChatPanel = new JTextArea(20, 20);
+		textChatPanel.setEditable(false);
 		GridBagConstraints gbc_textChatPanel = new GridBagConstraints();
 		gbc_textChatPanel.gridheight = 5;
 		gbc_textChatPanel.gridwidth = 4;
@@ -91,6 +98,8 @@ public class ChatWindow {
 		gbc_textChatPanel.gridx = 1;
 		gbc_textChatPanel.gridy = 1;
 		frame.getContentPane().add(textChatPanel, gbc_textChatPanel);
+
+		
 
 		btnConnectServer = new JButton("Connect as Server");
 		btnConnectServer.setMargin(new Insets(10, 10, 10, 10));
@@ -103,6 +112,7 @@ public class ChatWindow {
 		gbc_btnConnectServer.gridx = 0;
 		gbc_btnConnectServer.gridy = 2;
 		frame.getContentPane().add(btnConnectServer, gbc_btnConnectServer);
+		
 
 		btnConnectClient = new JButton("Connect as Client");
 		btnConnectClient.setOpaque(true);
@@ -136,6 +146,8 @@ public class ChatWindow {
 		gbc_textField.gridy = 6;
 		frame.getContentPane().add(textField, gbc_textField);
 		textField.setColumns(10);
+		textField.setVisible(true);
+		updateEdition();
 
 		JButton btnSend = new JButton("");
 		btnSend.setContentAreaFilled(false);
@@ -182,6 +194,9 @@ public class ChatWindow {
 
 					Reading chatInput = new Reading(input, output, textChatPanel);
 					chatInput.start();
+					
+					state = CONNECTED;
+					updateEdition();
 
 				} catch (IOException ex) {
 					System.err.println(ex.getMessage());
@@ -197,7 +212,7 @@ public class ChatWindow {
 				user = JOptionPane.showInputDialog(frame, "USER?");
 
 				// boolean exit = false;// bandera para controlar ciclo del programa
-				//Socket socket;// Socket para la comunicacion cliente servidor
+
 
 				JFrame enterIp = new JFrame();
 				serverIP = JOptionPane.showInputDialog(frame, "IP?");
@@ -218,6 +233,9 @@ public class ChatWindow {
 
 					Reading chatInput = new Reading(input, output, textChatPanel);
 					chatInput.start();
+					
+					state = CONNECTED;
+					updateEdition();
 
 				} catch (IOException ex) {
 					System.err.println("Client -> " + ex.getMessage());
@@ -230,12 +248,13 @@ public class ChatWindow {
 
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String message = textField.getText();
+				String message = user + "  -->  " + textField.getText();
 
 				output.flush();
 				output.println(message);
 				output.flush();
-				textChatPanel.setText(textChatPanel.getText() + "\n" +  user + "  -->  " + message + "\n");
+
+				textChatPanel.append("\n" +  message + "\n");
 				textField.setText("");
 
 			}
@@ -245,8 +264,8 @@ public class ChatWindow {
 		btnDisconnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					socket.close();
 					client.close();
+					socket.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -254,6 +273,25 @@ public class ChatWindow {
 
 			}
 		});
+		
+		
+
+		
+
 	}
 
+	public void updateEdition() {
+		switch (state) {
+		case CONNECTED:
+			textField.setEnabled(true);
+			break;
+			
+		case NOT_CONNECTED:
+			textField.setEnabled(false);
+			break;	
+			
+		default:
+			break;
+		}
+	}
 }
