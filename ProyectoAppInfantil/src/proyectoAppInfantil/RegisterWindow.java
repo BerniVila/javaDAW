@@ -184,7 +184,7 @@ public class RegisterWindow {
 		
 		JButton btnNewButton_1_2_1 = new JButton("");
 		btnNewButton_1_2_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1_2_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
+		btnNewButton_1_2_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-unicorn.gif")));
 		btnNewButton_1_2_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_2_1.setSelected(true);
 		btnNewButton_1_2_1.setPreferredSize(new Dimension(100, 100));
@@ -198,7 +198,7 @@ public class RegisterWindow {
 		
 		JButton btnNewButton_1_1_1_1 = new JButton("");
 		btnNewButton_1_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1_1_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
+		btnNewButton_1_1_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-cat.gif")));
 		btnNewButton_1_1_1_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_1_1.setSelected(true);
 		btnNewButton_1_1_1_1.setPreferredSize(new Dimension(100, 100));
@@ -226,7 +226,7 @@ public class RegisterWindow {
 		
 		JButton btnNewButton_1_1_2 = new JButton("");
 		btnNewButton_1_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1_1_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
+		btnNewButton_1_1_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-dog.gif")));
 		btnNewButton_1_1_2.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_2.setSelected(true);
 		btnNewButton_1_1_2.setPreferredSize(new Dimension(100, 100));
@@ -241,7 +241,7 @@ public class RegisterWindow {
 		JLabel lblNewLabel = new JLabel("Elige un avatar para tu hijo/a");
 		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(36, 24, 249, 16);
+		lblNewLabel.setBounds(46, 21, 228, 16);
 		panel.add(lblNewLabel);
 		
 		JLabel lblApellidoProgenitor1 = new JLabel("1er Apellido Progenitor");
