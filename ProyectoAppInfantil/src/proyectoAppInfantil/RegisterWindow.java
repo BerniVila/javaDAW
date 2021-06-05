@@ -112,8 +112,8 @@ public class RegisterWindow {
 		btnNewButton.setBounds(295, 437, 117, 71);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel_2 = new JLabel("Introduce Password de nuevo");
-		lblNewLabel_2.setBounds(44, 445, 189, 16);
+		JLabel lblNewLabel_2 = new JLabel("Confirmar Password");
+		lblNewLabel_2.setBounds(44, 445, 135, 16);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		passwordField_3 = new JPasswordField();
@@ -141,8 +141,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("");
-		btnNewButton_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
-		btnNewButton_1_1.setSelectedIcon(new ImageIcon("/Users/berni/Desktop/avatars/avatar-alpaca.gif"));
+		btnNewButton_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-avocado.gif")));
 		btnNewButton_1_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_1.setSelected(true);
 		btnNewButton_1_1.setPreferredSize(new Dimension(100, 100));
@@ -155,8 +154,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_2 = new JButton("");
-		btnNewButton_1_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
-		btnNewButton_1_2.setSelectedIcon(new ImageIcon("/Users/berni/Desktop/avatars/avatar-alpaca.gif"));
+		btnNewButton_1_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-squidGuitar.gif")));
 		btnNewButton_1_2.setSize(new Dimension(100, 100));
 		btnNewButton_1_2.setSelected(true);
 		btnNewButton_1_2.setPreferredSize(new Dimension(100, 100));
@@ -169,8 +167,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_2);
 		
 		JButton btnNewButton_1_1_1 = new JButton("");
-		btnNewButton_1_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
-		btnNewButton_1_1_1.setSelectedIcon(new ImageIcon("/Users/berni/Desktop/avatars/avatar-alpaca.gif"));
+		btnNewButton_1_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-lion.gif")));
 		btnNewButton_1_1_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_1.setSelected(true);
 		btnNewButton_1_1_1.setPreferredSize(new Dimension(100, 100));
@@ -184,7 +181,6 @@ public class RegisterWindow {
 		
 		JButton btnNewButton_1_2_1 = new JButton("");
 		btnNewButton_1_2_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
-		btnNewButton_1_2_1.setSelectedIcon(new ImageIcon("/Users/berni/Desktop/avatars/avatar-alpaca.gif"));
 		btnNewButton_1_2_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_2_1.setSelected(true);
 		btnNewButton_1_2_1.setPreferredSize(new Dimension(100, 100));
@@ -198,7 +194,6 @@ public class RegisterWindow {
 		
 		JButton btnNewButton_1_1_1_1 = new JButton("");
 		btnNewButton_1_1_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
-		btnNewButton_1_1_1_1.setSelectedIcon(new ImageIcon("/Users/berni/Desktop/avatars/avatar-alpaca.gif"));
 		btnNewButton_1_1_1_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_1_1.setSelected(true);
 		btnNewButton_1_1_1_1.setPreferredSize(new Dimension(100, 100));
@@ -211,8 +206,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_1_1_1);
 		
 		JButton btnNewButton_1_3 = new JButton("");
-		btnNewButton_1_3.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
-		btnNewButton_1_3.setSelectedIcon(new ImageIcon("/Users/berni/Desktop/avatars/avatar-alpaca.gif"));
+		btnNewButton_1_3.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-monkey.gif")));
 		btnNewButton_1_3.setSize(new Dimension(100, 100));
 		btnNewButton_1_3.setSelected(true);
 		btnNewButton_1_3.setPreferredSize(new Dimension(100, 100));
@@ -226,7 +220,6 @@ public class RegisterWindow {
 		
 		JButton btnNewButton_1_1_2 = new JButton("");
 		btnNewButton_1_1_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
-		btnNewButton_1_1_2.setSelectedIcon(new ImageIcon("/Users/berni/Desktop/avatars/avatar-alpaca.gif"));
 		btnNewButton_1_1_2.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_2.setSelected(true);
 		btnNewButton_1_1_2.setPreferredSize(new Dimension(100, 100));
@@ -244,9 +237,9 @@ public class RegisterWindow {
 		lblNewLabel.setBounds(36, 24, 249, 16);
 		panel.add(lblNewLabel);
 		
-		JLabel lblApellidosProgenitor = new JLabel("Apellidos Progenitor");
-		lblApellidosProgenitor.setBounds(44, 127, 145, 16);
-		frame.getContentPane().add(lblApellidosProgenitor);
+		JLabel lblApellidoProgenitor1 = new JLabel("1er Apellido Progenitor");
+		lblApellidoProgenitor1.setBounds(44, 127, 145, 16);
+		frame.getContentPane().add(lblApellidoProgenitor1);
 		
 		JLabel lblNombreAlumno = new JLabel("Nombre Alumno");
 		lblNombreAlumno.setBounds(44, 225, 126, 16);
@@ -257,9 +250,9 @@ public class RegisterWindow {
 		textField_9.setBounds(44, 253, 189, 26);
 		frame.getContentPane().add(textField_9);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Apellidos Alumno");
-		lblNewLabel_3_1.setBounds(44, 294, 126, 16);
-		frame.getContentPane().add(lblNewLabel_3_1);
+		JLabel lblApellidoAlumno1 = new JLabel("1er Apellido Alumno");
+		lblApellidoAlumno1.setBounds(44, 294, 145, 16);
+		frame.getContentPane().add(lblApellidoAlumno1);
 		
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
@@ -278,6 +271,19 @@ public class RegisterWindow {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(259, 254, 188, 27);
 		frame.getContentPane().add(comboBox);
+		
+		JLabel lbloApellidoProgenitor2 = new JLabel("2o Apellido Progenitor");
+		lbloApellidoProgenitor2.setBounds(259, 127, 145, 16);
+		frame.getContentPane().add(lbloApellidoProgenitor2);
+		
+		JLabel lblApellidoAlumno2 = new JLabel("2o Apellido Alumno");
+		lblApellidoAlumno2.setBounds(259, 294, 126, 16);
+		frame.getContentPane().add(lblApellidoAlumno2);
+		
+		JLabel lblTitle = new JLabel("FORMULARIO DE REGISTRO");
+		lblTitle.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+		lblTitle.setBounds(137, 6, 223, 28);
+		frame.getContentPane().add(lblTitle);
 		
 		
 	}
