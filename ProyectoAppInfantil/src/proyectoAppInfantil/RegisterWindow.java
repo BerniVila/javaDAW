@@ -141,6 +141,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("");
+		btnNewButton_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-avocado.gif")));
 		btnNewButton_1_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_1.setSelected(true);
@@ -154,6 +155,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_2 = new JButton("");
+		btnNewButton_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-squidGuitar.gif")));
 		btnNewButton_1_2.setSize(new Dimension(100, 100));
 		btnNewButton_1_2.setSelected(true);
@@ -167,6 +169,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_2);
 		
 		JButton btnNewButton_1_1_1 = new JButton("");
+		btnNewButton_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-lion.gif")));
 		btnNewButton_1_1_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_1.setSelected(true);
@@ -180,6 +183,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_1_1);
 		
 		JButton btnNewButton_1_2_1 = new JButton("");
+		btnNewButton_1_2_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1_2_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
 		btnNewButton_1_2_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_2_1.setSelected(true);
@@ -193,6 +197,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_2_1);
 		
 		JButton btnNewButton_1_1_1_1 = new JButton("");
+		btnNewButton_1_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1_1_1_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
 		btnNewButton_1_1_1_1.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_1_1.setSelected(true);
@@ -206,6 +211,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_1_1_1);
 		
 		JButton btnNewButton_1_3 = new JButton("");
+		btnNewButton_1_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1_3.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-monkey.gif")));
 		btnNewButton_1_3.setSize(new Dimension(100, 100));
 		btnNewButton_1_3.setSelected(true);
@@ -219,6 +225,7 @@ public class RegisterWindow {
 		panel.add(btnNewButton_1_3);
 		
 		JButton btnNewButton_1_1_2 = new JButton("");
+		btnNewButton_1_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1_1_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
 		btnNewButton_1_1_2.setSize(new Dimension(100, 100));
 		btnNewButton_1_1_2.setSelected(true);
