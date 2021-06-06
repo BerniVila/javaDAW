@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import java.awt.Cursor;
 
 public class IDWindow {
 
@@ -59,6 +60,7 @@ public class IDWindow {
 		frame.getContentPane().add(panel);
 		
 		JButton btnAvatar_1 = new JButton("");
+		btnAvatar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_1.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
 		btnAvatar_1.setSize(new Dimension(100, 100));
 		btnAvatar_1.setSelected(true);
@@ -72,6 +74,7 @@ public class IDWindow {
 		panel.add(btnAvatar_1);
 		
 		JButton btnAvatar_2 = new JButton("");
+		btnAvatar_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_2.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-avocado.gif")));
 		btnAvatar_2.setSize(new Dimension(100, 100));
 		btnAvatar_2.setSelected(true);
@@ -85,6 +88,7 @@ public class IDWindow {
 		panel.add(btnAvatar_2);
 		
 		JButton btnAvatar_3 = new JButton("");
+		btnAvatar_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_3.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-squidGuitar.gif")));
 		btnAvatar_3.setSize(new Dimension(100, 100));
 		btnAvatar_3.setSelected(true);
@@ -98,6 +102,7 @@ public class IDWindow {
 		panel.add(btnAvatar_3);
 		
 		JButton btnAvatar_4 = new JButton("");
+		btnAvatar_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_4.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-lion.gif")));
 		btnAvatar_4.setSize(new Dimension(100, 100));
 		btnAvatar_4.setSelected(true);
@@ -111,6 +116,7 @@ public class IDWindow {
 		panel.add(btnAvatar_4);
 		
 		JButton btnAvatar_7 = new JButton("");
+		btnAvatar_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_7.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-unicorn.gif")));
 		btnAvatar_7.setSize(new Dimension(100, 100));
 		btnAvatar_7.setSelected(true);
@@ -124,6 +130,7 @@ public class IDWindow {
 		panel.add(btnAvatar_7);
 		
 		JButton btnAvatar_8 = new JButton("");
+		btnAvatar_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_8.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-cat.gif")));
 		btnAvatar_8.setSize(new Dimension(100, 100));
 		btnAvatar_8.setSelected(true);
@@ -137,6 +144,7 @@ public class IDWindow {
 		panel.add(btnAvatar_8);
 		
 		JButton btnAvatar_5 = new JButton("");
+		btnAvatar_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_5.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-monkey.gif")));
 		btnAvatar_5.setSize(new Dimension(100, 100));
 		btnAvatar_5.setSelected(true);
@@ -150,6 +158,7 @@ public class IDWindow {
 		panel.add(btnAvatar_5);
 		
 		JButton btnAvatar_6 = new JButton("");
+		btnAvatar_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_6.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-dog.gif")));
 		btnAvatar_6.setSize(new Dimension(100, 100));
 		btnAvatar_6.setSelected(true);
