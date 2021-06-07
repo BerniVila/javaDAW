@@ -12,7 +12,7 @@ CREATE TABLE Usuarios (
   NombreUsuario VARCHAR(30) NOT NULL,
   Apellido1Usuario VARCHAR(30) NOT NULL,
   Apellido2Usuario VARCHAR(30) NOT NULL,
-  Avatar VARCHAR(3) NOT NULL UNIQUE,
+  Avatar VARCHAR(30) NOT NULL UNIQUE,
   PRIMARY KEY (CodigoUsuario)
 ) ENGINE = innodb;
 

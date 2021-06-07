@@ -17,6 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Color;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 import java.awt.Cursor;
@@ -25,6 +29,12 @@ import java.awt.Dimension;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.event.InputMethodListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.FocusAdapter;
@@ -49,7 +59,7 @@ public class RegisterWindow {
 	private JTextField textField_9;
 	private JTextField textField_10;
 	private JTextField textField_11;
-	private JTextField textNombreUsuario;
+	private JTextField textNickName;
 
 	/**
 	 * Launch the application.
@@ -307,10 +317,10 @@ public class RegisterWindow {
 		lblPasswordError.setBounds(44, 520, 223, 16);
 		frame.getContentPane().add(lblPasswordError);
 		
-		textNombreUsuario = new JTextField();
-		textNombreUsuario.setColumns(10);
-		textNombreUsuario.setBounds(258, 404, 189, 26);
-		frame.getContentPane().add(textNombreUsuario);
+		textNickName = new JTextField();
+		textNickName.setColumns(10);
+		textNickName.setBounds(258, 404, 189, 26);
+		frame.getContentPane().add(textNickName);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario");
 		lblNombreDeUsuario.setBounds(258, 376, 126, 16);
@@ -340,8 +350,52 @@ public class RegisterWindow {
 		});
 		
 		
+		textNickName.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				
+				
+			}
+		});
+		
+		
+		//RECOGER DATOS USUARIO  ////////////////////////////////////////////////////////////////////////////////////////////
+		
+		String nombreUsuario;
+		String apellido1Usuario;
+		String apellido2Usuario;
+		String nickNameUsuario;
+		String nombreProgenitor;
+		String apellido1Progenitor;
+		String apellido2Progenitor;
 		
 		
 		
+		//LISTA DE AVATARES ////////////////////////////////////////////////////////////////////////////////////////////
+		
+		ArrayList<JButton> avatarButtons = new ArrayList<JButton>();
+		avatarButtons.add(btnAvatar_1);
+		avatarButtons.add(btnAvatar_2);
+		avatarButtons.add(btnAvatar_3);
+		avatarButtons.add(btnAvatar_4);
+		avatarButtons.add(btnAvatar_5);
+		avatarButtons.add(btnAvatar_6);
+		avatarButtons.add(btnAvatar_7);
+		avatarButtons.add(btnAvatar_8);
+		
+		
+		//PRUEBAS AUDIO  ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //mirar si puedo enganchar a socket buscando socket y audioimputstream
+		
+			try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\bernivila\\Downloads\\bensound-buddy.wav").getAbsoluteFile());
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			clip.start();
+			} catch(Exception ex) {
+			System.out.println("Error with playing sound.");
+			ex.printStackTrace();
+			}
+			
 	}
 }
