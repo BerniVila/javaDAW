@@ -1,5 +1,6 @@
 package chatWindow;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,16 +40,27 @@ public class Server {
 			
 			//creando archivo de audio para enviar
 			
-			File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
-			FileInputStream in = new FileInputStream(bso);
+			
+			File fx = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
+			
+			FileInputStream inAudio = new FileInputStream(fx);
+			
+			BufferedInputStream in = new BufferedInputStream(inAudio);
+			
+			
+			
+			
+			
+			
 			
 
 			// to print data out
 			PrintStream output = new PrintStream(client.getOutputStream());
 			
 			//creating reading thread object
-			Reading chatInput = new Reading(input, output);
-			chatInput.start();
+			//Reading chatInput = new Reading(input, output);
+			Reading chatAudio = new Reading(inAudio, output);
+			chatAudio.start();
 			
 			while(talking) {
 

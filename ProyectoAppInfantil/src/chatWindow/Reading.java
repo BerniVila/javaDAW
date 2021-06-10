@@ -1,7 +1,9 @@
 package chatWindow;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
@@ -15,6 +17,7 @@ public class Reading extends Thread {
 	private PrintStream out = null;
 	private boolean talking = true;
 	private JTextArea conversation = null;
+	private FileInputStream inAudio = null;
 	
 	
 	public Reading(BufferedReader in, PrintStream out) { // agrego al constructor conversation
@@ -31,27 +34,14 @@ public class Reading extends Thread {
 	
 	
 	
-//	public Reading(BufferedReader in, PrintStream out) { // agrego al constructor conversation
-//		this.in = in;
-//		this.out = out;
-//		
-//		
-//		
-//		File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
-//		
-//		try {
-//		AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
-//		Clip clip = AudioSystem.getClip();
-//		clip.open(audioInputStream);
-//		clip.start();
-//		} catch(Exception ex) {
-//		System.out.println("Error with playing sound.");
-//		ex.printStackTrace();
-//		}
-//		
-//		
-//		
-//	}
+	public Reading(FileInputStream inAudio, PrintStream out) { // agrego al constructor conversation
+		this.inAudio = inAudio;
+		this.out = out;
+		
+		
+		
+		
+	}
 	
 	
 
