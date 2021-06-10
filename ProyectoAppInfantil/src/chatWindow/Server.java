@@ -1,6 +1,8 @@
 package chatWindow;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -34,6 +36,13 @@ public class Server {
 			client.setSoLinger(true, 10);
 			// an input reader to read from the socket
 			BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			
+			//creando archivo de audio para enviar
+			
+			File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+			FileInputStream in = new FileInputStream(bso);
+			
+
 			// to print data out
 			PrintStream output = new PrintStream(client.getOutputStream());
 			
