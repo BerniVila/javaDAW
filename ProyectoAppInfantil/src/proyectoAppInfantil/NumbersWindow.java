@@ -66,7 +66,7 @@ public class NumbersWindow {
 		frame.getContentPane().setLayout(null);
 
 		PanelBackground BG = new PanelBackground();
-		BG.setBounds(0, 0, 1920, 1080);
+		BG.setBounds(0, 0, 1920, 1080); //en clase 1600x900
 		frame.getContentPane().add(BG);
 		BG.setLayout(null);
 
