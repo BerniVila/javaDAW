@@ -34,7 +34,7 @@ public class Reading extends Thread {
 	
 	
 	
-	public Reading(FileInputStream inAudio, PrintStream out) { // agrego al constructor conversation
+	public Reading(FileInputStream inAudio, PrintStream out) { // agrego al constructor FileInputStream
 		this.inAudio = inAudio;
 		this.out = out;
 		

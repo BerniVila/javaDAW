@@ -388,6 +388,10 @@ public class RegisterWindow {
         //mirar si puedo enganchar a socket buscando socket y audioimputstream
 		
 			try {
+			Socket s = new Socket ("localhost", 5000);
+			
+			
+				
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\bernivila\\Downloads\\bensound-buddy.wav").getAbsoluteFile());
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);

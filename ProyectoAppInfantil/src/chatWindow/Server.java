@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -38,10 +40,17 @@ public class Server {
 			// an input reader to read from the socket
 			BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			
+			
+			/////////////////////////////
+			
+			ObjectOutputStream outObjeto = new ObjectOutputStream(client.getOutputStream());
+			ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
 			//creando archivo de audio para enviar
-			
-			
 			File fx = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
+			
+			AudioSerializable audioToSend = new AudioSerializable(fx);			
+			
+			
 			
 			FileInputStream inAudio = new FileInputStream(fx);
 			

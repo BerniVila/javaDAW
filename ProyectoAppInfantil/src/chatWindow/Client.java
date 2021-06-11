@@ -1,11 +1,19 @@
 package chatWindow;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 public class Client {
 
@@ -26,6 +34,28 @@ public class Client {
 			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			// to write to the server
 			PrintStream output = new PrintStream(socket.getOutputStream());
+			
+			
+			//Crear streams de audio
+			ObjectOutputStream outObjeto = new ObjectOutputStream(socket.getOutputStream());
+			ObjectInputStream inObjeto = new ObjectInputStream(socket.getInputStream());
+			
+			//AUDIO FILE
+			
+			File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+
+			try {
+				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+				clip.start();
+			} catch (Exception ex) {
+				System.out.println("Error with playing sound.");
+				ex.printStackTrace();
+			}
+			
+			
+			
 			// To read from the user (keyboard)
 			Scanner tec = new Scanner(System.in);
 			System.out.println("Client -> Write a sentence to send:");
