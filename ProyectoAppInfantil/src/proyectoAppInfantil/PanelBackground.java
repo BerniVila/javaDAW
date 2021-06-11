@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class PanelBackground extends javax.swing.JPanel{
 
 	public PanelBackground() {
-		this.setSize(1920, 1080);
+		this.setSize(1600, 900);
 	}
 	
 	@Override

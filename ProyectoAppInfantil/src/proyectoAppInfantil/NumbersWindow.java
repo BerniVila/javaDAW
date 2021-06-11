@@ -59,7 +59,7 @@ public class NumbersWindow {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(153, 153, 255));
-		frame.setBounds(100, 100, 1920, 1080);
+		frame.setBounds(100, 100, 1600, 900);
 		// Image img =
 		// Toolkit.getDefaultToolkit().getImage("/images/backgrounds/claseFondoBig.jpg");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -219,18 +219,17 @@ public class NumbersWindow {
 		JLabel lblNewLabel = new JLabel("SUMA NÚMEROS HASTA LLEGAR A");
 		lblNewLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(978, 37, 902, 191);
+		lblNewLabel.setBounds(762, 6, 830, 191);
 		BG.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("25");
 		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.BOLD, 99));
 		lblNewLabel_1.setForeground(new Color(255, 255, 153));
-		lblNewLabel_1.setBounds(1537, 264, 130, 109);
+		lblNewLabel_1.setBounds(1133, 189, 130, 109);
 		BG.add(lblNewLabel_1);
 
 		// PRUEBAS AUDIO
 		// ////////////////////////////////////////////////////////////////////////////////////////////////////
-		// mirar si puedo enganchar a socket buscando socket y audioimputstream
 
 		File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 
