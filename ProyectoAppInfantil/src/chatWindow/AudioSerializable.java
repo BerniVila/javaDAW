@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class AudioSerializable implements Serializable {
 
 	File audioFile;
-	int edad;
 
 	public AudioSerializable(File audioFile) {
 		super();

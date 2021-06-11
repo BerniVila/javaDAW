@@ -161,7 +161,7 @@ public class ChatWindow {
 		btnSend.setMinimumSize(new Dimension(30, 29));
 		btnSend.setMaximumSize(new Dimension(30, 29));
 		btnSend.setIconTextGap(2);
-		btnSend.setIcon(new ImageIcon(ChatWindow.class.getResource("/images/send-message-icon.png")));
+		//btnSend.setIcon(new ImageIcon(ChatWindow.class.getResource("/images/send-message-icon.png")));
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);

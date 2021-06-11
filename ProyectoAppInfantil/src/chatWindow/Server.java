@@ -43,18 +43,16 @@ public class Server {
 			
 			/////////////////////////////
 			
-			ObjectOutputStream outObjeto = new ObjectOutputStream(client.getOutputStream());
 			ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
+			//ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
 			//creando archivo de audio para enviar
-			File fx = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
-			
-			AudioSerializable audioToSend = new AudioSerializable(fx);			
 			
 			
+			inObjeto.writeObject(audioToSend);
 			
-			FileInputStream inAudio = new FileInputStream(fx);
-			
-			BufferedInputStream in = new BufferedInputStream(inAudio);
+//			FileInputStream inAudio = new FileInputStream(fx);
+//			
+//			BufferedInputStream in = new BufferedInputStream(inAudio);
 			
 			
 			
@@ -68,7 +66,7 @@ public class Server {
 			
 			//creating reading thread object
 			//Reading chatInput = new Reading(input, output);
-			Reading chatAudio = new Reading(inAudio, output);
+			Reading chatAudio = new Reading(inAudio);
 			chatAudio.start();
 			
 			while(talking) {

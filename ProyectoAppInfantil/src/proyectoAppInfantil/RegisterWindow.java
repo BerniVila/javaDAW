@@ -21,6 +21,7 @@ import java.awt.Color;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 import java.awt.Cursor;
@@ -386,18 +387,20 @@ public class RegisterWindow {
 		
 		//PRUEBAS AUDIO  ////////////////////////////////////////////////////////////////////////////////////////////////////
         //mirar si puedo enganchar a socket buscando socket y audioimputstream
+		File bso = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
+		
+		File bsoMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 		
 			try {
-			Socket s = new Socket ("localhost", 5000);
-			
-			
-				
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\bernivila\\Downloads\\bensound-buddy.wav").getAbsoluteFile());
+		
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(-20.0f); // Reduce volume by 10 decibels.
 			} catch(Exception ex) {
-			System.out.println("Error with playing sound.");
+			System.out.println("Error playing sound.");
 			ex.printStackTrace();
 			}
 			

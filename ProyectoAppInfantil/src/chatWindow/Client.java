@@ -38,11 +38,11 @@ public class Client {
 			
 			//Crear streams de audio
 			ObjectOutputStream outObjeto = new ObjectOutputStream(socket.getOutputStream());
-			ObjectInputStream inObjeto = new ObjectInputStream(socket.getInputStream());
+			//ObjectInputStream inObjeto = new ObjectInputStream(socket.getInputStream());
 			
 			//AUDIO FILE
 			
-			File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+			File bso = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Fanfare_SmallItem.wav");
 
 			try {
 				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
