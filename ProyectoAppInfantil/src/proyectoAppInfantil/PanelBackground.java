@@ -15,7 +15,7 @@ public class PanelBackground extends javax.swing.JPanel{
 	public void paintComponent(Graphics g) {
 		Dimension screenSize = getSize();
 		ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/images/backgrounds/chalk3.jpg"));
-		g.drawImage(imagenFondo.getImage(), 0, 0, screenSize.width, screenSize.height, null);
+		g.drawImage(imagenFondo.getImage(), 0, 0, 1600, 900, null);
 		
 		setOpaque(false);
 		super.paintComponent(g);

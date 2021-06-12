@@ -29,6 +29,14 @@ public class NumbersWindow {
 	File btnFX1 = new File(
 			"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
 	File btnFX2 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Secret.wav");
+	
+	
+	
+	
+	// added to use from main window
+	public JFrame getNumbersWindow() {
+		return frame;
+	}
 
 	/**
 	 * Launch the application.
@@ -65,8 +73,9 @@ public class NumbersWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
+		
 		PanelBackground BG = new PanelBackground();
-		BG.setBounds(0, 0, 1920, 1080); //en clase 1600x900
+		BG.setBounds(0, 0, 1600, 900); //en clase 1600x900
 		frame.getContentPane().add(BG);
 		BG.setLayout(null);
 
@@ -204,17 +213,6 @@ public class NumbersWindow {
 		// frame.getContentPane().add(btnNewButton_8);
 		BG.add(btnNewButton_8);
 
-		JButton btnNewButton_9 = new JButton("");
-		btnNewButton_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_9.setContentAreaFilled(false);
-		btnNewButton_9.setBorderPainted(false);
-		btnNewButton_9.setBorder(null);
-		btnNewButton_9.setBackground(new Color(153, 153, 255));
-		btnNewButton_9.setAutoscrolls(true);
-		btnNewButton_9.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/zeroSmall.gif")));
-		btnNewButton_9.setBounds(906, 389, 216, 328);
-		// frame.getContentPane().add(btnNewButton_9);
-		BG.add(btnNewButton_9);
 
 		JLabel lblNewLabel = new JLabel("SUMA NÚMEROS HASTA LLEGAR A");
 		lblNewLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 45));

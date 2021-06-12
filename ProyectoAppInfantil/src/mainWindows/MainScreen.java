@@ -3,6 +3,10 @@ package mainWindows;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import addNumbers.AddNumbersMainWindow;
+import proyectoAppInfantil.NumbersWindow;
+
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
@@ -46,10 +50,10 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize(screenSize.width/2, screenSize.height/2);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setSize(1600, 900);
 		frame.getContentPane().setBackground(new Color(255, 251, 243));
-		frame.setBounds(screenSize.width/4, screenSize.height/4, 800, 600);
+		frame.setBounds(0, 0, 1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -73,9 +77,10 @@ public class MainScreen {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				SelectionScreen selectionScreen = new SelectionScreen();
-				selectionScreen.getSelectionScreen().setVisible(true);
+			
+				NumbersWindow numbersWindow = new NumbersWindow();
+				numbersWindow.getNumbersWindow().setVisible(true);
+				frame.setVisible(false);
 
 			}
 		});
