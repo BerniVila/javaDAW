@@ -230,18 +230,20 @@ public class NumbersWindow {
 		// ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
-
-		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
-			Clip clip = AudioSystem.getClip();
-			clip.open(audioInputStream);
-			clip.start();
-			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-20.0f); // Reduce volume by 10 decibels.
-		} catch (Exception ex) {
-			System.out.println("Error with playing sound.");
-			ex.printStackTrace();
-		}
+		
+		StaticSoundMethods.playSound(bso);
+//
+//		try {
+//			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
+//			Clip clip = AudioSystem.getClip();
+//			clip.open(audioInputStream);
+//			clip.start();
+//			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+//			gainControl.setValue(-20.0f); // Reduce volume by 10 decibels.
+//		} catch (Exception ex) {
+//			System.out.println("Error with playing sound.");
+//			ex.printStackTrace();
+//		}
 
 	}
 }

@@ -1,6 +1,7 @@
 package addNumbers;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AddNumbersLogic {
 
@@ -56,14 +57,22 @@ public class AddNumbersLogic {
 	}
 	
 	
+	public int generateNumber() {
+		Random randomNumber = new Random();
+		int targetNumber = randomNumber.nextInt(100);
+		return  targetNumber;
+	}
+	
+	
 	public void tryNumber(int tempSum) {
-
+			boolean correcto = true;
 			numSum += tempNum;
 			numList.add(tempNum);
 	
 			if (numSum > targetNum) {
 				numSum -= tempNum;
 				numList.remove(numList.size() - 1);
+				correcto = false;
 				//System.out.println("Te has pasado, prueba otra vez");
 			}
 	
