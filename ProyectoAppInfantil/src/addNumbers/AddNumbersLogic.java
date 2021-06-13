@@ -12,8 +12,8 @@ public class AddNumbersLogic {
 	private int targetNum;
 
 
-	public AddNumbersLogic(int targetNum) {
-		this.targetNum = targetNum;
+	public AddNumbersLogic() {
+		this.targetNum = generateNumber();
 	}
 
 
@@ -59,15 +59,19 @@ public class AddNumbersLogic {
 	
 	public int generateNumber() {
 		Random randomNumber = new Random();
-		int targetNumber = randomNumber.nextInt(100);
+		int targetNumber = randomNumber.nextInt(20);
 		return  targetNumber;
 	}
 	
+	public void addNumber(int tempNum) {
+		numList.add(tempNum);
+	}
 	
-	public void tryNumber(int tempSum) {
+	
+	public void tryNumber(int tempNum) {
 			boolean correcto = true;
 			numSum += tempNum;
-			numList.add(tempNum);
+			addNumber(tempNum);
 	
 			if (numSum > targetNum) {
 				numSum -= tempNum;
