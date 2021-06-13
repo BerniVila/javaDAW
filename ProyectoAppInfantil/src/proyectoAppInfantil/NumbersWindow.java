@@ -25,9 +25,10 @@ import java.awt.event.ActionEvent;
 public class NumbersWindow {
 
 	private JFrame frame;
-	private PanelBackground frameBG;
-	File btnFX1 = new File(
-			"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
+	//private PanelBackground frameBG;
+	private boolean muted = false;
+	private float volume;
+	File btnFX1 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
 	File btnFX2 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Secret.wav");
 	
 	
@@ -74,13 +75,13 @@ public class NumbersWindow {
 		frame.getContentPane().setLayout(null);
 
 		
-		PanelBackground BG = new PanelBackground();
-		BG.setBounds(0, 0, 1600, 900); //en clase 1600x900
-		frame.getContentPane().add(BG);
-		BG.setLayout(null);
+		PanelBackground bg = new PanelBackground();
+		bg.setBounds(0, 0, 1600, 900); //en clase 1600x900
+		frame.getContentPane().add(bg);
+		bg.setLayout(null);
 
-		JButton btnNewButton_0 = new JButton("");
-		btnNewButton_0.addActionListener(new ActionListener() {
+		JButton btn_1 = new JButton("");
+		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(btnFX1);
@@ -93,19 +94,19 @@ public class NumbersWindow {
 				}
 			}
 		});
-		btnNewButton_0.setBorderPainted(false);
-		btnNewButton_0.setContentAreaFilled(false);
-		btnNewButton_0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_0.setBackground(new Color(153, 153, 255));
-		btnNewButton_0.setBorder(null);
-		btnNewButton_0.setAutoscrolls(true);
-		btnNewButton_0.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/one.gif")));
-		btnNewButton_0.setBounds(79, 61, 138, 205);
+		btn_1.setBorderPainted(false);
+		btn_1.setContentAreaFilled(false);
+		btn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_1.setBackground(new Color(153, 153, 255));
+		btn_1.setBorder(null);
+		btn_1.setAutoscrolls(true);
+		btn_1.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/one.gif")));
+		btn_1.setBounds(209, 55, 124, 185);
 		// frame.getContentPane().add(btnNewButton);
-		BG.add(btnNewButton_0);
+		bg.add(btn_1);
 
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btn_2 = new JButton("");
+		btn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(btnFX2);
@@ -118,142 +119,231 @@ public class NumbersWindow {
 				}
 			}
 		});
-		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.setBorderPainted(false);
-		btnNewButton_1.setBorder(null);
-		btnNewButton_1.setBackground(new Color(153, 153, 255));
-		btnNewButton_1.setAutoscrolls(true);
-		btnNewButton_1.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/two.gif")));
-		btnNewButton_1.setBounds(306, 127, 161, 185);
+		btn_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_2.setContentAreaFilled(false);
+		btn_2.setBorderPainted(false);
+		btn_2.setBorder(null);
+		btn_2.setBackground(new Color(153, 153, 255));
+		btn_2.setAutoscrolls(true);
+		btn_2.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/two.gif")));
+		btn_2.setBounds(366, 61, 124, 168);
 		// frame.getContentPane().add(btnNewButton_1);
-		BG.add(btnNewButton_1);
+		bg.add(btn_2);
 
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_2.setContentAreaFilled(false);
-		btnNewButton_2.setBorderPainted(false);
-		btnNewButton_2.setBorder(null);
-		btnNewButton_2.setBackground(new Color(153, 153, 255));
-		btnNewButton_2.setAutoscrolls(true);
-		btnNewButton_2.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/three.gif")));
-		btnNewButton_2.setBounds(494, 93, 143, 205);
+		JButton btn_3 = new JButton("");
+		btn_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_3.setContentAreaFilled(false);
+		btn_3.setBorderPainted(false);
+		btn_3.setBorder(null);
+		btn_3.setBackground(new Color(153, 153, 255));
+		btn_3.setAutoscrolls(true);
+		btn_3.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/three.gif")));
+		btn_3.setBounds(540, 55, 130, 185);
 		// frame.getContentPane().add(btnNewButton_2);
-		BG.add(btnNewButton_2);
+		bg.add(btn_3);
 
-		JButton btnNewButton_3 = new JButton("");
-		btnNewButton_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_3.setContentAreaFilled(false);
-		btnNewButton_3.setBorderPainted(false);
-		btnNewButton_3.setBorder(null);
-		btnNewButton_3.setBackground(new Color(153, 153, 255));
-		btnNewButton_3.setAutoscrolls(true);
-		btnNewButton_3.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/four.gif")));
-		btnNewButton_3.setBounds(40, 309, 177, 205);
+		JButton btn_4 = new JButton("");
+		btn_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_4.setContentAreaFilled(false);
+		btn_4.setBorderPainted(false);
+		btn_4.setBorder(null);
+		btn_4.setBackground(new Color(153, 153, 255));
+		btn_4.setAutoscrolls(true);
+		btn_4.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/four.gif")));
+		btn_4.setBounds(40, 309, 143, 176);
 		// frame.getContentPane().add(btnNewButton_3);
-		BG.add(btnNewButton_3);
+		bg.add(btn_4);
 
-		JButton btnNewButton_4 = new JButton("");
-		btnNewButton_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_4.setContentAreaFilled(false);
-		btnNewButton_4.setBorderPainted(false);
-		btnNewButton_4.setBorder(null);
-		btnNewButton_4.setBackground(new Color(153, 153, 255));
-		btnNewButton_4.setAutoscrolls(true);
-		btnNewButton_4.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/five.gif")));
-		btnNewButton_4.setBounds(327, 353, 172, 245);
+		JButton btn_5 = new JButton("");
+		btn_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_5.setContentAreaFilled(false);
+		btn_5.setBorderPainted(false);
+		btn_5.setBorder(null);
+		btn_5.setBackground(new Color(153, 153, 255));
+		btn_5.setAutoscrolls(true);
+		btn_5.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/five.gif")));
+		btn_5.setBounds(209, 309, 143, 191);
 		// frame.getContentPane().add(btnNewButton_4);
-		BG.add(btnNewButton_4);
+		bg.add(btn_5);
 
-		JButton btnNewButton_5 = new JButton("");
-		btnNewButton_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_5.setContentAreaFilled(false);
-		btnNewButton_5.setBorderPainted(false);
-		btnNewButton_5.setBorder(null);
-		btnNewButton_5.setBackground(new Color(153, 153, 255));
-		btnNewButton_5.setAutoscrolls(true);
-		btnNewButton_5.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/six.gif")));
-		btnNewButton_5.setBounds(605, 365, 205, 226);
+		JButton btn_6 = new JButton("");
+		btn_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_6.setContentAreaFilled(false);
+		btn_6.setBorderPainted(false);
+		btn_6.setBorder(null);
+		btn_6.setBackground(new Color(153, 153, 255));
+		btn_6.setAutoscrolls(true);
+		btn_6.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/six.gif")));
+		btn_6.setBounds(366, 309, 172, 185);
 		// frame.getContentPane().add(btnNewButton_5);
-		BG.add(btnNewButton_5);
+		bg.add(btn_6);
 
-		JButton btnNewButton_6 = new JButton("");
-		btnNewButton_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_6.setContentAreaFilled(false);
-		btnNewButton_6.setBorderPainted(false);
-		btnNewButton_6.setBorder(null);
-		btnNewButton_6.setBackground(new Color(153, 153, 255));
-		btnNewButton_6.setAutoscrolls(true);
-		btnNewButton_6.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/seven.gif")));
-		btnNewButton_6.setBounds(50, 595, 172, 212);
+		JButton btn_7 = new JButton("");
+		btn_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_7.setContentAreaFilled(false);
+		btn_7.setBorderPainted(false);
+		btn_7.setBorder(null);
+		btn_7.setBackground(new Color(153, 153, 255));
+		btn_7.setAutoscrolls(true);
+		btn_7.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/seven.gif")));
+		btn_7.setBounds(549, 309, 143, 176);
 		// frame.getContentPane().add(btnNewButton_6);
-		BG.add(btnNewButton_6);
+		bg.add(btn_7);
 
-		JButton btnNewButton_7 = new JButton("");
-		btnNewButton_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_7.setContentAreaFilled(false);
-		btnNewButton_7.setBorderPainted(false);
-		btnNewButton_7.setBorder(null);
-		btnNewButton_7.setBackground(new Color(153, 153, 255));
-		btnNewButton_7.setAutoscrolls(true);
-		btnNewButton_7.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/eight.gif")));
-		btnNewButton_7.setBounds(349, 618, 143, 205);
+		JButton btn_8 = new JButton("");
+		btn_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_8.setContentAreaFilled(false);
+		btn_8.setBorderPainted(false);
+		btn_8.setBorder(null);
+		btn_8.setBackground(new Color(153, 153, 255));
+		btn_8.setAutoscrolls(true);
+		btn_8.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/eight.gif")));
+		btn_8.setBounds(60, 565, 130, 185);
 		// frame.getContentPane().add(btnNewButton_7);
-		BG.add(btnNewButton_7);
+		bg.add(btn_8);
 
-		JButton btnNewButton_8 = new JButton("");
-		btnNewButton_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_8.setContentAreaFilled(false);
-		btnNewButton_8.setBorderPainted(false);
-		btnNewButton_8.setBorder(null);
-		btnNewButton_8.setBackground(new Color(153, 153, 255));
-		btnNewButton_8.setAutoscrolls(true);
-		btnNewButton_8.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/nine.gif")));
-		btnNewButton_8.setBounds(649, 618, 161, 205);
+		JButton btn_9 = new JButton("");
+		btn_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_9.setContentAreaFilled(false);
+		btn_9.setBorderPainted(false);
+		btn_9.setBorder(null);
+		btn_9.setBackground(new Color(153, 153, 255));
+		btn_9.setAutoscrolls(true);
+		btn_9.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/nine.gif")));
+		btn_9.setBounds(224, 565, 149, 176);
 		// frame.getContentPane().add(btnNewButton_8);
-		BG.add(btnNewButton_8);
+		bg.add(btn_9);
 
 
-		JLabel lblNewLabel = new JLabel("SUMA NÚMEROS HASTA LLEGAR A");
-		lblNewLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(762, 6, 830, 191);
-		BG.add(lblNewLabel);
+		JLabel lblTitle = new JLabel("SUMA NÚMEROS CON RESULTADO");
+		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
+		lblTitle.setForeground(new Color(255, 255, 255));
+		lblTitle.setBounds(762, 6, 830, 191);
+		bg.add(lblTitle);
 
-		JLabel lblNewLabel_1 = new JLabel("25");
-		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.BOLD, 99));
-		lblNewLabel_1.setForeground(new Color(255, 255, 153));
-		lblNewLabel_1.setBounds(1133, 189, 130, 109);
-		BG.add(lblNewLabel_1);
+		JLabel lblNumber = new JLabel("25");
+		lblNumber.setFont(new Font("Comic Sans MS", Font.BOLD, 99));
+		lblNumber.setForeground(new Color(255, 255, 153));
+		lblNumber.setBounds(1133, 189, 130, 109);
+		bg.add(lblNumber);
 		
-		JButton btnNewButton_7_1 = new JButton("");
-		btnNewButton_7_1.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/zeroSmall.gif")));
-		btnNewButton_7_1.setContentAreaFilled(false);
-		btnNewButton_7_1.setBorderPainted(false);
-		btnNewButton_7_1.setBorder(null);
-		btnNewButton_7_1.setBackground(new Color(153, 153, 255));
-		btnNewButton_7_1.setAutoscrolls(true);
-		btnNewButton_7_1.setBounds(883, 622, 130, 185);
-		BG.add(btnNewButton_7_1);
-
-		// PRUEBAS AUDIO
-		// ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		File bso = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+		JButton btn_0 = new JButton("");
+		btn_0.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/zeroSmall.gif")));
+		btn_0.setContentAreaFilled(false);
+		btn_0.setBorderPainted(false);
+		btn_0.setBorder(null);
+		btn_0.setBackground(new Color(153, 153, 255));
+		btn_0.setAutoscrolls(true);
+		btn_0.setBounds(47, 55, 130, 185);
+		bg.add(btn_0);
 		
-		StaticSoundMethods.playSound(bso);
-//
-//		try {
-//			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
-//			Clip clip = AudioSystem.getClip();
-//			clip.open(audioInputStream);
-//			clip.start();
-//			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-//			gainControl.setValue(-20.0f); // Reduce volume by 10 decibels.
-//		} catch (Exception ex) {
-//			System.out.println("Error with playing sound.");
-//			ex.printStackTrace();
-//		}
+		JButton btnHelp = new JButton("AYUDA");
+		btnHelp.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		btnHelp.setBounds(417, 583, 253, 158);
+		bg.add(btnHelp);
+		
+		JButton btnGenerateNumber = new JButton("NUEVO NÚMERO");
+		btnGenerateNumber.setBounds(1384, 189, 166, 90);
+		bg.add(btnGenerateNumber);
+		
+		JLabel lblNewLabel = new JLabel("RESULTADO");
+		lblNewLabel.setForeground(new Color(153, 255, 204));
+		lblNewLabel.setFont(new Font("Kohinoor Telugu", Font.PLAIN, 64));
+		lblNewLabel.setBounds(795, 348, 743, 137);
+		bg.add(lblNewLabel);
+		
+		JButton btnLowerVolume = new JButton("");
+		btnLowerVolume.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/icons/lowerVolume.png")));
+		btnLowerVolume.setContentAreaFilled(false);
+		btnLowerVolume.setBorderPainted(false);
+		btnLowerVolume.setBorder(null);
+		btnLowerVolume.setBounds(1354, 790, 60, 54);
+		bg.add(btnLowerVolume);
+		
+		JButton btnMute = new JButton("");
+		btnMute.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/icons/muteIcon.png")));
+		btnMute.setContentAreaFilled(false);
+		btnMute.setBorderPainted(false);
+		btnMute.setBorder(null);
+		btnMute.setBounds(1431, 790, 60, 54);
+		bg.add(btnMute);
+		
+		JButton btnRaiseVolume = new JButton("");
+		btnRaiseVolume.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/icons/moreVolume.png")));
+		btnRaiseVolume.setContentAreaFilled(false);
+		btnRaiseVolume.setBorderPainted(false);
+		btnRaiseVolume.setBorder(null);
+		btnRaiseVolume.setBounds(1505, 790, 77, 54);
+		bg.add(btnRaiseVolume);
+		
+		
+		
+		
+		//StaticSoundMethods.playSound(bso);
 
+		//SOUNDS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+				File bso = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
+				
+				File bsoMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+				
+				try {
+					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMAC);
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					clip.start();
+					FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+					gainControl.setValue(-20.0f);
+					volume = gainControl.getValue();
+					float lastVolume = volume;
+					
+					
+					btnMute.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (muted) {
+								gainControl.setValue(lastVolume);
+								muted = false;
+								
+							}
+							else {
+								gainControl.setValue(-80.0f);
+								muted = true;
+							}
+							
+						}
+					});
+					
+					
+					btnRaiseVolume.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							volume = gainControl.getValue();
+							volume += 2.5;
+							if (volume >= 5.0) {
+								volume = 5;
+							}
+							gainControl.setValue(volume);					
+						}
+					});
+					
+					
+					btnLowerVolume.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							volume = gainControl.getValue();
+							volume -= 10;
+							if (volume <= -80) {
+								volume = -80;
+							}
+							gainControl.setValue(volume);
+						}
+					});
+					
+					
+				} catch (Exception ex) {
+					System.out.println("Error with playing sound.");
+					ex.printStackTrace();
+				}
+				
+				
 	}
 }
