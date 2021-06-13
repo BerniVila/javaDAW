@@ -5,7 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import addNumbers.AddNumbersMainWindow;
+import proyectoAppInfantil.LoginWindow;
 import proyectoAppInfantil.NumbersWindow;
+import proyectoAppInfantil.RegisterWindow;
 import proyectoAppInfantil.StaticSoundMethods;
 
 import javax.sound.sampled.AudioInputStream;
@@ -66,21 +68,21 @@ public class MainScreen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblAprendeJugando = new JLabel("APRENDE A SUMAR CON JAVA");
-		lblAprendeJugando.setFont(new Font("Tahoma", Font.BOLD, 60));
-		lblAprendeJugando.setBounds(391, 116, 940, 125);
-		frame.getContentPane().add(lblAprendeJugando);
+		JLabel lblTitulo = new JLabel("APRENDE A SUMAR CON JAVA");
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 60));
+		lblTitulo.setBounds(391, 116, 940, 125);
+		frame.getContentPane().add(lblTitulo);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton.setBorderPainted(false);
-		btnNewButton.setIcon(new ImageIcon(MainScreen.class.getResource("/images/empezar.gif")));
-		btnNewButton.setBounds(679, 412, 285, 97);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnStart = new JButton("");
+		btnStart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnStart.setBorderPainted(false);
+		btnStart.setIcon(new ImageIcon(MainScreen.class.getResource("/images/empezar.gif")));
+		btnStart.setBounds(679, 412, 285, 97);
+		frame.getContentPane().add(btnStart);
 		
-		JLabel lblNewLabel_1 = new JLabel("Copyright © 2021 BerniVilaDev. All rights reserved");
-		lblNewLabel_1.setBounds(641, 822, 323, 24);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblCopyright = new JLabel("Copyright © 2021 BerniVilaDev. All rights reserved");
+		lblCopyright.setBounds(641, 822, 323, 24);
+		frame.getContentPane().add(lblCopyright);
 		
 		JButton btnLowerVolume = new JButton("");
 		btnLowerVolume.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -88,7 +90,7 @@ public class MainScreen {
 		btnLowerVolume.setBorder(null);
 		btnLowerVolume.setBorderPainted(false);
 		btnLowerVolume.setIcon(new ImageIcon(MainScreen.class.getResource("/images/icons/lowerVolume.png")));
-		btnLowerVolume.setBounds(1194, 777, 60, 54);
+		btnLowerVolume.setBounds(1342, 792, 60, 54);
 		frame.getContentPane().add(btnLowerVolume);
 		
 		JButton btnMute = new JButton("");
@@ -97,7 +99,7 @@ public class MainScreen {
 		btnMute.setContentAreaFilled(false);
 		btnMute.setBorderPainted(false);
 		btnMute.setBorder(null);
-		btnMute.setBounds(1271, 777, 60, 54);
+		btnMute.setBounds(1419, 792, 60, 54);
 		frame.getContentPane().add(btnMute);
 		
 		JButton btnRaiseVolume = new JButton("");
@@ -106,7 +108,7 @@ public class MainScreen {
 		btnRaiseVolume.setContentAreaFilled(false);
 		btnRaiseVolume.setBorderPainted(false);
 		btnRaiseVolume.setBorder(null);
-		btnRaiseVolume.setBounds(1345, 777, 77, 54);
+		btnRaiseVolume.setBounds(1493, 792, 77, 54);
 		frame.getContentPane().add(btnRaiseVolume);
 		
 		JButton btnRegistro = new JButton("Registrate");
@@ -117,17 +119,23 @@ public class MainScreen {
 		
 		
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				NumbersWindow numbersWindow = new NumbersWindow();
-				numbersWindow.getNumbersWindow().setVisible(true);
-				frame.setVisible(false);
+				LoginWindow loginWindow = new LoginWindow();
+				loginWindow.getLoginWindow().setVisible(true);
+				//frame.setVisible(false);
 
 			}
 		});
 		
-		
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegisterWindow registerWindow = new RegisterWindow();
+				registerWindow.getRegisterWindow().setVisible(true);
+				//frame.setVisible(false);
+			}
+		});
 		
 		
 		
@@ -137,10 +145,12 @@ public class MainScreen {
 		//SOUNDS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
-		File soundFile = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+		File bso = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
+		
+		File bsoMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 		
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();

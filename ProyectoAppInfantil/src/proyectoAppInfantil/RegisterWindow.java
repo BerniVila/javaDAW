@@ -1,66 +1,52 @@
 package proyectoAppInfantil;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
 import javax.swing.JTextField;
-import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JPasswordField;
-import java.awt.GridLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Color;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Dimension;
-import javax.swing.JComboBox;
 import java.awt.Font;
-import java.awt.event.InputMethodListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.awt.event.InputMethodEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegisterWindow {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
-	private JTextField textField_2;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textField_ApellidoProgenitor2;
+	private JTextField textField_NombreProgenitor;
+	private JTextField textField_ApellidoProgenitor1;
 	private JPasswordField passwordInsert;
 	private JPasswordField passwordConfirm;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textNickName;
+	private JTextField textField_NombreAlumno;
+	private JTextField textField_ApellidoAlumno1;
+	private JTextField textField_ApellidoAlumno2;
+	private JTextField textField_NombreUsuario;
+	ConexionDB conexion;
+	
+
+	
+	
+	// added to use from main window
+	public JFrame getRegisterWindow() {
+		return frame;
+	}
+	
 
 	/**
 	 * Launch the application.
@@ -89,29 +75,42 @@ public class RegisterWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		
+		try {
+			conexion = new ConexionDB();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(400, 150, 800, 600);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNombreProgenitor = new JLabel("Nombre Progenitor");
 		lblNombreProgenitor.setBounds(44, 58, 126, 16);
 		frame.getContentPane().add(lblNombreProgenitor);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(44, 86, 189, 26);
-		frame.getContentPane().add(textField_4);
-		textField_4.setColumns(10);
+		textField_NombreProgenitor = new JTextField();
+		textField_NombreProgenitor.setBounds(44, 86, 189, 26);
+		frame.getContentPane().add(textField_NombreProgenitor);
+		textField_NombreProgenitor.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(44, 163, 189, 26);
-		frame.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		textField_ApellidoProgenitor1 = new JTextField();
+		textField_ApellidoProgenitor1.setBounds(44, 163, 189, 26);
+		frame.getContentPane().add(textField_ApellidoProgenitor1);
+		textField_ApellidoProgenitor1.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(259, 163, 188, 26);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		textField_ApellidoProgenitor2 = new JTextField();
+		textField_ApellidoProgenitor2.setBounds(259, 163, 188, 26);
+		frame.getContentPane().add(textField_ApellidoProgenitor2);
+		textField_ApellidoProgenitor2.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Introduce Password");
 		lblNewLabel_1.setBounds(44, 376, 145, 16);
@@ -121,13 +120,13 @@ public class RegisterWindow {
 		passwordInsert.setBounds(44, 407, 189, 26);
 		frame.getContentPane().add(passwordInsert);
 		
-		JButton btnNewButton = new JButton("Registrarse");
-		btnNewButton.setBorderPainted(false);
-		btnNewButton.setBackground(new Color(102, 153, 255));
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton.setOpaque(true);
-		btnNewButton.setBounds(310, 482, 117, 71);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnRegistro = new JButton("Registrarse");
+		btnRegistro.setBorderPainted(false);
+		btnRegistro.setBackground(new Color(102, 153, 255));
+		btnRegistro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnRegistro.setOpaque(true);
+		btnRegistro.setBounds(310, 482, 117, 71);
+		frame.getContentPane().add(btnRegistro);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirmar Password");
 		lblNewLabel_2.setBounds(44, 454, 135, 16);
@@ -272,32 +271,28 @@ public class RegisterWindow {
 		lblNombreAlumno.setBounds(44, 225, 126, 16);
 		frame.getContentPane().add(lblNombreAlumno);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(44, 253, 189, 26);
-		frame.getContentPane().add(textField_9);
+		textField_NombreAlumno = new JTextField();
+		textField_NombreAlumno.setColumns(10);
+		textField_NombreAlumno.setBounds(44, 253, 189, 26);
+		frame.getContentPane().add(textField_NombreAlumno);
 		
 		JLabel lblApellidoAlumno1 = new JLabel("1er Apellido Alumno");
 		lblApellidoAlumno1.setBounds(44, 294, 145, 16);
 		frame.getContentPane().add(lblApellidoAlumno1);
 		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(44, 330, 189, 26);
-		frame.getContentPane().add(textField_10);
+		textField_ApellidoAlumno1 = new JTextField();
+		textField_ApellidoAlumno1.setColumns(10);
+		textField_ApellidoAlumno1.setBounds(44, 330, 189, 26);
+		frame.getContentPane().add(textField_ApellidoAlumno1);
 		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(259, 330, 188, 26);
-		frame.getContentPane().add(textField_11);
+		textField_ApellidoAlumno2 = new JTextField();
+		textField_ApellidoAlumno2.setColumns(10);
+		textField_ApellidoAlumno2.setBounds(259, 330, 188, 26);
+		frame.getContentPane().add(textField_ApellidoAlumno2);
 		
 		JLabel lblEdadAlumno = new JLabel("Edad Alumno");
 		lblEdadAlumno.setBounds(258, 225, 126, 16);
 		frame.getContentPane().add(lblEdadAlumno);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(259, 254, 188, 27);
-		frame.getContentPane().add(comboBox);
 		
 		JLabel lbloApellidoProgenitor2 = new JLabel("2o Apellido Progenitor");
 		lbloApellidoProgenitor2.setBounds(259, 127, 145, 16);
@@ -318,10 +313,10 @@ public class RegisterWindow {
 		lblPasswordError.setBounds(44, 520, 223, 16);
 		frame.getContentPane().add(lblPasswordError);
 		
-		textNickName = new JTextField();
-		textNickName.setColumns(10);
-		textNickName.setBounds(258, 404, 189, 26);
-		frame.getContentPane().add(textNickName);
+		textField_NombreUsuario = new JTextField();
+		textField_NombreUsuario.setColumns(10);
+		textField_NombreUsuario.setBounds(258, 404, 189, 26);
+		frame.getContentPane().add(textField_NombreUsuario);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario");
 		lblNombreDeUsuario.setBounds(258, 376, 126, 16);
@@ -333,7 +328,9 @@ public class RegisterWindow {
 		lblNombreUsuarioNoDisponible.setBounds(246, 442, 215, 16);
 		frame.getContentPane().add(lblNombreUsuarioNoDisponible);
 		
-		
+		JSpinner spinnerEdad = new JSpinner();
+		spinnerEdad.setBounds(259, 253, 87, 26);
+		frame.getContentPane().add(spinnerEdad);
 		
 		
 		
@@ -351,7 +348,35 @@ public class RegisterWindow {
 		});
 		
 		
-		textNickName.addFocusListener(new FocusAdapter() {
+
+		
+		//REGISTRO EN BASE DE DATOS////////////////////////////////////////////////////////////////////////////////////////
+		
+//		try {
+//			ConexionDB conexionDB = new ConexionDB();
+//		} catch (ClassNotFoundException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (SQLException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
+		//RECOGER DATOS USUARIO  ////////////////////////////////////////////////////////////////////////////////////////////
+		
+		String nombreAlumno = textField_NombreAlumno.getText();
+		String apellido1Alumno = textField_ApellidoAlumno1.getText();
+		String apellido2Alumno = textField_ApellidoAlumno2.getText();
+		int edadAlumno = Integer.valueOf(spinnerEdad.getValue().toString());
+		String nombreUsuario = textField_NombreUsuario.getText();
+		String nombreProgenitor = textField_NombreProgenitor.getText();
+		String apellido1Progenitor = textField_ApellidoProgenitor1.getText();
+		String apellido2Progenitor = textField_ApellidoProgenitor2.getText();
+		String avatar = textField_ApellidoProgenitor2.getText();
+		String password = passwordConfirm.getPassword().toString();
+		
+		
+		textField_NombreUsuario.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
 				
@@ -359,18 +384,20 @@ public class RegisterWindow {
 			}
 		});
 		
-		
-		//RECOGER DATOS USUARIO  ////////////////////////////////////////////////////////////////////////////////////////////
-		
-		String nombreUsuario;
-		String apellido1Usuario;
-		String apellido2Usuario;
-		String nickNameUsuario;
-		String nombreProgenitor;
-		String apellido1Progenitor;
-		String apellido2Progenitor;
-		
-		
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+					conexion.crearUsuario(1, nombreAlumno, apellido1Alumno, apellido2Alumno, avatar, nombreProgenitor, apellido1Progenitor, apellido2Progenitor, password, nombreUsuario);
+					JFrame frame = new JFrame();
+					JOptionPane.showMessageDialog(frame, "Usuario " + nombreUsuario + " creado con exito",
+							"Greeting", JOptionPane.INFORMATION_MESSAGE);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		//LISTA DE AVATARES ////////////////////////////////////////////////////////////////////////////////////////////
 		
@@ -384,25 +411,8 @@ public class RegisterWindow {
 		avatarButtons.add(btnAvatar_7);
 		avatarButtons.add(btnAvatar_8);
 		
-		
-		//PRUEBAS AUDIO  ////////////////////////////////////////////////////////////////////////////////////////////////////
-        //mirar si puedo enganchar a socket buscando socket y audioimputstream
-		File bso = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
-		
-		File bsoMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
-		
-			try {
-		
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
-			Clip clip = AudioSystem.getClip();
-			clip.open(audioInputStream);
-			clip.start();
-			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-20.0f); // Reduce volume by 10 decibels.
-			} catch(Exception ex) {
-			System.out.println("Error playing sound.");
-			ex.printStackTrace();
-			}
+
+
 			
 	}
 }

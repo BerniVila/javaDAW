@@ -18,15 +18,15 @@ public class ConexionDB {
 		statement = connect.createStatement();
 	};
 
-	public void crearUsuario(String NombreUsuario, String Apellido1Usuario, String Apellido2Usuario, String Avatar,
+	public void crearUsuario(int cod, String NombreAlumno, String Apellido1Alumno, String Apellido2Alumno, String Avatar,
 			String NombreProgenitor, String Apellido1Progenitor, String Apellido2Progenitor, String Contrasenya,
-			String CodigoUsuario) throws SQLException {
+			String NombreUsuario) throws SQLException {
 		
-		statement.execute("insert into Usuario values (\"" + NombreUsuario + "\",\"" + Apellido1Usuario + "\",\""
-				+ Apellido2Usuario + "\",\"" + Avatar + "\")");
+		statement.execute("insert into Usuarios values (\"" + 1 + "\",\"" + NombreAlumno + "\",\"" + Apellido1Alumno + "\",\""
+				+ Apellido2Alumno + "\",\"" + Avatar + "\",\"" + NombreUsuario+ "\")");
 
-		statement.execute("insert into Progenitor values (\"" + NombreProgenitor + "\",\"" + Apellido1Progenitor + "\",\""
-				+ Apellido2Progenitor + "\",\"" + Contrasenya + "\",\"" + CodigoUsuario  + "\")");
+		statement.execute("insert into Progenitores values (\"" + NombreProgenitor + "\",\"" + Apellido1Progenitor + "\",\""
+				+ Apellido2Progenitor + "\",\"" + Contrasenya + "\")");
 	}
 
 	public void eliminarUsuario(String CodigoUsuario) throws SQLException {
@@ -38,7 +38,7 @@ public class ConexionDB {
 	
 	public void crearPuntuacion(String NombreUsuario, String Apellido1Usuario, String Apellido2Usuario, String Avatar,
 			String NombreProgenitor, String Apellido1Progenitor, String Apellido2Progenitor, String Contrasenya,
-			String CodigoUsuario) throws SQLException {
+			int CodigoUsuario) throws SQLException {
 		
 		statement.execute("insert into Usuario values (\"" + NombreUsuario + "\",\"" + Apellido1Usuario + "\",\""
 				+ Apellido2Usuario + "\",\"" + Avatar + "\")");
