@@ -22,11 +22,11 @@ public class ConexionDB {
 			String NombreProgenitor, String Apellido1Progenitor, String Apellido2Progenitor, String Contrasenya,
 			String NombreUsuario) throws SQLException {
 		
-		statement.execute("insert into Usuarios values (\"" + 1 + "\",\"" + NombreAlumno + "\",\"" + Apellido1Alumno + "\",\""
-				+ Apellido2Alumno + "\",\"" + Avatar + "\",\"" + NombreUsuario+ "\")");
+		statement.execute("insert into Usuarios values (\"" + null + "\",\"" + NombreUsuario + "\",\"" + NombreAlumno + "\",\"" + Apellido1Alumno + "\",\""
+				+ Apellido2Alumno + "\",\"" + Avatar + "\")");
 
-		statement.execute("insert into Progenitores values (\"" + NombreProgenitor + "\",\"" + Apellido1Progenitor + "\",\""
-				+ Apellido2Progenitor + "\",\"" + Contrasenya + "\")");
+		statement.execute("insert into Progenitores values (\"" + null + "\",\"" + NombreProgenitor + "\",\"" + Apellido1Progenitor + "\",\""
+				+ Apellido2Progenitor + "\",\"" + Contrasenya + "\",\"" + cod  + "\")");
 	}
 
 	public void eliminarUsuario(String CodigoUsuario) throws SQLException {
