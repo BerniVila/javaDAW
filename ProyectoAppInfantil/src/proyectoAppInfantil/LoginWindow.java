@@ -148,7 +148,7 @@ public class LoginWindow {
 		btnAvatar_8.setLocation(new Point(0, 2));
 		btnAvatar_8.setIconTextGap(0);
 		btnAvatar_8.setBorder(new LineBorder(Color.BLACK, 2, true));
-		btnAvatar_8.setBounds(496, 161, 100, 100);
+		btnAvatar_8.setBounds(485, 161, 100, 100);
 		panel.add(btnAvatar_8);
 		
 		JButton btnAvatar_5 = new JButton("");
