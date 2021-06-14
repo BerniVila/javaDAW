@@ -117,7 +117,7 @@ public class MainScreen {
 		frame.getContentPane().add(btnRaiseVolume);
 		
 		JButton btnRegistro = new JButton("");
-		btnRegistro.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_registrarse.gif")));
+		btnRegistro.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_registrarse_blue.gif")));
 		btnRegistro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRegistro.setBorderPainted(false);
 		btnRegistro.setBounds(641, 679, 285, 97);
