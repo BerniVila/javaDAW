@@ -193,7 +193,7 @@ public class MainScreen {
 			
 				LoginWindow loginWindow = new LoginWindow();
 				loginWindow.getLoginWindow().setVisible(true);
-				//frame.setVisible(false);
+				frame.setVisible(false);
 
 			}
 		});

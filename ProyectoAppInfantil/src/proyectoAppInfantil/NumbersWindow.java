@@ -195,6 +195,7 @@ public class NumbersWindow {
 		bg.add(lblNumber);
 
 		JButton btn_10 = new JButton("");
+		btn_10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_10.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/ten.gif")));
 		btn_10.setContentAreaFilled(false);
 		btn_10.setBorderPainted(false);
@@ -206,10 +207,11 @@ public class NumbersWindow {
 
 		JButton btnHelp = new JButton("AYUDA");
 		btnHelp.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		btnHelp.setBounds(439, 582, 253, 158);
+		btnHelp.setBounds(439, 582, 231, 76);
 		bg.add(btnHelp);
 
 		JButton btnGenerateNumber = new JButton("NUEVO NÚMERO");
+		btnGenerateNumber.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnGenerateNumber.setBounds(1384, 208, 166, 90);
 		bg.add(btnGenerateNumber);
 
@@ -242,6 +244,17 @@ public class NumbersWindow {
 		btnRaiseVolume.setBorder(null);
 		btnRaiseVolume.setBounds(1505, 790, 77, 54);
 		bg.add(btnRaiseVolume);
+		
+		JButton btnPista = new JButton("PISTA");
+		btnPista.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		btnPista.setBounds(439, 670, 231, 68);
+		bg.add(btnPista);
+		
+		JButton btnAtras = new JButton("<-- ATRÁS");
+		btnAtras.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnAtras.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		btnAtras.setBounds(6, 790, 231, 68);
+		bg.add(btnAtras);
 
 		// StaticSoundMethods.playSound(bso);
 
@@ -260,6 +273,7 @@ public class NumbersWindow {
 			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(-20.0f);
 			clip.start();
+			clip.loop(10);
 			volume = gainControl.getValue();
 			float lastVolume = volume;
 
@@ -383,6 +397,16 @@ public class NumbersWindow {
 		btn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound9);
+			}
+		});
+		
+		
+		
+		//GENERAR NUEVO NUMERO //////////////////////////////////////////////////////////
+		
+		btnGenerateNumber.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 

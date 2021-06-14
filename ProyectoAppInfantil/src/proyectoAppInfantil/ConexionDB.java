@@ -19,16 +19,15 @@ public class ConexionDB {
 		statement = connect.createStatement();
 	};
 
-	public void crearUsuario(int cod, String NombreAlumno, String Apellido1Alumno, String Apellido2Alumno, String Avatar,
-			String NombreProgenitor, String Apellido1Progenitor, String Apellido2Progenitor, String Contrasenya,
-			String NombreUsuario) throws SQLException, SQLIntegrityConstraintViolationException {
-		
-		
-		statement.execute("insert into Usuarios values (\"" + NombreUsuario + "\",\"" + NombreAlumno + "\",\"" + Apellido1Alumno + "\",\""
-				+ Apellido2Alumno + "\",\"" + Avatar + "\")");
-		
+	public void crearUsuario(String NombreUsuario, String NombreAlumno, String Apellido1Alumno, String Apellido2Alumno,
+			int EdadAlumno, String Avatar, String NombreProgenitor, String Apellido1Progenitor,
+			String Apellido2Progenitor, String Contrasenya)
+			throws SQLException, SQLIntegrityConstraintViolationException, NullAvatarException {
 
-		
+		statement.execute("insert into Usuarios values (\"" + NombreUsuario + "\",\"" + NombreAlumno + "\",\""
+				+ Apellido1Alumno + "\",\"" + Apellido2Alumno + "\",\"" + EdadAlumno + "\",\"" + Avatar + "\",\""
+				+ NombreProgenitor + "\",\"" + Apellido1Progenitor + "\",\"" + Apellido2Progenitor + "\",\""
+				+ Contrasenya + "\")");
 
 //		statement.execute("insert into Progenitores values (\"" + NombreProgenitor + "\",\"" + Apellido1Progenitor + "\",\""
 //				+ Apellido2Progenitor + "\",\"" + Contrasenya + "\",\"" + NombreUsuario  + "\")");
@@ -37,30 +36,48 @@ public class ConexionDB {
 	public void eliminarUsuario(String CodigoUsuario) throws SQLException {
 		statement.execute("delete from Usuario where CodigoUsuario = \"" + CodigoUsuario + "\"");
 	}
-	
-	
 
-	
 	public ArrayList<String> leerUsuarios() throws Exception {
-		ResultSet rsUsuarios = statement.executeQuery("select NombreUsuario from Usuarios = \"");
+		ResultSet rsUsuarios = statement.executeQuery("select NombreUsuario from Usuarios");
 		ArrayList<String> users = new ArrayList<String>();
-		while(rsUsuarios.next()) {
+		while (rsUsuarios.next()) {
 			users.add(rsUsuarios.getString(1));
 		}
 		return users;
 	}
+
+	public String comprobarUsuario(String avatar) throws Exception {
+		ResultSet rsUser = statement
+				.executeQuery("select nombreUsuario from Usuarios where Avatar = \"" + avatar + "\"");
+		String user = rsUser.getString(1);
+
+		return user;
+	}
+
+	public boolean validarUsuario(String nombreUsuario, String avatar) throws Exception {
+		ResultSet rsUser = statement
+				.executeQuery("select NombreUsuario, Avatar from Usuarios where NombreUsuario = \"" + nombreUsuario + "\"");
+		//String user = rsUser.getString(1);
+		if (rsUser.next()) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
 	
+	
+	
+
 	public void crearPuntuacion(String NombreUsuario, String Apellido1Usuario, String Apellido2Usuario, String Avatar,
 			String NombreProgenitor, String Apellido1Progenitor, String Apellido2Progenitor, String Contrasenya,
 			int CodigoUsuario) throws SQLException {
-		
+
 		statement.execute("insert into Usuario values (\"" + NombreUsuario + "\",\"" + Apellido1Usuario + "\",\""
 				+ Apellido2Usuario + "\",\"" + Avatar + "\")");
 
-		statement.execute("insert into Progenitor values (\"" + NombreProgenitor + "\",\"" + Apellido1Progenitor + "\",\""
-				+ Apellido2Progenitor + "\",\"" + Contrasenya + "\",\"" + CodigoUsuario  + "\")");
+		statement.execute("insert into Progenitor values (\"" + NombreProgenitor + "\",\"" + Apellido1Progenitor
+				+ "\",\"" + Apellido2Progenitor + "\",\"" + Contrasenya + "\",\"" + CodigoUsuario + "\")");
 	}
-
-
 
 }

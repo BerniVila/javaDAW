@@ -38,7 +38,7 @@ public class RegisterWindow {
 	private JTextField textField_ApellidoAlumno1;
 	private JTextField textField_ApellidoAlumno2;
 	private JTextField textField_NombreUsuario;
-	private String avatar;
+	private String avatar = "avatarInexistente";
 	ConexionDB conexion;
 	
 
@@ -77,7 +77,6 @@ public class RegisterWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
 		
 		try {
 			conexion = new ConexionDB();
@@ -350,7 +349,6 @@ public class RegisterWindow {
 		btnAvatar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_1.getName();
-				System.out.println(avatar);
 			}
 		});
 		
@@ -404,8 +402,10 @@ public class RegisterWindow {
 				
 				if (Arrays.equals(passwordConfirm.getPassword(), passwordInsert.getPassword())) {
 					lblPasswordError.setVisible(false);
+					btnRegistro.setEnabled(true);
 					} else {
 						lblPasswordError.setVisible(true);
+						btnRegistro.setEnabled(false);
 					}
 				
 			}
@@ -414,30 +414,9 @@ public class RegisterWindow {
 		
 
 		
-		//REGISTRO EN BASE DE DATOS////////////////////////////////////////////////////////////////////////////////////////
-		
-//		try {
-//			ConexionDB conexionDB = new ConexionDB();
-//		} catch (ClassNotFoundException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (SQLException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-		
 		//RECOGER DATOS USUARIO  ////////////////////////////////////////////////////////////////////////////////////////////
-
-
 		
 		
-		textField_NombreUsuario.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e) {
-				
-				
-			}
-		});
 		
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -455,26 +434,39 @@ public class RegisterWindow {
 				String password = passwordConfirm.getPassword().toString();
 
 				try {
-					conexion.crearUsuario(1, nombreAlumno, apellido1Alumno, apellido2Alumno, avatarName, nombreProgenitor, apellido1Progenitor, apellido2Progenitor, password, nombreUsuario);
-					JFrame frame = new JFrame();
-					JOptionPane.showMessageDialog(frame, "Usuario " + nombreUsuario + " creado con exito",
-							"Greeting", JOptionPane.INFORMATION_MESSAGE);
-					registerFrame.setVisible(false);
 					
 					for (JButton button : avatarButtons) {
 						if (button.getName().compareToIgnoreCase(avatar) == 0) {
 							button.setEnabled(false);
 						}
+						if (avatar.compareToIgnoreCase("avatarInexistente") == 0){
+							JOptionPane.showMessageDialog(registerFrame, "Has de escoger un avatar.",
+									"Warning", JOptionPane.INFORMATION_MESSAGE);
+							
+							throw new NullAvatarException("Ha de escoger un avatar");
+						}
 					}
-				}catch (SQLIntegrityConstraintViolationException e2) {
+					
+					
+					conexion.crearUsuario(nombreUsuario, nombreAlumno , apellido1Alumno, apellido2Alumno, edadAlumno, avatarName, nombreProgenitor, apellido1Progenitor, apellido2Progenitor, password);
+					JFrame frame = new JFrame();
+					JOptionPane.showMessageDialog(frame, "Usuario " + nombreUsuario + " creado con exito",
+							"Greeting", JOptionPane.INFORMATION_MESSAGE);
+					registerFrame.setVisible(false);
+					
+
+				}catch (SQLIntegrityConstraintViolationException e1) {
 					JOptionPane.showMessageDialog(registerFrame, "El usuario " + nombreUsuario + " ya existe, pruebe con otro.",
 							"Warning", JOptionPane.INFORMATION_MESSAGE);
-					e2.printStackTrace();
+					e1.printStackTrace();
 					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				} 
+				} catch (NullAvatarException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
