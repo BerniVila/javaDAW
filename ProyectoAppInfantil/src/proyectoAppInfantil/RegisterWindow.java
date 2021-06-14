@@ -28,7 +28,7 @@ import java.awt.event.ActionEvent;
 
 public class RegisterWindow {
 
-	private JFrame frame;
+	private JFrame registerFrame;
 	private JTextField textField_ApellidoProgenitor2;
 	private JTextField textField_NombreProgenitor;
 	private JTextField textField_ApellidoProgenitor1;
@@ -46,7 +46,7 @@ public class RegisterWindow {
 	
 	// added to use from main window
 	public JFrame getRegisterWindow() {
-		return frame;
+		return registerFrame;
 	}
 	
 
@@ -58,7 +58,7 @@ public class RegisterWindow {
 			public void run() {
 				try {
 					RegisterWindow window = new RegisterWindow();
-					window.frame.setVisible(true);
+					window.registerFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -90,37 +90,37 @@ public class RegisterWindow {
 		}
 		
 		
-		frame = new JFrame();
-		frame.setBounds(400, 150, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		registerFrame = new JFrame();
+		registerFrame.setBounds(400, 150, 800, 600);
+		registerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		registerFrame.getContentPane().setLayout(null);
 		
 		JLabel lblNombreProgenitor = new JLabel("Nombre Progenitor");
 		lblNombreProgenitor.setBounds(44, 58, 126, 16);
-		frame.getContentPane().add(lblNombreProgenitor);
+		registerFrame.getContentPane().add(lblNombreProgenitor);
 		
 		textField_NombreProgenitor = new JTextField();
 		textField_NombreProgenitor.setBounds(44, 86, 189, 26);
-		frame.getContentPane().add(textField_NombreProgenitor);
+		registerFrame.getContentPane().add(textField_NombreProgenitor);
 		textField_NombreProgenitor.setColumns(10);
 		
 		textField_ApellidoProgenitor1 = new JTextField();
 		textField_ApellidoProgenitor1.setBounds(44, 163, 189, 26);
-		frame.getContentPane().add(textField_ApellidoProgenitor1);
+		registerFrame.getContentPane().add(textField_ApellidoProgenitor1);
 		textField_ApellidoProgenitor1.setColumns(10);
 		
 		textField_ApellidoProgenitor2 = new JTextField();
 		textField_ApellidoProgenitor2.setBounds(259, 163, 188, 26);
-		frame.getContentPane().add(textField_ApellidoProgenitor2);
+		registerFrame.getContentPane().add(textField_ApellidoProgenitor2);
 		textField_ApellidoProgenitor2.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Introduce Password");
 		lblNewLabel_1.setBounds(44, 376, 145, 16);
-		frame.getContentPane().add(lblNewLabel_1);
+		registerFrame.getContentPane().add(lblNewLabel_1);
 		
 		passwordInsert = new JPasswordField();
 		passwordInsert.setBounds(44, 407, 189, 26);
-		frame.getContentPane().add(passwordInsert);
+		registerFrame.getContentPane().add(passwordInsert);
 		
 		JButton btnRegistro = new JButton("Registrarse");
 		btnRegistro.setBorderPainted(false);
@@ -128,15 +128,15 @@ public class RegisterWindow {
 		btnRegistro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRegistro.setOpaque(true);
 		btnRegistro.setBounds(310, 482, 117, 71);
-		frame.getContentPane().add(btnRegistro);
+		registerFrame.getContentPane().add(btnRegistro);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirmar Password");
 		lblNewLabel_2.setBounds(44, 454, 135, 16);
-		frame.getContentPane().add(lblNewLabel_2);
+		registerFrame.getContentPane().add(lblNewLabel_2);
 		
 		passwordConfirm = new JPasswordField();
 		passwordConfirm.setBounds(44, 482, 189, 26);
-		frame.getContentPane().add(passwordConfirm);
+		registerFrame.getContentPane().add(passwordConfirm);
 		
 		
 		//AVATAR BUTTONS ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -144,7 +144,7 @@ public class RegisterWindow {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(102, 153, 102));
 		panel.setBounds(473, 0, 327, 578);
-		frame.getContentPane().add(panel);
+		registerFrame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JButton btnAvatar_1 = new JButton("");
@@ -267,72 +267,72 @@ public class RegisterWindow {
 		
 		JLabel lblApellidoProgenitor1 = new JLabel("1er Apellido Progenitor");
 		lblApellidoProgenitor1.setBounds(44, 127, 145, 16);
-		frame.getContentPane().add(lblApellidoProgenitor1);
+		registerFrame.getContentPane().add(lblApellidoProgenitor1);
 		
 		JLabel lblNombreAlumno = new JLabel("Nombre Alumno");
 		lblNombreAlumno.setBounds(44, 225, 126, 16);
-		frame.getContentPane().add(lblNombreAlumno);
+		registerFrame.getContentPane().add(lblNombreAlumno);
 		
 		textField_NombreAlumno = new JTextField();
 		textField_NombreAlumno.setColumns(10);
 		textField_NombreAlumno.setBounds(44, 253, 189, 26);
-		frame.getContentPane().add(textField_NombreAlumno);
+		registerFrame.getContentPane().add(textField_NombreAlumno);
 		
 		JLabel lblApellidoAlumno1 = new JLabel("1er Apellido Alumno");
 		lblApellidoAlumno1.setBounds(44, 294, 145, 16);
-		frame.getContentPane().add(lblApellidoAlumno1);
+		registerFrame.getContentPane().add(lblApellidoAlumno1);
 		
 		textField_ApellidoAlumno1 = new JTextField();
 		textField_ApellidoAlumno1.setColumns(10);
 		textField_ApellidoAlumno1.setBounds(44, 330, 189, 26);
-		frame.getContentPane().add(textField_ApellidoAlumno1);
+		registerFrame.getContentPane().add(textField_ApellidoAlumno1);
 		
 		textField_ApellidoAlumno2 = new JTextField();
 		textField_ApellidoAlumno2.setColumns(10);
 		textField_ApellidoAlumno2.setBounds(259, 330, 188, 26);
-		frame.getContentPane().add(textField_ApellidoAlumno2);
+		registerFrame.getContentPane().add(textField_ApellidoAlumno2);
 		
 		JLabel lblEdadAlumno = new JLabel("Edad Alumno");
 		lblEdadAlumno.setBounds(258, 225, 126, 16);
-		frame.getContentPane().add(lblEdadAlumno);
+		registerFrame.getContentPane().add(lblEdadAlumno);
 		
 		JLabel lbloApellidoProgenitor2 = new JLabel("2o Apellido Progenitor");
 		lbloApellidoProgenitor2.setBounds(259, 127, 145, 16);
-		frame.getContentPane().add(lbloApellidoProgenitor2);
+		registerFrame.getContentPane().add(lbloApellidoProgenitor2);
 		
 		JLabel lblApellidoAlumno2 = new JLabel("2o Apellido Alumno");
 		lblApellidoAlumno2.setBounds(259, 294, 126, 16);
-		frame.getContentPane().add(lblApellidoAlumno2);
+		registerFrame.getContentPane().add(lblApellidoAlumno2);
 		
 		JLabel lblTitle = new JLabel("FORMULARIO DE REGISTRO");
 		lblTitle.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
 		lblTitle.setBounds(137, 6, 223, 28);
-		frame.getContentPane().add(lblTitle);
+		registerFrame.getContentPane().add(lblTitle);
 		
 		JLabel lblPasswordError = new JLabel("Debes escribir el mismo password");
 		lblPasswordError.setVisible(false);
 		lblPasswordError.setForeground(new Color(204, 51, 51));
 		lblPasswordError.setBounds(44, 520, 223, 16);
-		frame.getContentPane().add(lblPasswordError);
+		registerFrame.getContentPane().add(lblPasswordError);
 		
 		textField_NombreUsuario = new JTextField();
 		textField_NombreUsuario.setColumns(10);
 		textField_NombreUsuario.setBounds(258, 404, 189, 26);
-		frame.getContentPane().add(textField_NombreUsuario);
+		registerFrame.getContentPane().add(textField_NombreUsuario);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario");
 		lblNombreDeUsuario.setBounds(258, 376, 126, 16);
-		frame.getContentPane().add(lblNombreDeUsuario);
+		registerFrame.getContentPane().add(lblNombreDeUsuario);
 		
 		JLabel lblNombreUsuarioNoDisponible = new JLabel("Nombre de Usuario NO disponible");
 		lblNombreUsuarioNoDisponible.setVisible(false);
 		lblNombreUsuarioNoDisponible.setForeground(new Color(255, 51, 51));
 		lblNombreUsuarioNoDisponible.setBounds(246, 442, 215, 16);
-		frame.getContentPane().add(lblNombreUsuarioNoDisponible);
+		registerFrame.getContentPane().add(lblNombreUsuarioNoDisponible);
 		
 		JSpinner spinnerEdad = new JSpinner();
 		spinnerEdad.setBounds(259, 253, 87, 26);
-		frame.getContentPane().add(spinnerEdad);
+		registerFrame.getContentPane().add(spinnerEdad);
 		
 		
 		//LISTA DE AVATARES ////////////////////////////////////////////////////////////////////////////////////////////
@@ -459,6 +459,7 @@ public class RegisterWindow {
 					JFrame frame = new JFrame();
 					JOptionPane.showMessageDialog(frame, "Usuario " + nombreUsuario + " creado con exito",
 							"Greeting", JOptionPane.INFORMATION_MESSAGE);
+					registerFrame.setVisible(false);
 					
 					for (JButton button : avatarButtons) {
 						if (button.getName().compareToIgnoreCase(avatar) == 0) {
@@ -466,7 +467,7 @@ public class RegisterWindow {
 						}
 					}
 				}catch (SQLIntegrityConstraintViolationException e2) {
-					JOptionPane.showMessageDialog(frame, "El usuario " + nombreUsuario + " ya existe, pruebe con otro.",
+					JOptionPane.showMessageDialog(registerFrame, "El usuario " + nombreUsuario + " ya existe, pruebe con otro.",
 							"Warning", JOptionPane.INFORMATION_MESSAGE);
 					e2.printStackTrace();
 					
