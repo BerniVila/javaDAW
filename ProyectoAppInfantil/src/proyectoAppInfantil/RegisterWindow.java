@@ -17,6 +17,7 @@ import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.awt.event.FocusAdapter;
@@ -37,6 +38,7 @@ public class RegisterWindow {
 	private JTextField textField_ApellidoAlumno1;
 	private JTextField textField_ApellidoAlumno2;
 	private JTextField textField_NombreUsuario;
+	private String avatar;
 	ConexionDB conexion;
 	
 
@@ -146,10 +148,10 @@ public class RegisterWindow {
 		panel.setLayout(null);
 		
 		JButton btnAvatar_1 = new JButton("");
+		btnAvatar_1.setName("alpaca");
 		btnAvatar_1.setSize(new Dimension(100, 100));
 		btnAvatar_1.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_1.setLocation(new Point(0, 2));
-		btnAvatar_1.setSelected(true);
 		btnAvatar_1.setMargin(new Insets(0, 0, 0, 0));
 		btnAvatar_1.setIconTextGap(0);
 		btnAvatar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -160,10 +162,10 @@ public class RegisterWindow {
 		panel.add(btnAvatar_1);
 		
 		JButton btnAvatar_2 = new JButton("");
+		btnAvatar_2.setName("aguacate");
 		btnAvatar_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_2.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-avocado.gif")));
 		btnAvatar_2.setSize(new Dimension(100, 100));
-		btnAvatar_2.setSelected(true);
 		btnAvatar_2.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_2.setOpaque(true);
 		btnAvatar_2.setMargin(new Insets(0, 0, 0, 0));
@@ -174,10 +176,10 @@ public class RegisterWindow {
 		panel.add(btnAvatar_2);
 		
 		JButton btnAvatar_3 = new JButton("");
+		btnAvatar_3.setName("calamar");
 		btnAvatar_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_3.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-squidGuitar.gif")));
 		btnAvatar_3.setSize(new Dimension(100, 100));
-		btnAvatar_3.setSelected(true);
 		btnAvatar_3.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_3.setOpaque(true);
 		btnAvatar_3.setMargin(new Insets(0, 0, 0, 0));
@@ -188,10 +190,10 @@ public class RegisterWindow {
 		panel.add(btnAvatar_3);
 		
 		JButton btnAvatar_4 = new JButton("");
+		btnAvatar_4.setName("leon");
 		btnAvatar_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_4.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-lion.gif")));
 		btnAvatar_4.setSize(new Dimension(100, 100));
-		btnAvatar_4.setSelected(true);
 		btnAvatar_4.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_4.setOpaque(true);
 		btnAvatar_4.setMargin(new Insets(0, 0, 0, 0));
@@ -202,10 +204,10 @@ public class RegisterWindow {
 		panel.add(btnAvatar_4);
 		
 		JButton btnAvatar_7 = new JButton("");
+		btnAvatar_7.setName("unicornio");
 		btnAvatar_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_7.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-unicorn.gif")));
 		btnAvatar_7.setSize(new Dimension(100, 100));
-		btnAvatar_7.setSelected(true);
 		btnAvatar_7.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_7.setOpaque(true);
 		btnAvatar_7.setMargin(new Insets(0, 0, 0, 0));
@@ -216,10 +218,10 @@ public class RegisterWindow {
 		panel.add(btnAvatar_7);
 		
 		JButton btnAvatar_8 = new JButton("");
+		btnAvatar_8.setName("gato");
 		btnAvatar_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_8.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-cat.gif")));
 		btnAvatar_8.setSize(new Dimension(100, 100));
-		btnAvatar_8.setSelected(true);
 		btnAvatar_8.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_8.setOpaque(true);
 		btnAvatar_8.setMargin(new Insets(0, 0, 0, 0));
@@ -230,10 +232,10 @@ public class RegisterWindow {
 		panel.add(btnAvatar_8);
 		
 		JButton btnAvatar_5 = new JButton("");
+		btnAvatar_5.setName("monete");
 		btnAvatar_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_5.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-monkey.gif")));
 		btnAvatar_5.setSize(new Dimension(100, 100));
-		btnAvatar_5.setSelected(true);
 		btnAvatar_5.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_5.setOpaque(true);
 		btnAvatar_5.setMargin(new Insets(0, 0, 0, 0));
@@ -244,10 +246,10 @@ public class RegisterWindow {
 		panel.add(btnAvatar_5);
 		
 		JButton btnAvatar_6 = new JButton("");
+		btnAvatar_6.setName("perro");
 		btnAvatar_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAvatar_6.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-dog.gif")));
 		btnAvatar_6.setSize(new Dimension(100, 100));
-		btnAvatar_6.setSelected(true);
 		btnAvatar_6.setPreferredSize(new Dimension(100, 100));
 		btnAvatar_6.setOpaque(true);
 		btnAvatar_6.setMargin(new Insets(0, 0, 0, 0));
@@ -333,6 +335,68 @@ public class RegisterWindow {
 		frame.getContentPane().add(spinnerEdad);
 		
 		
+		//LISTA DE AVATARES ////////////////////////////////////////////////////////////////////////////////////////////
+		
+		ArrayList<JButton> avatarButtons = new ArrayList<JButton>();
+		avatarButtons.add(btnAvatar_1);
+		avatarButtons.add(btnAvatar_2);
+		avatarButtons.add(btnAvatar_3);
+		avatarButtons.add(btnAvatar_4);
+		avatarButtons.add(btnAvatar_5);
+		avatarButtons.add(btnAvatar_6);
+		avatarButtons.add(btnAvatar_7);
+		avatarButtons.add(btnAvatar_8);
+		
+		btnAvatar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_1.getName();
+				System.out.println(avatar);
+			}
+		});
+		
+		btnAvatar_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_2.getName();
+			}
+		});
+		
+		btnAvatar_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_3.getName();
+			}
+		});
+		
+		btnAvatar_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_4.getName();
+			}
+		});
+		
+		btnAvatar_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_5.getName();
+			}
+		});
+		
+		btnAvatar_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_6.getName();
+			}
+		});
+		
+		btnAvatar_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_7.getName();
+			}
+		});
+		
+		btnAvatar_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				avatar = btnAvatar_8.getName();
+			}
+		});
+		
+		
 		
 		passwordConfirm.addFocusListener(new FocusAdapter() {
 			@Override
@@ -363,17 +427,8 @@ public class RegisterWindow {
 //		}
 		
 		//RECOGER DATOS USUARIO  ////////////////////////////////////////////////////////////////////////////////////////////
-		
-		String nombreAlumno = textField_NombreAlumno.getText();
-		String apellido1Alumno = textField_ApellidoAlumno1.getText();
-		String apellido2Alumno = textField_ApellidoAlumno2.getText();
-		int edadAlumno = Integer.valueOf(spinnerEdad.getValue().toString());
-		String nombreUsuario = textField_NombreUsuario.getText();
-		String nombreProgenitor = textField_NombreProgenitor.getText();
-		String apellido1Progenitor = textField_ApellidoProgenitor1.getText();
-		String apellido2Progenitor = textField_ApellidoProgenitor2.getText();
-		String avatar = textField_ApellidoProgenitor2.getText();
-		String password = passwordConfirm.getPassword().toString();
+
+
 		
 		
 		textField_NombreUsuario.addFocusListener(new FocusAdapter() {
@@ -387,29 +442,46 @@ public class RegisterWindow {
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				
+				String nombreAlumno = textField_NombreAlumno.getText();
+				String apellido1Alumno = textField_ApellidoAlumno1.getText();
+				String apellido2Alumno = textField_ApellidoAlumno2.getText();
+				int edadAlumno = Integer.valueOf(spinnerEdad.getValue().toString());
+				String nombreUsuario = textField_NombreUsuario.getText();
+				String nombreProgenitor = textField_NombreProgenitor.getText();
+				String apellido1Progenitor = textField_ApellidoProgenitor1.getText();
+				String apellido2Progenitor = textField_ApellidoProgenitor2.getText();
+				String avatarName = avatar;
+				String password = passwordConfirm.getPassword().toString();
+
 				try {
-					conexion.crearUsuario(1, nombreAlumno, apellido1Alumno, apellido2Alumno, avatar, nombreProgenitor, apellido1Progenitor, apellido2Progenitor, password, nombreUsuario);
+					conexion.crearUsuario(1, nombreAlumno, apellido1Alumno, apellido2Alumno, avatarName, nombreProgenitor, apellido1Progenitor, apellido2Progenitor, password, nombreUsuario);
 					JFrame frame = new JFrame();
 					JOptionPane.showMessageDialog(frame, "Usuario " + nombreUsuario + " creado con exito",
 							"Greeting", JOptionPane.INFORMATION_MESSAGE);
+					
+					for (JButton button : avatarButtons) {
+						if (button.getName().compareToIgnoreCase(avatar) == 0) {
+							button.setEnabled(false);
+						}
+					}
+				}catch (SQLIntegrityConstraintViolationException e2) {
+					JOptionPane.showMessageDialog(frame, "El usuario " + nombreUsuario + " ya existe, pruebe con otro.",
+							"Warning", JOptionPane.INFORMATION_MESSAGE);
+					e2.printStackTrace();
+					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
+				} 
+				
 			}
 		});
 		
-		//LISTA DE AVATARES ////////////////////////////////////////////////////////////////////////////////////////////
+
 		
-		ArrayList<JButton> avatarButtons = new ArrayList<JButton>();
-		avatarButtons.add(btnAvatar_1);
-		avatarButtons.add(btnAvatar_2);
-		avatarButtons.add(btnAvatar_3);
-		avatarButtons.add(btnAvatar_4);
-		avatarButtons.add(btnAvatar_5);
-		avatarButtons.add(btnAvatar_6);
-		avatarButtons.add(btnAvatar_7);
-		avatarButtons.add(btnAvatar_8);
+		
+
 		
 
 
