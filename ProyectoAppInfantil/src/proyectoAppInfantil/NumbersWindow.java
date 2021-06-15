@@ -201,7 +201,7 @@ public class NumbersWindow {
 		// frame.getContentPane().add(btnNewButton_8);
 		bg.add(btn_9);
 
-		JLabel lblTitle = new JLabel("SUMA NÚMEROS CON RESULTADO");
+		JLabel lblTitle = new JLabel("SUMA NÃšMEROS CON RESULTADO");
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
 		lblTitle.setForeground(new Color(255, 255, 255));
 		lblTitle.setBounds(762, 6, 830, 191);
@@ -235,7 +235,7 @@ public class NumbersWindow {
 		btnHelp.setBounds(439, 560, 231, 82);
 		bg.add(btnHelp);
 
-		JButton btnGenerateNumber = new JButton("GENERAR NÚMERO");
+		JButton btnGenerateNumber = new JButton("GENERAR NÃšMERO");
 		btnGenerateNumber.setOpaque(true);
 		btnGenerateNumber.setBorder(null);
 		btnGenerateNumber.setBorderPainted(false);
@@ -284,7 +284,7 @@ public class NumbersWindow {
 		btnPista.setBounds(439, 648, 231, 90);
 		bg.add(btnPista);
 		
-		JButton btnAtras = new JButton("<-- ATRÁS");
+		JButton btnAtras = new JButton("<-- ATRÃ�S");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -298,7 +298,7 @@ public class NumbersWindow {
 		spinnerMaxValue.setBounds(1259, 239, 113, 26);
 		bg.add(spinnerMaxValue);
 		
-		JLabel lblMaxValue = new JLabel("Nº MÁXIMO");
+		JLabel lblMaxValue = new JLabel("NÂº MÃ�XIMO");
 		lblMaxValue.setBounds(1272, 216, 85, 23);
 		bg.add(lblMaxValue);
 
@@ -313,7 +313,7 @@ public class NumbersWindow {
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMAC);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -387,7 +387,7 @@ public class NumbersWindow {
 		});
 		
 
-		// SONIDOS DE NÚMEROS////////////////////////////////////////
+		// SONIDOS DE NÃšMEROS////////////////////////////////////////
 		File numSound1 = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
 		File numSound2 = new File(
@@ -512,7 +512,7 @@ public class NumbersWindow {
 			}
 		});
 		
-		//VOLVER ATRÁS///////////////////////////////////////////////////////////////////
+		//VOLVER ATRÃ�S///////////////////////////////////////////////////////////////////
 		
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

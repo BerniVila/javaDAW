@@ -90,10 +90,11 @@ public class MainScreen {
 		mainFrame.getContentPane().add(lblTitulo_AP);
 		
 		JButton btnStart = new JButton("");
+		btnStart.setContentAreaFilled(false);
 		btnStart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnStart.setBorderPainted(false);
 		btnStart.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_empezar.gif")));
-		btnStart.setBounds(641, 550, 285, 97);
+		btnStart.setBounds(641, 543, 285, 97);
 		mainFrame.getContentPane().add(btnStart);
 		
 		JLabel lblCopyright = new JLabel("Copyright © 2021 BerniVilaDev. All rights reserved");
@@ -128,6 +129,7 @@ public class MainScreen {
 		mainFrame.getContentPane().add(btnRaiseVolume);
 		
 		JButton btnRegistro = new JButton("");
+		btnRegistro.setContentAreaFilled(false);
 		btnRegistro.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_registrarse_blue.gif")));
 		btnRegistro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRegistro.setBorderPainted(false);
@@ -230,7 +232,7 @@ public class MainScreen {
 		File bsoMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 		
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMAC);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
