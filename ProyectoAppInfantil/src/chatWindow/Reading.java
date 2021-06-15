@@ -43,7 +43,7 @@ public class Reading extends Thread {
 
 			try {
 				
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioRecibido.getNombre());
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioRecibido.getFile());
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
