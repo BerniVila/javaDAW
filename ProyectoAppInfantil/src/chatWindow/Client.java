@@ -29,8 +29,9 @@ public class Client {
 			//AUDIO FILE
 			
 			File fx = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Fanfare_SmallItem.wav");
+			File fx2 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
 			
-			AudioSerializable audioEnviar = new AudioSerializable(fx);
+			AudioSerializable audioEnviar = new AudioSerializable(fx2);
 			outObjeto.writeObject(audioEnviar);
 
 

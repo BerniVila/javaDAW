@@ -48,7 +48,7 @@ public class Server {
 			try {
 				AudioSerializable audioRecibir = (AudioSerializable)inObjeto.readObject();
 				File archivo = audioRecibir.getFile();
-				
+				StaticSoundMethods.playSound(archivo);
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
