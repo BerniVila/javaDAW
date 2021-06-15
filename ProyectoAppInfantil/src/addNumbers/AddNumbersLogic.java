@@ -12,8 +12,8 @@ public class AddNumbersLogic {
 	private int targetNum;
 
 
-	public AddNumbersLogic() {
-		this.targetNum = generateNumber();
+	public AddNumbersLogic(int initialValue) {
+		this.targetNum = generateNumber(initialValue);
 	}
 
 
@@ -57,33 +57,43 @@ public class AddNumbersLogic {
 	}
 	
 	
-	public int generateNumber() {
+	public int generateNumber(int level) {
 		Random randomNumber = new Random();
-		int targetNumber = randomNumber.nextInt(20);
+		int targetNumber = randomNumber.nextInt(level);
 		return  targetNumber;
 	}
 	
-	public void addNumber(int tempNum) {
+	public void addNumber(ArrayList<Integer> numList, int tempNum) {
 		numList.add(tempNum);
 	}
 	
 	
-	public void tryNumber(int tempNum) {
-			boolean correcto = true;
-			numSum += tempNum;
-			addNumber(tempNum);
-	
-			if (numSum > targetNum) {
-				numSum -= tempNum;
-				numList.remove(numList.size() - 1);
-				correcto = false;
-				//System.out.println("Te has pasado, prueba otra vez");
-			}
-	
-			//System.out.println(numList);
-	
+	public String checkResult(ArrayList<Integer> numList, int targetNum) {
+		String result = "";
+		int tempSum = 0;
+		for (int i = 0; i < numList.size(); i++) {
+			tempSum += numList.get(i);
+		}
+		
+		if (tempSum > targetNum) {
+			result = "lose";
+		}
+		if (tempSum == targetNum) {
+			result = "win";
+		}
+		if (tempSum < targetNum) {
+			result = "try";
+		}
+		
+		return result;
 	}
 
+
+	@Override
+	public String toString() {
+		return "[ " + numList + " ]";
+	}
+	
 
 
 }

@@ -30,9 +30,20 @@ import javax.swing.SwingConstants;
 
 public class MainScreen {
 
-	private JFrame frame;
+	private JFrame mainFrame;
 	private boolean muted = false;
 	private float volume;
+	
+	
+	
+	
+	// added to use from another window
+	public JFrame getMainFrame() {
+		return mainFrame;
+	}
+	
+	
+	
 
 	/**
 	 * Launch the application.
@@ -42,7 +53,7 @@ public class MainScreen {
 			public void run() {
 				try {
 					MainScreen window = new MainScreen();
-					window.frame.setVisible(true);
+					window.mainFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,13 +72,13 @@ public class MainScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		mainFrame = new JFrame();
 		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize(1600, 900);
-		frame.getContentPane().setBackground(new Color(204, 204, 255));
-		frame.setBounds(0, 0, 1600, 900);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		mainFrame.setSize(1600, 900);
+		mainFrame.getContentPane().setBackground(new Color(204, 204, 255));
+		mainFrame.setBounds(0, 0, 1600, 900);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.getContentPane().setLayout(null);
 		
 		JLabel lblTitulo_AP = new JLabel("");
 		lblTitulo_AP.setHorizontalAlignment(SwingConstants.LEFT);
@@ -76,18 +87,18 @@ public class MainScreen {
 		lblTitulo_AP.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_AP.gif")));
 		lblTitulo_AP.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_AP.setBounds(402, 20, 781, 172);
-		frame.getContentPane().add(lblTitulo_AP);
+		mainFrame.getContentPane().add(lblTitulo_AP);
 		
 		JButton btnStart = new JButton("");
 		btnStart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnStart.setBorderPainted(false);
 		btnStart.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_empezar.gif")));
 		btnStart.setBounds(641, 550, 285, 97);
-		frame.getContentPane().add(btnStart);
+		mainFrame.getContentPane().add(btnStart);
 		
 		JLabel lblCopyright = new JLabel("Copyright © 2021 BerniVilaDev. All rights reserved");
 		lblCopyright.setBounds(641, 822, 323, 24);
-		frame.getContentPane().add(lblCopyright);
+		mainFrame.getContentPane().add(lblCopyright);
 		
 		JButton btnLowerVolume = new JButton("");
 		btnLowerVolume.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -96,7 +107,7 @@ public class MainScreen {
 		btnLowerVolume.setBorderPainted(false);
 		btnLowerVolume.setIcon(new ImageIcon(MainScreen.class.getResource("/images/icons/lowerVolume.png")));
 		btnLowerVolume.setBounds(1342, 792, 60, 54);
-		frame.getContentPane().add(btnLowerVolume);
+		mainFrame.getContentPane().add(btnLowerVolume);
 		
 		JButton btnMute = new JButton("");
 		btnMute.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -105,7 +116,7 @@ public class MainScreen {
 		btnMute.setBorderPainted(false);
 		btnMute.setBorder(null);
 		btnMute.setBounds(1419, 792, 60, 54);
-		frame.getContentPane().add(btnMute);
+		mainFrame.getContentPane().add(btnMute);
 		
 		JButton btnRaiseVolume = new JButton("");
 		btnRaiseVolume.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -114,14 +125,14 @@ public class MainScreen {
 		btnRaiseVolume.setBorderPainted(false);
 		btnRaiseVolume.setBorder(null);
 		btnRaiseVolume.setBounds(1493, 792, 77, 54);
-		frame.getContentPane().add(btnRaiseVolume);
+		mainFrame.getContentPane().add(btnRaiseVolume);
 		
 		JButton btnRegistro = new JButton("");
 		btnRegistro.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_registrarse_blue.gif")));
 		btnRegistro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRegistro.setBorderPainted(false);
 		btnRegistro.setBounds(641, 679, 285, 97);
-		frame.getContentPane().add(btnRegistro);
+		mainFrame.getContentPane().add(btnRegistro);
 		
 		JLabel lblTitulo_RE = new JLabel("");
 		lblTitulo_RE.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_RE.gif")));
@@ -130,7 +141,7 @@ public class MainScreen {
 		lblTitulo_RE.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitulo_RE.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_RE.setBounds(644, 20, 539, 172);
-		frame.getContentPane().add(lblTitulo_RE);
+		mainFrame.getContentPane().add(lblTitulo_RE);
 		
 		JLabel lblTitulo_ND = new JLabel("");
 		lblTitulo_ND.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_ND.gif")));
@@ -139,7 +150,7 @@ public class MainScreen {
 		lblTitulo_ND.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitulo_ND.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_ND.setBounds(848, 20, 335, 172);
-		frame.getContentPane().add(lblTitulo_ND);
+		mainFrame.getContentPane().add(lblTitulo_ND);
 		
 		JLabel lblTitulo_E = new JLabel("");
 		lblTitulo_E.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_E.gif")));
@@ -148,7 +159,7 @@ public class MainScreen {
 		lblTitulo_E.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitulo_E.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_E.setBounds(1098, 20, 85, 172);
-		frame.getContentPane().add(lblTitulo_E);
+		mainFrame.getContentPane().add(lblTitulo_E);
 		
 		JLabel lblTitulo_A = new JLabel("");
 		lblTitulo_A.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_A_small.gif")));
@@ -157,7 +168,7 @@ public class MainScreen {
 		lblTitulo_A.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitulo_A.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_A.setBounds(771, 204, 77, 97);
-		frame.getContentPane().add(lblTitulo_A);
+		mainFrame.getContentPane().add(lblTitulo_A);
 		
 		JLabel lblTitulo_SU = new JLabel("");
 		lblTitulo_SU.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_SU.gif")));
@@ -166,7 +177,7 @@ public class MainScreen {
 		lblTitulo_SU.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitulo_SU.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_SU.setBounds(490, 317, 230, 172);
-		frame.getContentPane().add(lblTitulo_SU);
+		mainFrame.getContentPane().add(lblTitulo_SU);
 		
 		JLabel lblTitulo_M = new JLabel("");
 		lblTitulo_M.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_M.gif")));
@@ -175,7 +186,7 @@ public class MainScreen {
 		lblTitulo_M.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitulo_M.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_M.setBounds(712, 317, 136, 172);
-		frame.getContentPane().add(lblTitulo_M);
+		mainFrame.getContentPane().add(lblTitulo_M);
 		
 		JLabel lblTitulo_AR = new JLabel("");
 		lblTitulo_AR.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/title_AR.gif")));
@@ -184,7 +195,7 @@ public class MainScreen {
 		lblTitulo_AR.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitulo_AR.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblTitulo_AR.setBounds(833, 317, 249, 172);
-		frame.getContentPane().add(lblTitulo_AR);
+		mainFrame.getContentPane().add(lblTitulo_AR);
 		
 		
 		
@@ -193,7 +204,7 @@ public class MainScreen {
 			
 				LoginWindow loginWindow = new LoginWindow();
 				loginWindow.getLoginWindow().setVisible(true);
-				frame.setVisible(false);
+				mainFrame.setVisible(false);
 
 			}
 		});
@@ -219,7 +230,7 @@ public class MainScreen {
 		File bsoMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 		
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMAC);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();

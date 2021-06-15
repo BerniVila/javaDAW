@@ -5,9 +5,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import addNumbers.AddNumbersLogic;
+import mainWindows.MainScreen;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -21,17 +25,20 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSpinner;
 
 public class NumbersWindow {
 
-	private JFrame frame;
+	private JFrame numbersFrame;
 	// private PanelBackground frameBG;
 	private boolean muted = false;
 	private float volume;
+	ArrayList<Integer> numList = new ArrayList<Integer>();
+	private String result;
 
 	// added to use from main window
 	public JFrame getNumbersWindow() {
-		return frame;
+		return numbersFrame;
 	}
 
 	/**
@@ -42,7 +49,7 @@ public class NumbersWindow {
 			public void run() {
 				try {
 					NumbersWindow window = new NumbersWindow();
-					window.frame.setVisible(true);
+					window.numbersFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,20 +68,24 @@ public class NumbersWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(153, 153, 255));
-		frame.setBounds(100, 100, 1600, 900);
+		
+		
+		
+		numbersFrame = new JFrame();
+		numbersFrame.getContentPane().setBackground(new Color(153, 153, 255));
+		numbersFrame.setBounds(100, 100, 1600, 900);
 		// Image img =
 		// Toolkit.getDefaultToolkit().getImage("/images/backgrounds/claseFondoBig.jpg");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		numbersFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		numbersFrame.getContentPane().setLayout(null);
 
 		PanelBackground bg = new PanelBackground();
 		bg.setBounds(0, 0, 1600, 900); // en clase 1600x900
-		frame.getContentPane().add(bg);
+		numbersFrame.getContentPane().add(bg);
 		bg.setLayout(null);
 
 		JButton btn_1 = new JButton("");
+		btn_1.setName("1");
 		btn_1.setBorderPainted(false);
 		btn_1.setContentAreaFilled(false);
 		btn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -87,6 +98,7 @@ public class NumbersWindow {
 		bg.add(btn_1);
 
 		JButton btn_2 = new JButton("");
+		btn_2.setName("2");
 		btn_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_2.setContentAreaFilled(false);
 		btn_2.setBorderPainted(false);
@@ -99,6 +111,7 @@ public class NumbersWindow {
 		bg.add(btn_2);
 
 		JButton btn_3 = new JButton("");
+		btn_3.setName("3");
 		btn_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_3.setContentAreaFilled(false);
 		btn_3.setBorderPainted(false);
@@ -111,6 +124,7 @@ public class NumbersWindow {
 		bg.add(btn_3);
 
 		JButton btn_4 = new JButton("");
+		btn_4.setName("4");
 		btn_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_4.setContentAreaFilled(false);
 		btn_4.setBorderPainted(false);
@@ -123,6 +137,7 @@ public class NumbersWindow {
 		bg.add(btn_4);
 
 		JButton btn_5 = new JButton("");
+		btn_5.setName("5");
 		btn_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_5.setContentAreaFilled(false);
 		btn_5.setBorderPainted(false);
@@ -130,11 +145,12 @@ public class NumbersWindow {
 		btn_5.setBackground(new Color(153, 153, 255));
 		btn_5.setAutoscrolls(true);
 		btn_5.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/five.gif")));
-		btn_5.setBounds(47, 309, 143, 191);
+		btn_5.setBounds(47, 297, 143, 191);
 		// frame.getContentPane().add(btnNewButton_4);
 		bg.add(btn_5);
 
 		JButton btn_6 = new JButton("");
+		btn_6.setName("6");
 		btn_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_6.setContentAreaFilled(false);
 		btn_6.setBorderPainted(false);
@@ -142,11 +158,12 @@ public class NumbersWindow {
 		btn_6.setBackground(new Color(153, 153, 255));
 		btn_6.setAutoscrolls(true);
 		btn_6.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/six.gif")));
-		btn_6.setBounds(202, 315, 172, 185);
+		btn_6.setBounds(202, 297, 172, 185);
 		// frame.getContentPane().add(btnNewButton_5);
 		bg.add(btn_6);
 
 		JButton btn_7 = new JButton("");
+		btn_7.setName("7");
 		btn_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_7.setContentAreaFilled(false);
 		btn_7.setBorderPainted(false);
@@ -154,11 +171,12 @@ public class NumbersWindow {
 		btn_7.setBackground(new Color(153, 153, 255));
 		btn_7.setAutoscrolls(true);
 		btn_7.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/seven.gif")));
-		btn_7.setBounds(397, 324, 143, 176);
+		btn_7.setBounds(393, 297, 143, 176);
 		// frame.getContentPane().add(btnNewButton_6);
 		bg.add(btn_7);
 
 		JButton btn_8 = new JButton("");
+		btn_8.setName("8");
 		btn_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_8.setContentAreaFilled(false);
 		btn_8.setBorderPainted(false);
@@ -166,11 +184,12 @@ public class NumbersWindow {
 		btn_8.setBackground(new Color(153, 153, 255));
 		btn_8.setAutoscrolls(true);
 		btn_8.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/eight.gif")));
-		btn_8.setBounds(562, 315, 130, 185);
+		btn_8.setBounds(562, 297, 130, 185);
 		// frame.getContentPane().add(btnNewButton_7);
 		bg.add(btn_8);
 
 		JButton btn_9 = new JButton("");
+		btn_9.setName("9");
 		btn_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_9.setContentAreaFilled(false);
 		btn_9.setBorderPainted(false);
@@ -188,13 +207,14 @@ public class NumbersWindow {
 		lblTitle.setBounds(762, 6, 830, 191);
 		bg.add(lblTitle);
 
-		JLabel lblNumber = new JLabel("25");
-		lblNumber.setFont(new Font("Comic Sans MS", Font.BOLD, 99));
-		lblNumber.setForeground(new Color(255, 255, 153));
-		lblNumber.setBounds(1133, 189, 130, 109);
-		bg.add(lblNumber);
+		JLabel lblTargetNumber = new JLabel("");
+		lblTargetNumber.setFont(new Font("Comic Sans MS", Font.BOLD, 99));
+		lblTargetNumber.setForeground(new Color(255, 255, 153));
+		lblTargetNumber.setBounds(1004, 189, 157, 109);
+		bg.add(lblTargetNumber);
 
 		JButton btn_10 = new JButton("");
+		btn_10.setName("10");
 		btn_10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_10.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/numbers/ten.gif")));
 		btn_10.setContentAreaFilled(false);
@@ -206,11 +226,20 @@ public class NumbersWindow {
 		bg.add(btn_10);
 
 		JButton btnHelp = new JButton("AYUDA");
+		btnHelp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnHelp.setOpaque(true);
+		btnHelp.setBorder(null);
+		btnHelp.setBorderPainted(false);
+		btnHelp.setBackground(new Color(255, 153, 102));
 		btnHelp.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		btnHelp.setBounds(439, 582, 231, 76);
+		btnHelp.setBounds(439, 560, 231, 82);
 		bg.add(btnHelp);
 
-		JButton btnGenerateNumber = new JButton("NUEVO NÚMERO");
+		JButton btnGenerateNumber = new JButton("GENERAR NÚMERO");
+		btnGenerateNumber.setOpaque(true);
+		btnGenerateNumber.setBorder(null);
+		btnGenerateNumber.setBorderPainted(false);
+		btnGenerateNumber.setBackground(new Color(102, 153, 204));
 		btnGenerateNumber.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnGenerateNumber.setBounds(1384, 208, 166, 90);
 		bg.add(btnGenerateNumber);
@@ -218,7 +247,7 @@ public class NumbersWindow {
 		JLabel lblResultado = new JLabel("RESULTADO");
 		lblResultado.setForeground(new Color(153, 255, 204));
 		lblResultado.setFont(new Font("Kohinoor Telugu", Font.PLAIN, 64));
-		lblResultado.setBounds(843, 348, 695, 137);
+		lblResultado.setBounds(1059, 324, 341, 137);
 		bg.add(lblResultado);
 
 		JButton btnLowerVolume = new JButton("");
@@ -246,15 +275,32 @@ public class NumbersWindow {
 		bg.add(btnRaiseVolume);
 		
 		JButton btnPista = new JButton("PISTA");
+		btnPista.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnPista.setBackground(new Color(102, 153, 153));
+		btnPista.setBorderPainted(false);
+		btnPista.setBorder(null);
+		btnPista.setOpaque(true);
 		btnPista.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		btnPista.setBounds(439, 670, 231, 68);
+		btnPista.setBounds(439, 648, 231, 90);
 		bg.add(btnPista);
 		
 		JButton btnAtras = new JButton("<-- ATRÁS");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAtras.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAtras.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		btnAtras.setBounds(6, 790, 231, 68);
 		bg.add(btnAtras);
+		
+		JSpinner spinnerMaxValue = new JSpinner();
+		spinnerMaxValue.setBounds(1259, 239, 113, 26);
+		bg.add(spinnerMaxValue);
+		
+		JLabel lblMaxValue = new JLabel("Nº MÁXIMO");
+		lblMaxValue.setBounds(1272, 216, 85, 23);
+		bg.add(lblMaxValue);
 
 		// StaticSoundMethods.playSound(bso);
 
@@ -317,6 +363,29 @@ public class NumbersWindow {
 			System.out.println("Error with playing sound.");
 			ex.printStackTrace();
 		}
+		
+		
+		
+		//GENERAR NUEVO NUMERO //////////////////////////////////////////////////////////
+		AddNumbersLogic numbersLogic = new AddNumbersLogic(10);
+		lblTargetNumber.setText(String.valueOf(numbersLogic.getTargetNum()));
+		
+		JLabel lblMostrarResultado = new JLabel("");
+		lblMostrarResultado.setForeground(new Color(255, 204, 255));
+		lblMostrarResultado.setFont(new Font("Comic Sans MS", Font.PLAIN, 75));
+		lblMostrarResultado.setBounds(847, 437, 703, 115);
+		bg.add(lblMostrarResultado);
+
+		
+		btnGenerateNumber.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int newTarget = numbersLogic.generateNumber(Integer.valueOf(spinnerMaxValue.getValue().toString()));
+				lblTargetNumber.setText(String.valueOf(newTarget));
+				numList.removeAll(numList);
+				lblMostrarResultado.setText("");
+			}
+		});
+		
 
 		// SONIDOS DE NÚMEROS////////////////////////////////////////
 		File numSound1 = new File(
@@ -340,75 +409,138 @@ public class NumbersWindow {
 		File numSound10 = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/diez.wav");
 
+		
+		
 		btn_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound10);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_10.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_10.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
+				System.out.println(numList);
 			}
 		});
 
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound1);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_1.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_1.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound2);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_2.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_2.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound3);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_3.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_3.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound4);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_4.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_4.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound5);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_5.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_5.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound6);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_6.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_6.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound7);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_7.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_7.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound8);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_8.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_8.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 
 		btn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaticSoundMethods.playSound(numSound9);
+				numbersLogic.addNumber(numList, Integer.valueOf(btn_9.getName()));
+				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_9.getName());
+				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
+				checkGameResult(result, lblMostrarResultado);
 			}
 		});
 		
+		//VOLVER ATRÁS///////////////////////////////////////////////////////////////////
 		
-		
-		//GENERAR NUEVO NUMERO //////////////////////////////////////////////////////////
-		
-		btnGenerateNumber.addActionListener(new ActionListener() {
+		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				MainScreen window = new MainScreen();
+				window.getMainFrame().setVisible(true);
+				numbersFrame.setVisible(false);
 			}
 		});
+		
 
 	}
+	
+	
+	
+	
+	public void checkGameResult(String result, JLabel lblMostrarResultado) {
+		if (result.compareToIgnoreCase("win") == 0) {
+			lblMostrarResultado.setText("HAS GANADO!!!");
+		}
+		if (result.compareToIgnoreCase("lose") == 0) {
+			lblMostrarResultado.setText("HAS PERDIDO!!!");
+		}
+		if (result.compareToIgnoreCase("try") == 0) {
+			lblMostrarResultado.setText(lblMostrarResultado.getText() + " + ");
+		}
+	}
+	
+	
+	
+	
 }
