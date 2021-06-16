@@ -204,6 +204,7 @@ public class LoginWindow {
 		panel.add(btnAvatar_6);
 
 		textNombreUsuario = new JTextField();
+		textNombreUsuario.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		textNombreUsuario.setBounds(28, 81, 226, 43);
 		loginFrame.getContentPane().add(textNombreUsuario);
 		textNombreUsuario.setColumns(10);

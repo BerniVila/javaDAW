@@ -72,9 +72,8 @@ public class NumbersWindow {
 
 		numbersFrame = new JFrame();
 		numbersFrame.getContentPane().setBackground(new Color(153, 153, 255));
-		numbersFrame.setBounds(100, 100, 1600, 900);
-		// Image img =
-		// Toolkit.getDefaultToolkit().getImage("/images/backgrounds/claseFondoBig.jpg");
+		numbersFrame.setBounds(0, 0, 1600, 900);
+		numbersFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		numbersFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		numbersFrame.getContentPane().setLayout(null);
 
@@ -372,6 +371,7 @@ public class NumbersWindow {
 		// //////////////////////////////////////////////////////////
 		AddNumbersLogic numbersLogic = new AddNumbersLogic(10);
 		lblTargetNumber.setText(String.valueOf(numbersLogic.getTargetNum()));
+		ocultarNumero(lblTargetNumber, numberButtons);
 
 		JLabel lblMostrarResultado = new JLabel("");
 		lblMostrarResultado.setForeground(new Color(255, 204, 255));
@@ -384,7 +384,7 @@ public class NumbersWindow {
 		lblWinning.setOpaque(true);
 		lblWinning.setFocusable(false);
 		lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/congrats.gif")));
-		lblWinning.setBounds(830, 535, 500, 287);
+		lblWinning.setBounds(830, 535, 500, 260);
 		bg.add(lblWinning);
 
 		btnGenerateNumber.addActionListener(new ActionListener() {
@@ -399,6 +399,7 @@ public class NumbersWindow {
 				lblWinning.setVisible(false);
 				jugando = true;
 				seguirJugando(jugando, numberButtons);
+				ocultarNumero(lblTargetNumber, numberButtons);
 			}
 		});
 
@@ -580,6 +581,16 @@ public class NumbersWindow {
 		} else {
 			for (JButton jButton : numberButtons) {
 				jButton.setEnabled(true);
+			}
+		}
+	}
+
+	public void ocultarNumero(JLabel lblTargetNumber, JButton[] numberButtons) {
+		String target = lblTargetNumber.getText();
+		for (JButton jButton : numberButtons) {
+
+			if (jButton.getName().compareToIgnoreCase(target) == 0) {
+				jButton.setEnabled(false);
 			}
 		}
 	}
