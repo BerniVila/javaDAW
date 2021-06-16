@@ -34,8 +34,24 @@ public class NumbersWindow {
 	private boolean isMuted = false;
 	private boolean isJugando = true;
 	private float volume;
-	ArrayList<Integer> numList = new ArrayList<Integer>();
+	private static ArrayList<Integer> numList = new ArrayList<Integer>();
 	private String result;
+	private static JLabel lblTargetNumber;
+	
+	
+	
+	
+	public static String getSumaActual() {
+		String sumaActual = devolverSumaActual(numList);
+		return sumaActual;
+	}
+	
+	public static String getObjetivoActual() {
+		String objetivoActual = devolverObjetivoActual(lblTargetNumber);
+		return objetivoActual;
+	}
+	
+	
 
 	// added to use from main window
 	public JFrame getNumbersWindow() {
@@ -205,7 +221,7 @@ public class NumbersWindow {
 		lblTitle.setBounds(722, 5, 872, 191);
 		bg.add(lblTitle);
 
-		JLabel lblTargetNumber = new JLabel("");
+		lblTargetNumber = new JLabel("");
 		lblTargetNumber.setFont(new Font("Comic Sans MS", Font.BOLD, 99));
 		lblTargetNumber.setForeground(new Color(255, 255, 153));
 		lblTargetNumber.setBounds(1004, 189, 157, 109);
@@ -274,9 +290,9 @@ public class NumbersWindow {
 		bg.add(btnRaiseVolume);
 
 		JButton btnPista = new JButton("PISTA");
+		btnPista.setSelected(true);
 		btnPista.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnPista.setBackground(new Color(102, 153, 153));
-		btnPista.setBorderPainted(false);
 		btnPista.setBorder(null);
 		btnPista.setOpaque(true);
 		btnPista.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
@@ -535,8 +551,8 @@ public class NumbersWindow {
 			}
 		});
 
-		// VOLVER
-		// ATRAS///////////////////////////////////////////////////////////////////
+
+		// VOLVER ATRAS///////////////////////////////////////////////////////////////////
 
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -545,6 +561,29 @@ public class NumbersWindow {
 				numbersFrame.setVisible(false);
 			}
 		});
+		
+		// PISTAS///////////////////////////////////////////////////////////////////
+
+		btnPista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {			
+				Pista_tienes pista_tienesWindow = new Pista_tienes();
+				pista_tienesWindow.getPista_tienes().setVisible(true);
+				
+				Pista_llegar_a pista_llegar_aWindow = new Pista_llegar_a();
+				pista_llegar_aWindow.getPista_llegar_a().setVisible(true);
+				
+			}
+		});
+		
+		
+		
+		
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				chatWindow.Server servidor = new chatWindow.Server();
+			}
+		});
+		
 
 	}
 
@@ -594,5 +633,33 @@ public class NumbersWindow {
 			}
 		}
 	}
+
+	public static String devolverSumaActual(ArrayList<Integer> numList) {
+
+		int tempSum = 0;
+		for (int i = 0; i < numList.size(); i++) {
+			tempSum += numList.get(i);
+		}
+		String sumaActual = String.valueOf(tempSum);
+
+		return sumaActual;
+	}
+
+	public static String devolverObjetivoActual(JLabel lblTargetNumber) {
+		String objetivoActual = lblTargetNumber.getText();
+
+		return objetivoActual;
+	}
+	
+	
+//	public String getSumaActual() {
+//		String sumaActual = devolverSumaActual(numList);
+//		return sumaActual;
+//	}
+//	
+//	public String getObjetivoActual() {
+//		String objetivoActual = devolverObjetivoActual(lblTargetNumber);
+//		return objetivoActual;
+//	}
 
 }

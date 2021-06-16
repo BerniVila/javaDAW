@@ -3,18 +3,22 @@ package proyectoAppInfantil;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.border.TitledBorder;
-import java.awt.Color;
-import javax.swing.border.EtchedBorder;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class Pista_tienes {
 
-	private JFrame frame;
+	private JFrame framePistaTienes;
+	Icon[] listaPistas;
+
+	// added to use from main window
+	public JFrame getPista_tienes() {
+		return framePistaTienes;
+	}
 
 	/**
 	 * Launch the application.
@@ -24,7 +28,7 @@ public class Pista_tienes {
 			public void run() {
 				try {
 					Pista_tienes window = new Pista_tienes();
-					window.frame.setVisible(true);
+					window.framePistaTienes.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,29 +47,48 @@ public class Pista_tienes {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setVisible(true);
-		frame.setAlwaysOnTop(true);
-		frame.setBounds(100, 100, 455, 374);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		JLabel lblPista_1 = new JLabel("");
-		lblPista_1.setBounds(238, 6, 161, 341);
-		lblPista_1.setBorder(null);
-		lblPista_1.setIcon(new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_uno.png")));
-		frame.getContentPane().add(lblPista_1);
-		
-		JLabel lblNewLabel = new JLabel("TIENES");
-		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		lblNewLabel.setBounds(48, 71, 90, 44);
-		frame.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("1");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 99));
-		lblNewLabel_1.setBounds(27, 185, 129, 120);
-		frame.getContentPane().add(lblNewLabel_1);
+		Icon unoIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_uno.png"));
+		Icon dosIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_dos.png"));
+		Icon tresIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_tres.png"));
+		Icon cuatroIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_cuatro.png"));
+		Icon cincoIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_cinco.png"));
+		Icon seisIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_seis.png"));
+		Icon sieteIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_siete.png"));
+		Icon ochoIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_ocho.png"));
+		Icon nueveIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_nueve.png"));
+		Icon diezIcon = new ImageIcon(Pista_tienes.class.getResource("/images/pistas/dedos_diez.png"));
+
+		listaPistas = new Icon[] { unoIcon, dosIcon, tresIcon, cuatroIcon, cincoIcon, seisIcon, sieteIcon, ochoIcon,
+				nueveIcon, diezIcon };
+
+		int numeroPista = Integer.valueOf(NumbersWindow.getSumaActual());
+		Icon iconPista = listaPistas[numeroPista - 1];
+
+		framePistaTienes = new JFrame();
+		framePistaTienes.getContentPane().setBackground(new Color(153, 204, 153));
+		framePistaTienes.getContentPane().setVisible(true);
+		framePistaTienes.setAlwaysOnTop(true);
+		framePistaTienes.setBounds(570, 500, 470, 413);
+		framePistaTienes.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		framePistaTienes.getContentPane().setLayout(null);
+
+		JLabel lblPista = new JLabel("");
+		lblPista.setBounds(150, 6, 299, 341);
+		lblPista.setBorder(null);
+		lblPista.setIcon(iconPista);
+		framePistaTienes.getContentPane().add(lblPista);
+
+		JLabel lblTienes = new JLabel("TIENES");
+		lblTienes.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		lblTienes.setBounds(48, 71, 90, 44);
+		framePistaTienes.getContentPane().add(lblTienes);
+
+		JLabel lblNumero = new JLabel(String.valueOf(numeroPista));
+		lblNumero.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNumero.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNumero.setFont(new Font("Comic Sans MS", Font.PLAIN, 99));
+		lblNumero.setBounds(27, 185, 129, 120);
+		framePistaTienes.getContentPane().add(lblNumero);
+
 	}
 }

@@ -17,7 +17,7 @@ public class Server {
 	
 	
 	/* We keep the port in a constant */
-	private final static int PORT = 5007;
+	private final static int PORT = 5011;
 	
 	private static boolean talking = true;
 	
