@@ -349,48 +349,56 @@ public class RegisterWindow {
 		btnAvatar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_1.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
 		btnAvatar_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_2.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
 		btnAvatar_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_3.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
 		btnAvatar_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_4.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
 		btnAvatar_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_5.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
 		btnAvatar_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_6.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
 		btnAvatar_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_7.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
 		btnAvatar_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_8.getName();
+				isSelectedAvatar(avatarButtons);
 			}
 		});
 		
@@ -412,7 +420,7 @@ public class RegisterWindow {
 		});
 		
 		
-
+		
 		
 		//RECOGER DATOS USUARIO  ////////////////////////////////////////////////////////////////////////////////////////////
 		
@@ -479,5 +487,18 @@ public class RegisterWindow {
 
 
 			
+	}
+	
+	//MARKING SELECTED AVATAR////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static void isSelectedAvatar(ArrayList<JButton> avatarButtons) {
+		for (JButton avatar : avatarButtons) {
+			if (avatar.isFocusOwner()) {
+				avatar.setBorder(new LineBorder(Color.PINK, 10, true));
+				
+			} else {
+				avatar.setBorder(new LineBorder(Color.BLACK, 2, true));
+			}
+		}
 	}
 }

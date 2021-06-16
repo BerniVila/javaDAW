@@ -243,48 +243,56 @@ public class LoginWindow {
 		btnAvatar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_1.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 
 		btnAvatar_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_2.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 
 		btnAvatar_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_3.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 
 		btnAvatar_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_4.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 
 		btnAvatar_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_5.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 
 		btnAvatar_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_6.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 
 		btnAvatar_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_7.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 
 		btnAvatar_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				avatar = btnAvatar_8.getName();
+				RegisterWindow.isSelectedAvatar(avatarButtons);
 			}
 		});
 

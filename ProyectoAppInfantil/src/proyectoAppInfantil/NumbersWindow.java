@@ -32,6 +32,7 @@ public class NumbersWindow {
 	private JFrame numbersFrame;
 	// private PanelBackground frameBG;
 	private boolean muted = false;
+	private boolean jugando = true;
 	private float volume;
 	ArrayList<Integer> numList = new ArrayList<Integer>();
 	private String result;
@@ -199,7 +200,7 @@ public class NumbersWindow {
 		// frame.getContentPane().add(btnNewButton_8);
 		bg.add(btn_9);
 
-		JLabel lblTitle = new JLabel("SUMA NÃšMEROS CON RESULTADO");
+		JLabel lblTitle = new JLabel("SUMA NUMEROS CON RESULTADO");
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
 		lblTitle.setForeground(new Color(255, 255, 255));
 		lblTitle.setBounds(722, 5, 872, 191);
@@ -233,7 +234,7 @@ public class NumbersWindow {
 		btnHelp.setBounds(439, 560, 231, 82);
 		bg.add(btnHelp);
 
-		JButton btnGenerateNumber = new JButton("GENERAR NÃšMERO");
+		JButton btnGenerateNumber = new JButton("GENERAR NUMERO");
 		btnGenerateNumber.setOpaque(true);
 		btnGenerateNumber.setBorder(null);
 		btnGenerateNumber.setBorderPainted(false);
@@ -283,7 +284,7 @@ public class NumbersWindow {
 		btnPista.setBounds(439, 648, 231, 90);
 		bg.add(btnPista);
 
-		JButton btnAtras = new JButton("<-- ATRÃ�S");
+		JButton btnAtras = new JButton("<-- ATRAS");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -295,11 +296,15 @@ public class NumbersWindow {
 
 		JSpinner spinnerMaxValue = new JSpinner();
 		spinnerMaxValue.setBounds(1244, 240, 113, 26);
+		spinnerMaxValue.setValue(10);
 		bg.add(spinnerMaxValue);
 
-		JLabel lblMaxValue = new JLabel("NÂº MÃ�XIMO");
+		JLabel lblMaxValue = new JLabel("Nº MAXIMO");
 		lblMaxValue.setBounds(1244, 216, 113, 23);
 		bg.add(lblMaxValue);
+
+		JButton[] numberButtons = new JButton[] { btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9,
+				btn_10 };
 
 		// StaticSoundMethods.playSound(bso);
 
@@ -373,7 +378,7 @@ public class NumbersWindow {
 		lblMostrarResultado.setFont(new Font("Comic Sans MS", Font.PLAIN, 75));
 		lblMostrarResultado.setBounds(830, 408, 703, 102);
 		bg.add(lblMostrarResultado);
-		
+
 		JLabel lblWinning = new JLabel("");
 		lblWinning.setVisible(false);
 		lblWinning.setOpaque(true);
@@ -392,10 +397,12 @@ public class NumbersWindow {
 						"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
 				StaticSoundMethods.playSound(generateNum);
 				lblWinning.setVisible(false);
+				jugando = true;
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
-		// SONIDOS DE NÃšMEROS////////////////////////////////////////
+		// SONIDOS DE NUMEROS////////////////////////////////////////
 		File numSound1 = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
 		File numSound2 = new File(
@@ -435,6 +442,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_1.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -445,6 +453,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_2.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -455,6 +464,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_3.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -465,6 +475,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_4.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -475,6 +486,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_5.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -485,6 +497,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_6.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -495,6 +508,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_7.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -505,6 +519,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_8.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
@@ -515,11 +530,12 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_9.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
+				seguirJugando(jugando, numberButtons);
 			}
 		});
 
 		// VOLVER
-		// ATRÃ�S///////////////////////////////////////////////////////////////////
+		// ATRAS///////////////////////////////////////////////////////////////////
 
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -537,14 +553,35 @@ public class NumbersWindow {
 			File congrats = new File(
 					"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/congrats.wav");
 			StaticSoundMethods.playSound(congrats);
+			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/congrats.gif")));
 			lblWinning.setVisible(true);
-			
+			jugando = false;
+
 		}
 		if (result.compareToIgnoreCase("lose") == 0) {
 			lblMostrarResultado.setText("HAS PERDIDO!!!");
+			File congrats = new File(
+					"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/fail-trombone-03.wav");
+			StaticSoundMethods.playSound(congrats);
+			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/youLose.gif")));
+			lblWinning.setVisible(true);
+			jugando = false;
 		}
 		if (result.compareToIgnoreCase("try") == 0) {
 			lblMostrarResultado.setText(lblMostrarResultado.getText() + " + ");
 		}
 	}
+
+	public void seguirJugando(boolean jugando, JButton[] numberButtons) {
+		if (!jugando) {
+			for (JButton jButton : numberButtons) {
+				jButton.setEnabled(false);
+			}
+		} else {
+			for (JButton jButton : numberButtons) {
+				jButton.setEnabled(true);
+			}
+		}
+	}
+
 }
