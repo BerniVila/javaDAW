@@ -9,7 +9,7 @@ import java.net.Socket;
 public class Client {
 
 	/* Port 5002 */
-	private final static int PORT = 5011;
+	private final static int PORT = 5012;
 
 	private final static String SERVER = "127.0.0.1";
 
@@ -30,8 +30,9 @@ public class Client {
 			
 			File fx = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Fanfare_SmallItem.wav");
 			File fx2 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
+			File fx3 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroUno.wav");
 			
-			AudioSerializable audioEnviar = new AudioSerializable(fx2);
+			AudioSerializable audioEnviar = new AudioSerializable(fx3);
 			outObjeto.writeObject(audioEnviar);
 
 

@@ -1,16 +1,13 @@
-package chatWindow;
+package chatAyuda;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import java.awt.GridBagLayout;
-import javax.swing.JTextArea;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,21 +15,23 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Cursor;
 import javax.swing.ImageIcon;
-import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
+public class ChatAyudaClient {
 
-public class ChatWindow {
 
 	private JFrame frame;
 	private JTextField textField;
 	private JButton btnConnectServer;
 	private JButton btnConnectClient;
-	private int port = 5011;
-	private String serverIP = "127.0.0.1";
+	private int port;
+	private String serverIP;
 	private BufferedReader input;
 	private PrintStream output;
 	private String user;
@@ -56,22 +55,19 @@ public class ChatWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChatWindow window = new ChatWindow();
+					ChatAyudaClient window = new ChatAyudaClient();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
 	}
-	
-	
 
 	/**
 	 * Create the application.
 	 */
-	public ChatWindow() {
+	public ChatAyudaClient() {
 		initialize();
 	}
 
@@ -103,20 +99,6 @@ public class ChatWindow {
 		scrollPane.setViewportView(textChatPanel);
 		textChatPanel.setEditable(false);
 
-		
-
-		btnConnectServer = new JButton("Connect as Server");
-		btnConnectServer.setMargin(new Insets(10, 10, 10, 10));
-		btnConnectServer.setBorderPainted(false);
-		btnConnectServer.setOpaque(true);
-		btnConnectServer.setBackground(new Color(0, 153, 102));
-		GridBagConstraints gbc_btnConnectServer = new GridBagConstraints();
-		gbc_btnConnectServer.gridwidth = 2;
-		gbc_btnConnectServer.fill = GridBagConstraints.BOTH;
-		gbc_btnConnectServer.insets = new Insets(0, 0, 5, 5);
-		gbc_btnConnectServer.gridx = 1;
-		gbc_btnConnectServer.gridy = 1;
-		frame.getContentPane().add(btnConnectServer, gbc_btnConnectServer);
 		
 
 		btnConnectClient = new JButton("Connect as Client");
@@ -173,55 +155,33 @@ public class ChatWindow {
 
 		// events
 
-		btnConnectServer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
 
-				try {
-
-					// Server Socket to wait for network requests
-					ServerSocket server = new ServerSocket(port);
-					frame.setTitle(user + " connected to port " + port);
-
-					// Client Socket
-					//Socket client;
-					client = server.accept();
-					// setSoLinger closes the socket giving 10mS to receive the remaining data
-					client.setSoLinger(true, 10);
-					// an input reader to read from the socket
-					input = new BufferedReader(new InputStreamReader(client.getInputStream()));
-					// to print data out
-					output = new PrintStream(client.getOutputStream());
-
-//					Reading chatInput = new Reading(input, output, textChatPanel);
-//					chatInput.start();
-					
-					state = CONNECTED;
-					updateEdition();
-
-				} catch (IOException ex) {
-					System.err.println(ex.getMessage());
-				}
-				
-			}
-		});
 
 		btnConnectClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				JFrame enterUserClient = new JFrame();
+				user = JOptionPane.showInputDialog(frame, "USER?");
 
 				// boolean exit = false;// bandera para controlar ciclo del programa
 
 
+				JFrame enterIp = new JFrame();
+				serverIP = JOptionPane.showInputDialog(frame, "IP?");
+
+				JFrame enterServer = new JFrame();
+				String clientPort = JOptionPane.showInputDialog(frame, "Port?");
+				port = Integer.parseInt(clientPort);
 
 				try {
 
-					socket = new Socket("127.0.0.1", 5011);// open socket
+					socket = new Socket(serverIP, port);// open socket
 					// To read from the server
 					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 					// to write to the server
 					output = new PrintStream(socket.getOutputStream());
 
-					frame.setTitle("connected with port " + 5011 + " on IP 127.0.0.1");
+					frame.setTitle(user + " connected with port " + clientPort + " on IP " + serverIP);
 
 					Reading chatInput = new Reading(input, output, textChatPanel);
 					chatInput.start();

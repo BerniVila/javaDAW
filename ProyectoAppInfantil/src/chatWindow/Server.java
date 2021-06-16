@@ -1,6 +1,8 @@
 package chatWindow;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,13 +13,20 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import proyectoAppInfantil.StaticSoundMethods;
 
 public class Server {
 	
 	
 	/* We keep the port in a constant */
-	private final static int PORT = 5011;
+	private final static int PORT = 5012;
 	
 	private static boolean talking = true;
 	
@@ -43,14 +52,35 @@ public class Server {
 			
 			/////////////////////////////
 			
-			ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
-			//ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
+
 			try {
+				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
 				AudioSerializable audioRecibir = (AudioSerializable)inObjeto.readObject();
 				File archivo = audioRecibir.getFile();
-				StaticSoundMethods.playSound(archivo);
+				//StaticSoundMethods.playSound(archivo);
+				
+					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(archivo);
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					clip.start();
+
+					
+					
+					
+					
+					
+					client.close();
+					server.close();
+			
+				
 				
 			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -61,8 +91,6 @@ public class Server {
 			
 			
 
-			client.close();
-			server.close();
 			
 
 

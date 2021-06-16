@@ -1,16 +1,13 @@
-package chatWindow;
+package chatAyuda;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import java.awt.GridBagLayout;
-import javax.swing.JTextArea;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,26 +15,29 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Cursor;
 import javax.swing.ImageIcon;
-import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
+import chatWindow.ChatWindow;
+import chatWindow.Reading;
 
-public class ChatWindow {
+public class ChatAyudaServer {
+
+	
 
 	private JFrame frame;
 	private JTextField textField;
 	private JButton btnConnectServer;
-	private JButton btnConnectClient;
-	private int port = 5011;
-	private String serverIP = "127.0.0.1";
+	private int port;
 	private BufferedReader input;
 	private PrintStream output;
 	private String user;
 	private JButton btnDisconnect;
-
 	JTextArea textChatPanel;
 	Socket socket;
 	Socket client;
@@ -49,6 +49,7 @@ public class ChatWindow {
 	
 	
 
+
 	/**
 	 * Launch the application.
 	 */
@@ -56,22 +57,19 @@ public class ChatWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChatWindow window = new ChatWindow();
+					ChatAyudaServer window = new ChatAyudaServer();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
 	}
-	
-	
 
 	/**
 	 * Create the application.
 	 */
-	public ChatWindow() {
+	public ChatAyudaServer() {
 		initialize();
 	}
 
@@ -80,83 +78,49 @@ public class ChatWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 680, 500);
+		frame.setBounds(100, 100, 696, 315);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {80, 80, 80, 80, 80, 80, 80, 80, 80};
-		gridBagLayout.rowHeights = new int[] {48, 96, 96, 96, 48};
-		gridBagLayout.columnWeights = new double[] { 1.0 };
-		gridBagLayout.rowWeights = new double[] { };
-		frame.getContentPane().setLayout(gridBagLayout);
+		frame.getContentPane().setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridheight = 4;
-		gbc_scrollPane.gridwidth = 6;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.gridx = 3;
-		gbc_scrollPane.gridy = 0;
-		frame.getContentPane().add(scrollPane, gbc_scrollPane);
+		scrollPane.setBounds(200, 13, 480, 194);
+		frame.getContentPane().add(scrollPane);
 
 		textChatPanel = new JTextArea(20, 20);
-		scrollPane.setViewportView(textChatPanel);
+		scrollPane.setColumnHeaderView(textChatPanel);
 		textChatPanel.setEditable(false);
 
 		
 
 		btnConnectServer = new JButton("Connect as Server");
+		btnConnectServer.setBounds(16, 13, 172, 91);
 		btnConnectServer.setMargin(new Insets(10, 10, 10, 10));
 		btnConnectServer.setBorderPainted(false);
 		btnConnectServer.setOpaque(true);
 		btnConnectServer.setBackground(new Color(0, 153, 102));
-		GridBagConstraints gbc_btnConnectServer = new GridBagConstraints();
-		gbc_btnConnectServer.gridwidth = 2;
-		gbc_btnConnectServer.fill = GridBagConstraints.BOTH;
-		gbc_btnConnectServer.insets = new Insets(0, 0, 5, 5);
-		gbc_btnConnectServer.gridx = 1;
-		gbc_btnConnectServer.gridy = 1;
-		frame.getContentPane().add(btnConnectServer, gbc_btnConnectServer);
+		frame.getContentPane().add(btnConnectServer);
 		
 
-		btnConnectClient = new JButton("Connect as Client");
-		btnConnectClient.setOpaque(true);
-		btnConnectClient.setBorderPainted(false);
-		btnConnectClient.setBackground(new Color(51, 153, 204));
-		GridBagConstraints gbc_btnConnectClient = new GridBagConstraints();
-		gbc_btnConnectClient.gridwidth = 2;
-		gbc_btnConnectClient.fill = GridBagConstraints.BOTH;
-		gbc_btnConnectClient.insets = new Insets(0, 0, 5, 5);
-		gbc_btnConnectClient.gridx = 1;
-		gbc_btnConnectClient.gridy = 2;
-		frame.getContentPane().add(btnConnectClient, gbc_btnConnectClient);
+
 		
 		btnDisconnect = new JButton("Disconnect");
+		btnDisconnect.setBounds(44, 115, 115, 29);
 		btnDisconnect.setBorderPainted(false);
 		btnDisconnect.setOpaque(true);
 		btnDisconnect.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnDisconnect.setBackground(new Color(153, 51, 51));
 		btnDisconnect.setForeground(Color.WHITE);
-		GridBagConstraints gbc_btnDisconnect = new GridBagConstraints();
-		gbc_btnDisconnect.gridwidth = 2;
-		gbc_btnDisconnect.insets = new Insets(0, 0, 5, 5);
-		gbc_btnDisconnect.gridx = 1;
-		gbc_btnDisconnect.gridy = 3;
-		frame.getContentPane().add(btnDisconnect, gbc_btnDisconnect);
+		frame.getContentPane().add(btnDisconnect);
 
 		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 5;
-		gbc_textField.insets = new Insets(0, 0, 0, 5);
-		gbc_textField.fill = GridBagConstraints.BOTH;
-		gbc_textField.gridx = 3;
-		gbc_textField.gridy = 4;
-		frame.getContentPane().add(textField, gbc_textField);
+		textField.setBounds(200, 227, 395, 48);
+		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		textField.setVisible(true);
 		updateEdition();
 
 		JButton btnSend = new JButton("");
+		btnSend.setBounds(600, 227, 80, 48);
 		btnSend.setContentAreaFilled(false);
 		btnSend.setMinimumSize(new Dimension(30, 29));
 		btnSend.setMaximumSize(new Dimension(30, 29));
@@ -165,23 +129,24 @@ public class ChatWindow {
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);
-		GridBagConstraints gbc_btnSend = new GridBagConstraints();
-		gbc_btnSend.fill = GridBagConstraints.BOTH;
-		gbc_btnSend.gridx = 8;
-		gbc_btnSend.gridy = 4;
-		frame.getContentPane().add(btnSend, gbc_btnSend);
+		frame.getContentPane().add(btnSend);
 
 		// events
 
 		btnConnectServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				JFrame enterUserClient = new JFrame();
+				user = JOptionPane.showInputDialog(frame, "USER?");
 
+				JFrame enterPort = new JFrame();
+				String serverPort = JOptionPane.showInputDialog(frame, "Port?");
+				port = Integer.parseInt(serverPort);
 				try {
 
 					// Server Socket to wait for network requests
 					ServerSocket server = new ServerSocket(port);
-					frame.setTitle(user + " connected to port " + port);
+					frame.setTitle(user + " connected to port " + serverPort);
 
 					// Client Socket
 					//Socket client;
@@ -193,8 +158,8 @@ public class ChatWindow {
 					// to print data out
 					output = new PrintStream(client.getOutputStream());
 
-//					Reading chatInput = new Reading(input, output, textChatPanel);
-//					chatInput.start();
+					Reading chatInput = new Reading(input, output, textChatPanel);
+					chatInput.start();
 					
 					state = CONNECTED;
 					updateEdition();
@@ -206,35 +171,44 @@ public class ChatWindow {
 			}
 		});
 
-		btnConnectClient.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				// boolean exit = false;// bandera para controlar ciclo del programa
-
-
-
-				try {
-
-					socket = new Socket("127.0.0.1", 5011);// open socket
-					// To read from the server
-					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					// to write to the server
-					output = new PrintStream(socket.getOutputStream());
-
-					frame.setTitle("connected with port " + 5011 + " on IP 127.0.0.1");
-
-					Reading chatInput = new Reading(input, output, textChatPanel);
-					chatInput.start();
-					
-					state = CONNECTED;
-					updateEdition();
-
-				} catch (IOException ex) {
-					System.err.println("Client -> " + ex.getMessage());
-				}
-
-			}
-		});
+//		btnConnectClient.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				JFrame enterUserClient = new JFrame();
+//				user = JOptionPane.showInputDialog(frame, "USER?");
+//
+//				// boolean exit = false;// bandera para controlar ciclo del programa
+//
+//
+//				JFrame enterIp = new JFrame();
+//				serverIP = JOptionPane.showInputDialog(frame, "IP?");
+//
+//				JFrame enterServer = new JFrame();
+//				String clientPort = JOptionPane.showInputDialog(frame, "Port?");
+//				port = Integer.parseInt(clientPort);
+//
+//				try {
+//
+//					socket = new Socket(serverIP, port);// open socket
+//					// To read from the server
+//					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//					// to write to the server
+//					output = new PrintStream(socket.getOutputStream());
+//
+//					frame.setTitle(user + " connected with port " + clientPort + " on IP " + serverIP);
+//
+//					Reading chatInput = new Reading(input, output, textChatPanel);
+//					chatInput.start();
+//					
+//					state = CONNECTED;
+//					updateEdition();
+//
+//				} catch (IOException ex) {
+//					System.err.println("Client -> " + ex.getMessage());
+//				}
+//
+//			}
+//		});
 
 		// send Message
 
