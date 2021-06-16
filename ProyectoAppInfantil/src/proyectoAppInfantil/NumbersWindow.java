@@ -31,8 +31,8 @@ public class NumbersWindow {
 
 	private JFrame numbersFrame;
 	// private PanelBackground frameBG;
-	private boolean muted = false;
-	private boolean jugando = true;
+	private boolean isMuted = false;
+	private boolean isJugando = true;
 	private float volume;
 	ArrayList<Integer> numList = new ArrayList<Integer>();
 	private String result;
@@ -397,8 +397,8 @@ public class NumbersWindow {
 						"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
 				StaticSoundMethods.playSound(generateNum);
 				lblWinning.setVisible(false);
-				jugando = true;
-				seguirJugando(jugando, numberButtons);
+				isJugando = true;
+				seguirJugando(isJugando, numberButtons);
 				ocultarNumero(lblTargetNumber, numberButtons);
 			}
 		});
@@ -443,7 +443,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_1.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -454,7 +454,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_2.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -465,7 +465,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_3.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -476,7 +476,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_4.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -487,7 +487,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_5.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -498,7 +498,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_6.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -509,7 +509,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_7.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -520,7 +520,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_8.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -531,7 +531,7 @@ public class NumbersWindow {
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_9.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
-				seguirJugando(jugando, numberButtons);
+				seguirJugando(isJugando, numberButtons);
 			}
 		});
 
@@ -556,7 +556,7 @@ public class NumbersWindow {
 			StaticSoundMethods.playSound(congrats);
 			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/congrats.gif")));
 			lblWinning.setVisible(true);
-			jugando = false;
+			isJugando = false;
 
 		}
 		if (result.compareToIgnoreCase("lose") == 0) {
@@ -566,7 +566,7 @@ public class NumbersWindow {
 			StaticSoundMethods.playSound(congrats);
 			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/youLose.gif")));
 			lblWinning.setVisible(true);
-			jugando = false;
+			isJugando = false;
 		}
 		if (result.compareToIgnoreCase("try") == 0) {
 			lblMostrarResultado.setText(lblMostrarResultado.getText() + " + ");
