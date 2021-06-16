@@ -198,8 +198,8 @@ public class ChatWindow {
 					// to print data out
 					output = new PrintStream(client.getOutputStream());
 
-					Reading chatInput = new Reading(input, output, textChatPanel);
-					chatInput.start();
+//					Reading chatInput = new Reading(input, output, textChatPanel);
+//					chatInput.start();
 					
 					state = CONNECTED;
 					updateEdition();
@@ -211,44 +211,44 @@ public class ChatWindow {
 			}
 		});
 
-		btnConnectClient.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				JFrame enterUserClient = new JFrame();
-				user = JOptionPane.showInputDialog(frame, "USER?");
-
-				// boolean exit = false;// bandera para controlar ciclo del programa
-
-
-				JFrame enterIp = new JFrame();
-				serverIP = JOptionPane.showInputDialog(frame, "IP?");
-
-				JFrame enterServer = new JFrame();
-				String clientPort = JOptionPane.showInputDialog(frame, "Port?");
-				port = Integer.parseInt(clientPort);
-
-				try {
-
-					socket = new Socket(serverIP, port);// open socket
-					// To read from the server
-					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					// to write to the server
-					output = new PrintStream(socket.getOutputStream());
-
-					frame.setTitle(user + " connected with port " + clientPort + " on IP " + serverIP);
-
-					Reading chatInput = new Reading(input, output, textChatPanel);
-					chatInput.start();
-					
-					state = CONNECTED;
-					updateEdition();
-
-				} catch (IOException ex) {
-					System.err.println("Client -> " + ex.getMessage());
-				}
-
-			}
-		});
+//		btnConnectClient.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				JFrame enterUserClient = new JFrame();
+//				user = JOptionPane.showInputDialog(frame, "USER?");
+//
+//				// boolean exit = false;// bandera para controlar ciclo del programa
+//
+//
+//				JFrame enterIp = new JFrame();
+//				serverIP = JOptionPane.showInputDialog(frame, "IP?");
+//
+//				JFrame enterServer = new JFrame();
+//				String clientPort = JOptionPane.showInputDialog(frame, "Port?");
+//				port = Integer.parseInt(clientPort);
+//
+//				try {
+//
+//					socket = new Socket(serverIP, port);// open socket
+//					// To read from the server
+//					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//					// to write to the server
+//					output = new PrintStream(socket.getOutputStream());
+//
+//					frame.setTitle(user + " connected with port " + clientPort + " on IP " + serverIP);
+//
+//					Reading chatInput = new Reading(input, output, textChatPanel);
+//					chatInput.start();
+//					
+//					state = CONNECTED;
+//					updateEdition();
+//
+//				} catch (IOException ex) {
+//					System.err.println("Client -> " + ex.getMessage());
+//				}
+//
+//			}
+//		});
 
 		// send Message
 
