@@ -26,7 +26,7 @@ public class Server {
 	
 	
 	/* We keep the port in a constant */
-	private final static int PORT = 5012;
+	private final static int PORT = 5013;
 	
 	private static boolean talking = true;
 	
@@ -64,23 +64,27 @@ public class Server {
 					clip.open(audioInputStream);
 					clip.start();
 
+//				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
+//				SoundSerializer soundReceive = (SoundSerializer)inObjeto.readObject();
+//				soundReceive.playSound();
 					
 					
 					
 					
-					
-					client.close();
-					server.close();
+				//	client.close();
+				//	server.close();
 			
 				
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (UnsupportedAudioFileException e) {
+			} 
+			catch (UnsupportedAudioFileException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (LineUnavailableException e) {
+			} 
+			catch (LineUnavailableException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
