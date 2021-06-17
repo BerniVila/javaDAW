@@ -27,8 +27,9 @@ public class SoundSerializer implements Serializable {
 
     public SoundSerializer() throws FileNotFoundException, IOException {
     	File fx3 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroUno.wav");
-
-        FileInputStream fis = new FileInputStream(fx3);
+    	File fx = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\uno16.wav");
+    	
+        FileInputStream fis = new FileInputStream(fx);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         buf = new byte[1024];
 

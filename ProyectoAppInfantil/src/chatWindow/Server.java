@@ -26,7 +26,7 @@ public class Server {
 	
 	
 	/* We keep the port in a constant */
-	private final static int PORT = 5013;
+	private final static int PORT = 5014;
 	
 	private static boolean talking = true;
 	
@@ -54,25 +54,27 @@ public class Server {
 			
 
 			try {
-				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
-				AudioSerializable audioRecibir = (AudioSerializable)inObjeto.readObject();
-				File archivo = audioRecibir.getFile();
-				//StaticSoundMethods.playSound(archivo);
-				
-					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(archivo);
-					Clip clip = AudioSystem.getClip();
-					clip.open(audioInputStream);
-					clip.start();
-
 //				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
-//				SoundSerializer soundReceive = (SoundSerializer)inObjeto.readObject();
-//				soundReceive.playSound();
+//				
+//				System.out.println("fallo manyanero");
+//				
+//				AudioSerializable audioRecibir = (AudioSerializable)inObjeto.readObject();
+//				File archivo = audioRecibir.getFile();
+//				//StaticSoundMethods.playSound(archivo);
+//					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(archivo);
+//					Clip clip = AudioSystem.getClip();
+//					clip.open(audioInputStream);
+//					clip.start();
+
+				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
+				SoundSerializer soundReceive = (SoundSerializer)inObjeto.readObject();
+				soundReceive.playSound();
 					
 					
 					
 					
-				//	client.close();
-				//	server.close();
+					//client.close();
+					//server.close();
 			
 				
 				
@@ -80,14 +82,14 @@ public class Server {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-			catch (UnsupportedAudioFileException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			catch (UnsupportedAudioFileException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} 
+//			catch (LineUnavailableException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 
 			
 

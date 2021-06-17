@@ -420,6 +420,38 @@ public class NumbersWindow {
 		});
 
 		// SONIDOS DE NUMEROS////////////////////////////////////////
+		
+		
+		File numSound1Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\uno16.wav");
+		File numSound2Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/dos.wav");
+		File numSound3Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/tres.wav");
+		File numSound4Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cuatro.wav");
+		File numSound5Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cinco.wav");
+		File numSound6Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/seis.wav");
+		File numSound7Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/siete.wav");
+		File numSound8Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/ocho.wav");
+		File numSound9Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/nueve.wav");
+		File numSound10Win = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/diez.wav");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		File numSound1 = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
 		File numSound2 = new File(
@@ -454,7 +486,7 @@ public class NumbersWindow {
 
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound1);
+				StaticSoundMethods.playSound(numSound1Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_1.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_1.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
