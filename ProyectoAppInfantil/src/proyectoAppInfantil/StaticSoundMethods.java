@@ -101,6 +101,19 @@ public static void playSound(File soundFile) {
 }
 
 
+public static void stopSound(File soundFile) {
+	try {
+		AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+		Clip clip = AudioSystem.getClip();
+		clip.open(audioInputStream);
+		clip.stop();
+	} catch (Exception ex) {
+		System.out.println("Error with playing sound.");
+		ex.printStackTrace();
+	}
+}
+
+
 public static void muteSound() {
 	try {
 		Clip clip = AudioSystem.getClip();

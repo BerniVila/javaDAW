@@ -29,15 +29,15 @@ public class Client {
 			//AUDIO FILE
 			
 			File fx = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\uno16.wav");
-			//File fx2 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
-			//File fx3 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroUno.wav");
+			File fx2 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
+			File fx3 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroUno.wav");
 			
 
-//			AudioSerializable audioEnviar = new AudioSerializable(fx);
-//			outObjeto.writeObject(audioEnviar);
+			AudioSerializable audioEnviar = new AudioSerializable(fx3);
+			outObjeto.writeObject(audioEnviar);
 
-			SoundSerializer soundSend = new SoundSerializer();
-			outObjeto.writeObject(soundSend);
+//			SoundSerializer soundSend = new SoundSerializer();
+//			outObjeto.writeObject(soundSend);
 			
 			//outObjeto.flush();// empty contents
 			

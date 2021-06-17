@@ -54,21 +54,21 @@ public class Server {
 			
 
 			try {
-//				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
-//				
-//				System.out.println("fallo manyanero");
-//				
-//				AudioSerializable audioRecibir = (AudioSerializable)inObjeto.readObject();
-//				File archivo = audioRecibir.getFile();
-//				//StaticSoundMethods.playSound(archivo);
-//					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(archivo);
-//					Clip clip = AudioSystem.getClip();
-//					clip.open(audioInputStream);
-//					clip.start();
-
 				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
-				SoundSerializer soundReceive = (SoundSerializer)inObjeto.readObject();
-				soundReceive.playSound();
+				
+				System.out.println("fallo manyanero");
+				
+				AudioSerializable audioRecibir = (AudioSerializable)inObjeto.readObject();
+				File archivo = audioRecibir.getFile();
+				//StaticSoundMethods.playSound(archivo);
+					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(archivo);
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					clip.start();
+
+//				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
+//				SoundSerializer soundReceive = (SoundSerializer)inObjeto.readObject();
+//				soundReceive.playSound();
 					
 					
 					
@@ -82,14 +82,14 @@ public class Server {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-//			catch (UnsupportedAudioFileException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} 
-//			catch (LineUnavailableException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			catch (UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			
 

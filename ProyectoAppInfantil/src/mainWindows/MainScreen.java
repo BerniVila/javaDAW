@@ -3,13 +3,11 @@ package mainWindows;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import addNumbers.AddNumbersMainWindow;
 import proyectoAppInfantil.LoginWindow;
 import proyectoAppInfantil.NumbersWindow;
 import proyectoAppInfantil.RegisterWindow;
 import proyectoAppInfantil.StaticSoundMethods;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -18,10 +16,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.Cursor;
-import java.awt.Dimension;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -33,6 +28,7 @@ public class MainScreen {
 	private JFrame mainFrame;
 	private boolean muted = false;
 	private float volume;
+	FloatControl gainControl;
 	
 	
 	
@@ -72,8 +68,10 @@ public class MainScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		//Clip clip = null;
+		
 		mainFrame = new JFrame();
-		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		mainFrame.setSize(1600, 900);
 		mainFrame.getContentPane().setBackground(new Color(204, 204, 255));
 		mainFrame.setBounds(0, 0, 1600, 900);
@@ -199,25 +197,19 @@ public class MainScreen {
 		lblTitulo_AR.setBounds(833, 317, 249, 172);
 		mainFrame.getContentPane().add(lblTitulo_AR);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setDoubleBuffered(true);
+		lblNewLabel.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/boy.gif")));
+		lblNewLabel.setBounds(14, 347, 464, 447);
+		mainFrame.getContentPane().add(lblNewLabel);
 		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setRequestFocusEnabled(false);
+		lblNewLabel_1.setDoubleBuffered(true);
+		lblNewLabel_1.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/girl.gif")));
+		lblNewLabel_1.setBounds(1169, 276, 378, 504);
+		mainFrame.getContentPane().add(lblNewLabel_1);
 		
-		btnStart.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				LoginWindow loginWindow = new LoginWindow();
-				loginWindow.getLoginWindow().setVisible(true);
-				mainFrame.setVisible(false);
-
-			}
-		});
-		
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RegisterWindow registerWindow = new RegisterWindow();
-				registerWindow.getRegisterWindow().setVisible(true);
-				//frame.setVisible(false);
-			}
-		});
 		
 		
 		
@@ -227,16 +219,22 @@ public class MainScreen {
 		//SOUNDS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
-		File bso = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
+		File bsoMainScreenWindows = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
+		File bsoMainScreenMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 		
-		File bsoMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+		File startMainScreenWindows = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Secret.wav");
+		File startMainScreenMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Secret.wav");
+		
+		File registerMainScreenWindows = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Secret.wav");
+		File registerMainScreenMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Secret.wav");
 		
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMainScreenMAC);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
-			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+//			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(-20.0f);
 			volume = gainControl.getValue();
 			float lastVolume = volume;
@@ -282,10 +280,40 @@ public class MainScreen {
 			});
 			
 			
+			
+			
 		} catch (Exception ex) {
 			System.out.println("Error with playing sound.");
 			ex.printStackTrace();
 		}
+		
+		
+		
+		
+		//BOTONES PANTALLA PRINCIPAL ///////////////////////////////////////////////////////////////
+		
+		
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				LoginWindow loginWindow = new LoginWindow();
+				loginWindow.getLoginWindow().setVisible(true);
+				mainFrame.setVisible(false);
+				StaticSoundMethods.playSound(startMainScreenMAC);
+				
+				gainControl.setValue(gainControl.getMinimum());
+
+			}
+		});
+		
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegisterWindow registerWindow = new RegisterWindow();
+				registerWindow.getRegisterWindow().setVisible(true);
+				//frame.setVisible(false);
+				StaticSoundMethods.playSound(startMainScreenMAC);
+			}
+		});
 		
 		
 		
