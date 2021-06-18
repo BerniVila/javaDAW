@@ -10,6 +10,9 @@ public class AddNumbersLogic {
 	private int numSum;
 	private int tempNum;
 	private int targetNum;
+	
+	public AddNumbersLogic() {
+	}
 
 	public AddNumbersLogic(int initialValue) {
 		this.targetNum = generateNumber(initialValue);

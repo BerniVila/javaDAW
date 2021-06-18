@@ -86,7 +86,7 @@ public class LoginWindow {
 		JButton btnAvatar_1 = new JButton("");
 		btnAvatar_1.setName("alpaca");
 		btnAvatar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_1.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
+		btnAvatar_1.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
 		btnAvatar_1.setSize(new Dimension(100, 100));
 		btnAvatar_1.setSelected(true);
 		btnAvatar_1.setPreferredSize(new Dimension(100, 100));
@@ -101,7 +101,7 @@ public class LoginWindow {
 		JButton btnAvatar_2 = new JButton("");
 		btnAvatar_2.setName("aguacate");
 		btnAvatar_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_2.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-avocado.gif")));
+		btnAvatar_2.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-avocado.gif")));
 		btnAvatar_2.setSize(new Dimension(100, 100));
 		btnAvatar_2.setSelected(true);
 		btnAvatar_2.setPreferredSize(new Dimension(100, 100));
@@ -116,7 +116,7 @@ public class LoginWindow {
 		JButton btnAvatar_3 = new JButton("");
 		btnAvatar_3.setName("calamar");
 		btnAvatar_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_3.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-squidGuitar.gif")));
+		btnAvatar_3.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-squidGuitar.gif")));
 		btnAvatar_3.setSize(new Dimension(100, 100));
 		btnAvatar_3.setSelected(true);
 		btnAvatar_3.setPreferredSize(new Dimension(100, 100));
@@ -131,7 +131,7 @@ public class LoginWindow {
 		JButton btnAvatar_4 = new JButton("");
 		btnAvatar_4.setName("leon");
 		btnAvatar_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_4.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-lion.gif")));
+		btnAvatar_4.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-lion.gif")));
 		btnAvatar_4.setSize(new Dimension(100, 100));
 		btnAvatar_4.setSelected(true);
 		btnAvatar_4.setPreferredSize(new Dimension(100, 100));
@@ -146,7 +146,7 @@ public class LoginWindow {
 		JButton btnAvatar_7 = new JButton("");
 		btnAvatar_7.setName("unicornio");
 		btnAvatar_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_7.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-unicorn.gif")));
+		btnAvatar_7.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-unicorn.gif")));
 		btnAvatar_7.setSize(new Dimension(100, 100));
 		btnAvatar_7.setSelected(true);
 		btnAvatar_7.setPreferredSize(new Dimension(100, 100));
@@ -161,7 +161,7 @@ public class LoginWindow {
 		JButton btnAvatar_8 = new JButton("");
 		btnAvatar_8.setName("gato");
 		btnAvatar_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_8.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-cat.gif")));
+		btnAvatar_8.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-cat.gif")));
 		btnAvatar_8.setSize(new Dimension(100, 100));
 		btnAvatar_8.setSelected(true);
 		btnAvatar_8.setPreferredSize(new Dimension(100, 100));
@@ -176,7 +176,7 @@ public class LoginWindow {
 		JButton btnAvatar_5 = new JButton("");
 		btnAvatar_5.setName("monete");
 		btnAvatar_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_5.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-monkey.gif")));
+		btnAvatar_5.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-monkey.gif")));
 		btnAvatar_5.setSize(new Dimension(100, 100));
 		btnAvatar_5.setSelected(true);
 		btnAvatar_5.setPreferredSize(new Dimension(100, 100));
@@ -191,7 +191,7 @@ public class LoginWindow {
 		JButton btnAvatar_6 = new JButton("");
 		btnAvatar_6.setName("perro");
 		btnAvatar_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_6.setIcon(new ImageIcon(IDWindow.class.getResource("/images/avatars/avatar-dog.gif")));
+		btnAvatar_6.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/avatars/avatar-dog.gif")));
 		btnAvatar_6.setSize(new Dimension(100, 100));
 		btnAvatar_6.setSelected(true);
 		btnAvatar_6.setPreferredSize(new Dimension(100, 100));
@@ -320,7 +320,9 @@ public class LoginWindow {
 						
 						NumbersWindow numbersWindow = new NumbersWindow();
 						numbersWindow.getNumbersWindow().setVisible(true);
+						numbersWindow.setNombreUsuario(nombreUsuario);
 						loginFrame.setVisible(false);
+						
 						
 						
 					}else {

@@ -26,6 +26,9 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
+import javax.swing.border.TitledBorder;
+import javax.swing.SwingConstants;
+import javax.swing.border.EtchedBorder;
 
 public class NumbersWindow {
 
@@ -37,21 +40,19 @@ public class NumbersWindow {
 	private static ArrayList<Integer> numList = new ArrayList<Integer>();
 	private String result;
 	private static JLabel lblTargetNumber;
-	
-	
-	
-	
+	private JLabel lblNombreUsuario;
+	JButton btnPista;
+	FloatControl gainControl;
+
 	public static String getSumaActual() {
 		String sumaActual = devolverSumaActual(numList);
 		return sumaActual;
 	}
-	
+
 	public static String getObjetivoActual() {
 		String objetivoActual = devolverObjetivoActual(lblTargetNumber);
 		return objetivoActual;
 	}
-	
-	
 
 	// added to use from main window
 	public JFrame getNumbersWindow() {
@@ -216,9 +217,9 @@ public class NumbersWindow {
 		bg.add(btn_9);
 
 		JLabel lblTitle = new JLabel("SUMA NUMEROS CON RESULTADO");
-		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
+		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
 		lblTitle.setForeground(new Color(255, 255, 255));
-		lblTitle.setBounds(722, 5, 872, 191);
+		lblTitle.setBounds(722, 94, 872, 90);
 		bg.add(lblTitle);
 
 		lblTargetNumber = new JLabel("");
@@ -289,7 +290,8 @@ public class NumbersWindow {
 		btnRaiseVolume.setBounds(1505, 790, 77, 54);
 		bg.add(btnRaiseVolume);
 
-		JButton btnPista = new JButton("PISTA");
+		btnPista = new JButton("PISTA");
+		btnPista.setEnabled(false);
 		btnPista.setSelected(true);
 		btnPista.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnPista.setBackground(new Color(102, 153, 153));
@@ -300,10 +302,6 @@ public class NumbersWindow {
 		bg.add(btnPista);
 
 		JButton btnAtras = new JButton("<-- ATRAS");
-		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnAtras.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAtras.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		btnAtras.setBounds(6, 790, 309, 68);
@@ -321,71 +319,69 @@ public class NumbersWindow {
 		JButton[] numberButtons = new JButton[] { btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9,
 				btn_10 };
 
-		// StaticSoundMethods.playSound(bso);
-
 		// SOUNDS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//		File bso = new File(
-//				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
-//
-//		File bsoMAC = new File(
-//				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
-//
-//		try {
-//			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
-//			Clip clip = AudioSystem.getClip();
-//			clip.open(audioInputStream);
-//			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-//			gainControl.setValue(-20.0f);
-//			clip.start();
-//			clip.loop(10);
-//			volume = gainControl.getValue();
-//			float lastVolume = volume;
-//
-//			btnMute.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					if (muted) {
-//						gainControl.setValue(lastVolume);
-//						muted = false;
-//
-//					} else {
-//						gainControl.setValue(-80.0f);
-//						muted = true;
-//					}
-//
-//				}
-//			});
-//
-//			btnRaiseVolume.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					volume = gainControl.getValue();
-//					volume += 2.5;
-//					if (volume >= 5.0) {
-//						volume = 5;
-//					}
-//					gainControl.setValue(volume);
-//				}
-//			});
-//
-//			btnLowerVolume.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					volume = gainControl.getValue();
-//					volume -= 10;
-//					if (volume <= -80) {
-//						volume = -80;
-//					}
-//					gainControl.setValue(volume);
-//				}
-//			});
-//
-//		} catch (Exception ex) {
-//			System.out.println("Error with playing sound.");
-//			ex.printStackTrace();
-//		}
+		File bso = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
+
+		File bsoMAC = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+
+		try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMAC);
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(-20.0f);
+			clip.start();
+			clip.loop(10);
+			volume = gainControl.getValue();
+			float lastVolume = volume;
+
+			btnMute.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (isMuted) {
+						gainControl.setValue(lastVolume);
+						isMuted = false;
+
+					} else {
+						gainControl.setValue(-80.0f);
+						isMuted = true;
+					}
+
+				}
+			});
+
+			btnRaiseVolume.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					volume = gainControl.getValue();
+					volume += 2.5;
+					if (volume >= 5.0) {
+						volume = 5;
+					}
+					gainControl.setValue(volume);
+				}
+			});
+
+			btnLowerVolume.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					volume = gainControl.getValue();
+					volume -= 10;
+					if (volume <= -80) {
+						volume = -80;
+					}
+					gainControl.setValue(volume);
+				}
+			});
+
+		} catch (Exception ex) {
+			System.out.println("Error with playing sound.");
+			ex.printStackTrace();
+		}
 
 		// GENERAR NUEVO NUMERO
 		// //////////////////////////////////////////////////////////
-		AddNumbersLogic numbersLogic = new AddNumbersLogic(10);
+		AddNumbersLogic numbersLogic = new AddNumbersLogic();
 		lblTargetNumber.setText(String.valueOf(numbersLogic.getTargetNum()));
 		ocultarNumero(lblTargetNumber, numberButtons);
 
@@ -402,6 +398,15 @@ public class NumbersWindow {
 		lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/congrats.gif")));
 		lblWinning.setBounds(830, 535, 500, 260);
 		bg.add(lblWinning);
+
+		lblNombreUsuario = new JLabel("");
+		lblNombreUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNombreUsuario.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+				"NOMBRE DE USUARIO", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 255, 255)));
+		lblNombreUsuario.setFont(new Font("Comic Sans MS", Font.PLAIN, 50));
+		lblNombreUsuario.setForeground(new Color(153, 153, 255));
+		lblNombreUsuario.setBounds(899, 13, 367, 82);
+		bg.add(lblNombreUsuario);
 
 		btnGenerateNumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -420,203 +425,204 @@ public class NumbersWindow {
 		});
 
 		// SONIDOS DE NUMEROS////////////////////////////////////////
-		
-		
+
 		File numSound1Win = new File(
-				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\uno16.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\uno.wav");
 		File numSound2Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/dos.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\dos.wav");
 		File numSound3Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/tres.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\tres.wav");
 		File numSound4Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cuatro.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\cuatro.wav");
 		File numSound5Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cinco.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\cinco.wav");
 		File numSound6Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/seis.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\seis.wav");
 		File numSound7Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/siete.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\siete.wav");
 		File numSound8Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/ocho.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\ocho.wav");
 		File numSound9Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/nueve.wav");
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\nueve.wav");
 		File numSound10Win = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/diez.wav");
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		File numSound1 = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\diez.wav");
+
+		File numSound1Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
-		File numSound2 = new File(
+		File numSound2Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/dos.wav");
-		File numSound3 = new File(
+		File numSound3Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/tres.wav");
-		File numSound4 = new File(
+		File numSound4Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cuatro.wav");
-		File numSound5 = new File(
+		File numSound5Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cinco.wav");
-		File numSound6 = new File(
+		File numSound6Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/seis.wav");
-		File numSound7 = new File(
+		File numSound7Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/siete.wav");
-		File numSound8 = new File(
+		File numSound8Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/ocho.wav");
-		File numSound9 = new File(
+		File numSound9Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/nueve.wav");
-		File numSound10 = new File(
+		File numSound10Mac = new File(
 				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/diez.wav");
 
 		btn_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound10);
+				StaticSoundMethods.playSound(numSound10Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_10.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_10.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				System.out.println(numList);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound1Win);
+				StaticSoundMethods.playSound(numSound1Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_1.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_1.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound2);
+				StaticSoundMethods.playSound(numSound2Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_2.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_2.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound3);
+				StaticSoundMethods.playSound(numSound3Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_3.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_3.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound4);
+				StaticSoundMethods.playSound(numSound4Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_4.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_4.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound5);
+				StaticSoundMethods.playSound(numSound5Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_5.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_5.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound6);
+				StaticSoundMethods.playSound(numSound6Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_6.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_6.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound7);
+				StaticSoundMethods.playSound(numSound7Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_7.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_7.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound8);
+				StaticSoundMethods.playSound(numSound8Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_8.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_8.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
 		btn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound9);
+				StaticSoundMethods.playSound(numSound9Mac);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_9.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_9.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
+				btnPista.setEnabled(true);
 			}
 		});
 
-
-		// VOLVER ATRAS///////////////////////////////////////////////////////////////////
+		// VOLVER
+		// ATRAS///////////////////////////////////////////////////////////////////
 
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainScreen window = new MainScreen();
 				window.getMainFrame().setVisible(true);
 				numbersFrame.setVisible(false);
+				gainControl.setValue(gainControl.getMinimum());
 			}
 		});
-		
+
 		// PISTAS///////////////////////////////////////////////////////////////////
 
 		btnPista.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {			
+			public void actionPerformed(ActionEvent e) {
 				Pista_tienes pista_tienesWindow = new Pista_tienes();
 				pista_tienesWindow.getPista_tienes().setVisible(true);
-				
+
 				Pista_llegar_a pista_llegar_aWindow = new Pista_llegar_a();
 				pista_llegar_aWindow.getPista_llegar_a().setVisible(true);
-				
+
 			}
 		});
-		
-		
-		
-		
+
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chatWindow.Server servidor = new chatWindow.Server();
 			}
 		});
-		
 
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		lblNombreUsuario.setText(nombreUsuario);
 	}
 
 	public void checkGameResult(String result, JLabel lblMostrarResultado, JLabel lblWinning) {
@@ -633,7 +639,7 @@ public class NumbersWindow {
 		if (result.compareToIgnoreCase("lose") == 0) {
 			lblMostrarResultado.setText("HAS PERDIDO!!!");
 			File congrats = new File(
-					"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/fail-trombone-03.wav");
+					"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/fail-trombone.wav");
 			StaticSoundMethods.playSound(congrats);
 			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/youLose.gif")));
 			lblWinning.setVisible(true);
@@ -682,16 +688,4 @@ public class NumbersWindow {
 
 		return objetivoActual;
 	}
-	
-	
-//	public String getSumaActual() {
-//		String sumaActual = devolverSumaActual(numList);
-//		return sumaActual;
-//	}
-//	
-//	public String getObjetivoActual() {
-//		String objetivoActual = devolverObjetivoActual(lblTargetNumber);
-//		return objetivoActual;
-//	}
-
 }

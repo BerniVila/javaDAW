@@ -25,6 +25,7 @@ import java.awt.event.FocusEvent;
 import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.MatteBorder;
 
 public class RegisterWindow {
 
@@ -154,7 +155,7 @@ public class RegisterWindow {
 		btnAvatar_1.setMargin(new Insets(0, 0, 0, 0));
 		btnAvatar_1.setIconTextGap(0);
 		btnAvatar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAvatar_1.setBorder(new LineBorder(Color.BLACK, 2, true));
+		btnAvatar_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		btnAvatar_1.setOpaque(true);
 		btnAvatar_1.setIcon(new ImageIcon(RegisterWindow.class.getResource("/images/avatars/avatar-alpaca.gif")));
 		btnAvatar_1.setBounds(36, 65, 100, 100);
@@ -170,7 +171,7 @@ public class RegisterWindow {
 		btnAvatar_2.setMargin(new Insets(0, 0, 0, 0));
 		btnAvatar_2.setLocation(new Point(0, 2));
 		btnAvatar_2.setIconTextGap(0);
-		btnAvatar_2.setBorder(new LineBorder(Color.BLACK, 2, true));
+		btnAvatar_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btnAvatar_2.setBounds(185, 65, 100, 100);
 		panel.add(btnAvatar_2);
 		
@@ -494,10 +495,10 @@ public class RegisterWindow {
 	public static void isSelectedAvatar(ArrayList<JButton> avatarButtons) {
 		for (JButton avatar : avatarButtons) {
 			if (avatar.isFocusOwner()) {
-				avatar.setBorder(new LineBorder(Color.PINK, 10, true));
+				avatar.setBorder(new LineBorder(Color.PINK, 10, false));
 				
 			} else {
-				avatar.setBorder(new LineBorder(Color.BLACK, 2, true));
+				avatar.setBorder(new LineBorder(Color.BLACK, 2, false));
 			}
 		}
 	}

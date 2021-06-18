@@ -26,7 +26,7 @@ import javax.swing.SwingConstants;
 public class MainScreen {
 
 	private JFrame mainFrame;
-	private boolean muted = false;
+	private boolean isMuted = false;
 	private float volume;
 	FloatControl gainControl;
 	
@@ -197,18 +197,23 @@ public class MainScreen {
 		lblTitulo_AR.setBounds(833, 317, 249, 172);
 		mainFrame.getContentPane().add(lblTitulo_AR);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setDoubleBuffered(true);
-		lblNewLabel.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/boy.gif")));
-		lblNewLabel.setBounds(14, 347, 464, 447);
-		mainFrame.getContentPane().add(lblNewLabel);
+		JLabel lblBoy = new JLabel("");
+		lblBoy.setVerifyInputWhenFocusTarget(false);
+		lblBoy.setRequestFocusEnabled(false);
+		lblBoy.setIconTextGap(0);
+		lblBoy.setFocusable(false);
+		lblBoy.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/boy.gif")));
+		lblBoy.setBounds(14, 347, 464, 447);
+		mainFrame.getContentPane().add(lblBoy);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setRequestFocusEnabled(false);
-		lblNewLabel_1.setDoubleBuffered(true);
-		lblNewLabel_1.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/girl.gif")));
-		lblNewLabel_1.setBounds(1169, 276, 378, 504);
-		mainFrame.getContentPane().add(lblNewLabel_1);
+		JLabel lblGirl = new JLabel("");
+		lblGirl.setIconTextGap(0);
+		lblGirl.setFocusable(false);
+		lblGirl.setVerifyInputWhenFocusTarget(false);
+		lblGirl.setRequestFocusEnabled(false);
+		lblGirl.setIcon(new ImageIcon(MainScreen.class.getResource("/images/titles/girl.gif")));
+		lblGirl.setBounds(1169, 276, 378, 504);
+		mainFrame.getContentPane().add(lblGirl);
 		
 		
 		
@@ -222,11 +227,7 @@ public class MainScreen {
 		File bsoMainScreenWindows = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
 		File bsoMainScreenMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 		
-		File startMainScreenWindows = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Secret.wav");
-		File startMainScreenMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Secret.wav");
-		
-		File registerMainScreenWindows = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Secret.wav");
-		File registerMainScreenMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Secret.wav");
+
 		
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMainScreenMAC);
@@ -242,14 +243,14 @@ public class MainScreen {
 			
 			btnMute.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if (muted) {
+					if (isMuted) {
 						gainControl.setValue(lastVolume);
-						muted = false;
+						isMuted = false;
 						
 					}
 					else {
 						gainControl.setValue(-80.0f);
-						muted = true;
+						isMuted = true;
 					}
 					
 				}
@@ -299,7 +300,6 @@ public class MainScreen {
 				LoginWindow loginWindow = new LoginWindow();
 				loginWindow.getLoginWindow().setVisible(true);
 				mainFrame.setVisible(false);
-				StaticSoundMethods.playSound(startMainScreenMAC);
 				
 				gainControl.setValue(gainControl.getMinimum());
 
@@ -311,7 +311,6 @@ public class MainScreen {
 				RegisterWindow registerWindow = new RegisterWindow();
 				registerWindow.getRegisterWindow().setVisible(true);
 				//frame.setVisible(false);
-				StaticSoundMethods.playSound(startMainScreenMAC);
 			}
 		});
 		
