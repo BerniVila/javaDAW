@@ -29,7 +29,7 @@ import java.awt.event.InputMethodEvent;
 
 public class ChatWindowServPruebasLOCAS {
 
-	private JFrame serverWindow;
+	private JFrame frame;
 	private JTextField textField;
 //	private JButton btnConnectServer;
 	private int port;
@@ -51,13 +51,6 @@ public class ChatWindowServPruebasLOCAS {
 	private String estadoJuego;
 	
 	
-	
-	
-	// added to use from main window
-	public JFrame getServerWindow() {
-		return serverWindow;
-	}
-	
 
 	/**
 	 * Launch the application.
@@ -67,7 +60,7 @@ public class ChatWindowServPruebasLOCAS {
 			public void run() {
 				try {
 					ChatWindowServPruebasLOCAS window = new ChatWindowServPruebasLOCAS();
-					window.serverWindow.setVisible(true);
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -89,15 +82,15 @@ public class ChatWindowServPruebasLOCAS {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		serverWindow = new JFrame();
-		serverWindow.getContentPane().setBackground(new Color(102, 102, 204));
-		serverWindow.setBounds(100, 100, 675, 422);
-		serverWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		serverWindow.getContentPane().setLayout(null);
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(102, 102, 204));
+		frame.setBounds(100, 100, 675, 422);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(9, 4, 480, 237);
-		serverWindow.getContentPane().add(scrollPane);
+		frame.getContentPane().add(scrollPane);
 
 		textChatPanel = new JTextArea(10, 20);
 		scrollPane.setViewportView(textChatPanel);
@@ -121,11 +114,11 @@ public class ChatWindowServPruebasLOCAS {
 		btnDisconnect.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnDisconnect.setBackground(new Color(153, 51, 51));
 		btnDisconnect.setForeground(Color.WHITE);
-		serverWindow.getContentPane().add(btnDisconnect);
+		frame.getContentPane().add(btnDisconnect);
 
 		textField = new JTextField();
 		textField.setBounds(9, 256, 395, 48);
-		serverWindow.getContentPane().add(textField);
+		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		textField.setVisible(true);
 		updateEdition();
@@ -140,47 +133,47 @@ public class ChatWindowServPruebasLOCAS {
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);
-		serverWindow.getContentPane().add(btnSend);
+		frame.getContentPane().add(btnSend);
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setBounds(502, 9, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton);
+		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("New button");
 		btnNewButton_1.setBounds(589, 9, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_1);
+		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("New button");
 		btnNewButton_2.setBounds(501, 86, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_2);
+		frame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_1_1 = new JButton("New button");
 		btnNewButton_1_1.setBounds(588, 86, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_1_1);
+		frame.getContentPane().add(btnNewButton_1_1);
 		
 		JButton btnNewButton_3 = new JButton("New button");
 		btnNewButton_3.setBounds(501, 166, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_3);
+		frame.getContentPane().add(btnNewButton_3);
 		
 		JButton btnNewButton_1_2 = new JButton("New button");
 		btnNewButton_1_2.setBounds(588, 166, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_1_2);
+		frame.getContentPane().add(btnNewButton_1_2);
 		
 		JButton btnNewButton_4 = new JButton("New button");
 		btnNewButton_4.setBounds(502, 243, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_4);
+		frame.getContentPane().add(btnNewButton_4);
 		
 		JButton btnNewButton_1_3 = new JButton("New button");
 		btnNewButton_1_3.setBounds(589, 243, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_1_3);
+		frame.getContentPane().add(btnNewButton_1_3);
 		
 		JButton btnNewButton_4_1 = new JButton("New button");
 		btnNewButton_4_1.setBounds(502, 319, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_4_1);
+		frame.getContentPane().add(btnNewButton_4_1);
 		
 		JButton btnNewButton_1_3_1 = new JButton("New button");
 		btnNewButton_1_3_1.setBounds(589, 319, 75, 75);
-		serverWindow.getContentPane().add(btnNewButton_1_3_1);
+		frame.getContentPane().add(btnNewButton_1_3_1);
 		
 		
 		
@@ -196,13 +189,13 @@ public class ChatWindowServPruebasLOCAS {
 //				user = JOptionPane.showInputDialog(frame, "USER?");
 //
 				JFrame enterPort = new JFrame();
-				String serverPort = JOptionPane.showInputDialog(serverWindow, "Puerto?");
+				String serverPort = JOptionPane.showInputDialog(frame, "Puerto?");
 				port = Integer.parseInt(serverPort);
 				try {
 
 					// Server Socket to wait for network requests
 					ServerSocket server = new ServerSocket(port);
-					serverWindow.setTitle("Alumno conectado a puerto " + serverPort);
+					frame.setTitle("Alumno conectado a puerto " + serverPort);
 
 					// Client Socket
 					//Socket client;
