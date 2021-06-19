@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import addNumbers.AddNumbersLogic;
+import chatWindow.ChatWindowCLIPruebasLOCAS;
+import chatWindow.ChatWindowServPruebasLOCAS;
 import mainWindows.MainScreen;
 
 import java.awt.Color;
@@ -42,6 +44,7 @@ public class NumbersWindow {
 	private static JLabel lblTargetNumber;
 	private JLabel lblNombreUsuario;
 	JButton btnPista;
+	JButton btnHelp;
 	FloatControl gainControl;
 
 	public static String getSumaActual() {
@@ -240,8 +243,9 @@ public class NumbersWindow {
 		btn_10.setBounds(235, 560, 150, 185);
 		bg.add(btn_10);
 
-		JButton btnHelp = new JButton("AYUDA");
+		btnHelp = new JButton("AYUDA");
 		btnHelp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnHelp.setEnabled(false);
 		btnHelp.setOpaque(true);
 		btnHelp.setBorder(null);
 		btnHelp.setBorderPainted(false);
@@ -379,8 +383,7 @@ public class NumbersWindow {
 			ex.printStackTrace();
 		}
 
-		// GENERAR NUEVO NUMERO
-		// //////////////////////////////////////////////////////////
+		// GENERAR NUEVO NUMERO //////////////////////////////////////////////////
 		AddNumbersLogic numbersLogic = new AddNumbersLogic();
 		lblTargetNumber.setText(String.valueOf(numbersLogic.getTargetNum()));
 		ocultarNumero(lblTargetNumber, numberButtons);
@@ -476,7 +479,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				System.out.println(numList);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -488,7 +491,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -500,7 +503,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -512,7 +515,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -524,7 +527,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -536,7 +539,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -548,7 +551,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -560,7 +563,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -572,7 +575,7 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
@@ -584,12 +587,11 @@ public class NumbersWindow {
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
 				checkGameResult(result, lblMostrarResultado, lblWinning);
 				seguirJugando(isJugando, numberButtons);
-				btnPista.setEnabled(true);
+				activarAyudaYPista();
 			}
 		});
 
-		// VOLVER
-		// ATRAS///////////////////////////////////////////////////////////////////
+		// VOLVER ATRAS //////////////////////////////////////////////////////////
 
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -600,7 +602,7 @@ public class NumbersWindow {
 			}
 		});
 
-		// PISTAS///////////////////////////////////////////////////////////////////
+		// PISTAS /////////////////////////////////////////////////////////////////
 
 		btnPista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -614,11 +616,16 @@ public class NumbersWindow {
 		});
 
 		
-		// CHAT DE AYUDA///////////////////////////////////////////////////////////////////
+		// CHAT DE AYUDA /////////////////////////////////////////////////////////////////
 		
-		btnHelp.addActionListener(new ActionListener() {
+		btnHelp.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
-				chatWindowAudio.Server servidor = new chatWindowAudio.Server();
+				ChatWindowServPruebasLOCAS alumnoServidor = new ChatWindowServPruebasLOCAS();
+				alumnoServidor.getServerWindow().setVisible(true);
+				
+				ChatWindowCLIPruebasLOCAS profeCliente = new ChatWindowCLIPruebasLOCAS();
+				profeCliente.getClientWindow().setVisible(true);
+				profeCliente.setEstadoJuego(getSumaActual() + " " + getObjetivoActual());
 			}
 		});
 
@@ -691,4 +698,12 @@ public class NumbersWindow {
 
 		return objetivoActual;
 	}
+	
+	
+	
+	public void activarAyudaYPista() {
+		btnPista.setEnabled(true);
+		btnHelp.setEnabled(true);
+	}
+	
 }
