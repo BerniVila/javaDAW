@@ -25,7 +25,7 @@ import javax.swing.ImageIcon;
 import java.awt.Dimension;
 
 
-public class ChatWindow {
+public class ChatWindowCli {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -56,7 +56,7 @@ public class ChatWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChatWindow window = new ChatWindow();
+					ChatWindowCli window = new ChatWindowCli();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -71,7 +71,7 @@ public class ChatWindow {
 	/**
 	 * Create the application.
 	 */
-	public ChatWindow() {
+	public ChatWindowCli() {
 		initialize();
 	}
 
@@ -161,7 +161,7 @@ public class ChatWindow {
 		btnSend.setMinimumSize(new Dimension(30, 29));
 		btnSend.setMaximumSize(new Dimension(30, 29));
 		btnSend.setIconTextGap(2);
-		btnSend.setIcon(new ImageIcon(ChatWindow.class.getResource("/images/icons/send-message-icon.png")));
+		btnSend.setIcon(new ImageIcon(ChatWindowCli.class.getResource("/images/icons/send-message-icon.png")));
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);

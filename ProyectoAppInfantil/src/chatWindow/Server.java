@@ -1,32 +1,19 @@
 package chatWindow;
 
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import proyectoAppInfantil.StaticSoundMethods;
 
 public class Server {
 	
 	
 	/* We keep the port in a constant */
-	private final static int PORT = 5014;
+	private final static int PORT = 5004;
 	
 	private static boolean talking = true;
 	
@@ -34,7 +21,7 @@ public class Server {
 	public static void main(String[] args) {
 
 		try {
-			//Scanner tec = new Scanner(System.in);
+			Scanner tec = new Scanner(System.in);
 			// Server Socket to wait for network requests
 			ServerSocket server = new ServerSocket(PORT);
 			System.out.println("Server started");
@@ -46,57 +33,32 @@ public class Server {
 			System.out.println("Connected " + client);
 			// setSoLinger closes the socket giving 10mS to receive the remaining data
 			client.setSoLinger(true, 10);
-//			// an input reader to read from the socket
-//			BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			// an input reader to read from the socket
+			BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+			// to print data out
+			PrintStream output = new PrintStream(client.getOutputStream());
 			
+			//creating reading thread object
+			Reading1 chatInput = new Reading1(input, output);
+			chatInput.start();
 			
-			/////////////////////////////
-			
+			while(talking) {
 
-			try {
-				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
+				// now we read a line from the keyboard
+				System.out.println("Server -> type a sentence to send to the client:");
+				String line2 = tec.nextLine();
+				output.flush();// empty contents
+				output.println(line2);
+				System.out.println("Server -> send the line to the client");
+				// close connection
 				
-				System.out.println("fallo manyanero");
-				
-				AudioSerializable audioRecibir = (AudioSerializable)inObjeto.readObject();
-				File archivo = audioRecibir.getFile();
-				//StaticSoundMethods.playSound(archivo);
-					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(archivo);
-					Clip clip = AudioSystem.getClip();
-					clip.open(audioInputStream);
-					clip.start();
-
-//				ObjectInputStream inObjeto = new ObjectInputStream(client.getInputStream());
-//				SoundSerializer soundReceive = (SoundSerializer)inObjeto.readObject();
-//				soundReceive.playSound();
+				if (line2.equalsIgnoreCase("bye")) {
 					
-					
-					
-					
-					//client.close();
-					//server.close();
-			
-				
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			catch (UnsupportedAudioFileException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+					talking = false;
+				}
 			}
-
-			
-
-
-			
-			
-
+			client.close();
+			server.close();
 			
 
 

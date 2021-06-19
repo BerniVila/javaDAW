@@ -613,9 +613,12 @@ public class NumbersWindow {
 			}
 		});
 
+		
+		// CHAT DE AYUDA///////////////////////////////////////////////////////////////////
+		
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chatWindow.Server servidor = new chatWindow.Server();
+				chatWindowAudio.Server servidor = new chatWindowAudio.Server();
 			}
 		});
 

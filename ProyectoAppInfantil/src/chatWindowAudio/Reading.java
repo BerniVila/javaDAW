@@ -1,4 +1,4 @@
-package chatWindow;
+package chatWindowAudio;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

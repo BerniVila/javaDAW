@@ -1,4 +1,4 @@
-package chatWindow;
+package chatWindowAudio;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -31,8 +31,8 @@ public class ChatWindow {
 	private JTextField textField;
 	private JButton btnConnectServer;
 	private JButton btnConnectClient;
-	private int port;
-	private String serverIP;
+	private int port = 5011;
+	private String serverIP = "127.0.0.1";
 	private BufferedReader input;
 	private PrintStream output;
 	private String user;
@@ -161,7 +161,7 @@ public class ChatWindow {
 		btnSend.setMinimumSize(new Dimension(30, 29));
 		btnSend.setMaximumSize(new Dimension(30, 29));
 		btnSend.setIconTextGap(2);
-		btnSend.setIcon(new ImageIcon(ChatWindow.class.getResource("/images/icons/send-message-icon.png")));
+		//btnSend.setIcon(new ImageIcon(ChatWindow.class.getResource("/images/send-message-icon.png")));
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);
@@ -176,17 +176,12 @@ public class ChatWindow {
 		btnConnectServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JFrame enterUserClient = new JFrame();
-				user = JOptionPane.showInputDialog(frame, "USER?");
 
-				JFrame enterPort = new JFrame();
-				String serverPort = JOptionPane.showInputDialog(frame, "Port?");
-				port = Integer.parseInt(serverPort);
 				try {
 
 					// Server Socket to wait for network requests
 					ServerSocket server = new ServerSocket(port);
-					frame.setTitle(user + " connected to port " + serverPort);
+					frame.setTitle(user + " connected to port " + port);
 
 					// Client Socket
 					//Socket client;
@@ -198,8 +193,8 @@ public class ChatWindow {
 					// to print data out
 					output = new PrintStream(client.getOutputStream());
 
-					Reading2 chatInput = new Reading2(input, output, textChatPanel);
-					chatInput.start();
+//					Reading chatInput = new Reading(input, output, textChatPanel);
+//					chatInput.start();
 					
 					state = CONNECTED;
 					updateEdition();
@@ -213,31 +208,22 @@ public class ChatWindow {
 
 		btnConnectClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				JFrame enterUserClient = new JFrame();
-				user = JOptionPane.showInputDialog(frame, "USER?");
 
 				// boolean exit = false;// bandera para controlar ciclo del programa
 
 
-				JFrame enterIp = new JFrame();
-				serverIP = JOptionPane.showInputDialog(frame, "IP?");
-
-				JFrame enterServer = new JFrame();
-				String clientPort = JOptionPane.showInputDialog(frame, "Port?");
-				port = Integer.parseInt(clientPort);
 
 				try {
 
-					socket = new Socket(serverIP, port);// open socket
+					socket = new Socket("127.0.0.1", 5011);// open socket
 					// To read from the server
 					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 					// to write to the server
 					output = new PrintStream(socket.getOutputStream());
 
-					frame.setTitle(user + " connected with port " + clientPort + " on IP " + serverIP);
+					frame.setTitle("connected with port " + 5011 + " on IP 127.0.0.1");
 
-					Reading2 chatInput = new Reading2(input, output, textChatPanel);
+					Reading chatInput = new Reading(input, output, textChatPanel);
 					chatInput.start();
 					
 					state = CONNECTED;

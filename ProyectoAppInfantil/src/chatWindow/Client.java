@@ -1,47 +1,45 @@
 package chatWindow;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.Socket;
-
+import java.util.Scanner;
 
 public class Client {
 
 	/* Port 5002 */
-	private final static int PORT = 5014;
+	private final static int PORT = 5002;
 
-	private final static String SERVER = "127.0.0.1";
+	private final static String SERVER = "192.168.31.5";
 
 	public static void main(String[] args) {
-//		boolean exit = false;// bandera para controlar ciclo del programa
+		boolean exit = false;// bandera para controlar ciclo del programa
 		Socket socket;// Socket para la comunicacion cliente servidor
 
 		
 		try {
 			System.out.println("Client -> Start");
 			socket = new Socket(SERVER, PORT);// open socket
-			
-			//Crear streams de audio
-			ObjectOutputStream outObjeto = new ObjectOutputStream(socket.getOutputStream());
-				
-			//outObjeto.flush();
-			//AUDIO FILE
-			
-			File fx = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\uno16.wav");
-			File fx2 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
-			File fx3 = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroUno.wav");
-			
+			// To read from the server
+			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			// to write to the server
+			PrintStream output = new PrintStream(socket.getOutputStream());
+			// To read from the user (keyboard)
+			Scanner tec = new Scanner(System.in);
+			System.out.println("Client -> Write a sentence to send:");
+			String line = tec.nextLine();
+			// send the line to the server
+			output.println(line);
+			// read the answer and print it
+			String st = input.readLine();
+			if (st != null)
+				System.out.println("Client -> received message: " + st);
+			System.out.println("Client -> End of the program");
 
-			AudioSerializable audioEnviar = new AudioSerializable(fx3);
-			outObjeto.writeObject(audioEnviar);
+			socket.close();
 
-//			SoundSerializer soundSend = new SoundSerializer();
-//			outObjeto.writeObject(soundSend);
-			
-			//outObjeto.flush();// empty contents
-			
-			
 		} catch (IOException ex) {
 			System.err.println("Client -> " + ex.getMessage());
 		}
