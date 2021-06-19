@@ -25,6 +25,7 @@ public class Reading2 extends Thread {
 			try {
 				line = in.readLine();
 				conversation.setText(conversation.getText() + "\n" + line + "\n");
+
 //				if (line.equalsIgnoreCase("bye")) {
 //					talking = false;
 //					out.println(line);
