@@ -31,8 +31,7 @@ public class ChatWindowCLIPruebasLOCAS {
 
 	private JFrame frame;
 	private JTextField textField;
-//	private JButton btnConnectServer;
-	private JButton btnConnectClient;
+//	private JButton btnConnectClient;
 	private int port;
 	private String serverIP;
 	private BufferedReader input;
@@ -101,22 +100,14 @@ public class ChatWindowCLIPruebasLOCAS {
 		scrollPane.setViewportView(textChatPanel);
 		textChatPanel.setEditable(false);
 
-
-//		btnConnectServer = new JButton("Connect as Server");
-//		btnConnectServer.setBounds(313, 323, 172, 55);
-//		btnConnectServer.setMargin(new Insets(10, 10, 10, 10));
-//		btnConnectServer.setBorderPainted(false);
-//		btnConnectServer.setOpaque(true);
-//		btnConnectServer.setBackground(new Color(0, 153, 102));
-//		frame.getContentPane().add(btnConnectServer);
 		
 
-		btnConnectClient = new JButton("Connect as Client");
-		btnConnectClient.setBounds(134, 324, 172, 55);
-		btnConnectClient.setOpaque(true);
-		btnConnectClient.setBorderPainted(false);
-		btnConnectClient.setBackground(new Color(51, 153, 204));
-		frame.getContentPane().add(btnConnectClient);
+//		btnConnectClient = new JButton("Connect as Client");
+//		btnConnectClient.setBounds(134, 324, 172, 55);
+//		btnConnectClient.setOpaque(true);
+//		btnConnectClient.setBorderPainted(false);
+//		btnConnectClient.setBackground(new Color(51, 153, 204));
+//		frame.getContentPane().add(btnConnectClient);
 		
 		btnDisconnect = new JButton("Disconnect");
 		btnDisconnect.setBounds(13, 325, 115, 55);
@@ -193,45 +184,7 @@ public class ChatWindowCLIPruebasLOCAS {
 
 		// events
 
-//		btnConnectServer.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				
-//				JFrame enterUserClient = new JFrame();
-//				user = JOptionPane.showInputDialog(frame, "USER?");
-//
-//				JFrame enterPort = new JFrame();
-//				String serverPort = JOptionPane.showInputDialog(frame, "Port?");
-//				port = Integer.parseInt(serverPort);
-//				try {
-//
-//					// Server Socket to wait for network requests
-//					ServerSocket server = new ServerSocket(port);
-//					frame.setTitle(user + " connected to port " + serverPort);
-//
-//					// Client Socket
-//					//Socket client;
-//					client = server.accept();
-//					// setSoLinger closes the socket giving 10mS to receive the remaining data
-//					client.setSoLinger(true, 10);
-//					// an input reader to read from the socket
-//					input = new BufferedReader(new InputStreamReader(client.getInputStream()));
-//					// to print data out
-//					output = new PrintStream(client.getOutputStream());
-//
-//					Reading2 chatInput = new Reading2(input, output, textChatPanel);
-//					chatInput.start();
-//					
-//					
-//					
-//					state = CONNECTED;
-//					updateEdition();
-//
-//				} catch (IOException ex) {
-//					System.err.println(ex.getMessage());
-//				}
-//				
-//			}
-//		});
+
 		
 		
 		
