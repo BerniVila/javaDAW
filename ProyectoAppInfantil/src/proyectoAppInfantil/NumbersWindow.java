@@ -43,7 +43,7 @@ public class NumbersWindow {
 	private static ArrayList<Integer> numList = new ArrayList<Integer>();
 	private String result;
 	private static JLabel lblTargetNumber;
-	private JLabel lblNombreUsuario;
+	private static JLabel lblNombreUsuario;
 	JButton btnPista;
 	JButton btnHelp;
 	FloatControl gainControl;
@@ -331,7 +331,7 @@ public class NumbersWindow {
 				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
 
 		File bsoMAC = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMAC);
@@ -420,7 +420,7 @@ public class NumbersWindow {
 				numList.removeAll(numList);
 				lblMostrarResultado.setText("");
 				File generateNum = new File(
-						"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
+						"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
 				StaticSoundMethods.playSound(generateNum);
 				lblWinning.setVisible(false);
 				isJugando = true;
@@ -453,25 +453,25 @@ public class NumbersWindow {
 				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\diez.wav");
 
 		File numSound1Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
 		File numSound2Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/dos.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/dos.wav");
 		File numSound3Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/tres.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/tres.wav");
 		File numSound4Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cuatro.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/cuatro.wav");
 		File numSound5Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/cinco.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/cinco.wav");
 		File numSound6Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/seis.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/seis.wav");
 		File numSound7Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/siete.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/siete.wav");
 		File numSound8Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/ocho.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/ocho.wav");
 		File numSound9Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/nueve.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/nueve.wav");
 		File numSound10Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/diez.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/diez.wav");
 
 		btn_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -627,25 +627,29 @@ public class NumbersWindow {
 
 				ChatAlumnoCli AlumnoCliente = new ChatAlumnoCli();
 				AlumnoCliente.getChatAlumnoCli().setVisible(true);
-				AlumnoCliente.setEstadoJuego(getSumaActual() + " " + getObjetivoActual());
+				AlumnoCliente.setEstadoJuego("Llevo " + getSumaActual() + " y tengo que llegar a  " + getObjetivoActual());
 			}
 		});
 
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
+	public static void setNombreUsuario(String nombreUsuario) {
 		lblNombreUsuario.setText(nombreUsuario);
 	}
 
-	public void getNombreUsuario() {
-		lblNombreUsuario.getText();
+	public static String getNombreUsuario() {
+		return lblNombreUsuario.getText();
 	}
 
 	public void checkGameResult(String result, JLabel lblMostrarResultado, JLabel lblWinning) {
 		if (result.compareToIgnoreCase("win") == 0) {
 			lblMostrarResultado.setText("HAS GANADO!!!");
 			File congrats = new File(
-					"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/congrats.wav");
+					"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/congrats.wav");
+			
+			File congratsWindows = new File(
+					"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/congrats.wav");
+			
 			StaticSoundMethods.playSound(congrats);
 			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/congrats.gif")));
 			lblWinning.setVisible(true);
@@ -654,9 +658,13 @@ public class NumbersWindow {
 		}
 		if (result.compareToIgnoreCase("lose") == 0) {
 			lblMostrarResultado.setText("HAS PERDIDO!!!");
-			File congrats = new File(
-					"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/fx/fail-trombone.wav");
-			StaticSoundMethods.playSound(congrats);
+			File fail = new File(
+					"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/fail-trombone.wav");
+			
+			File failWindows = new File(
+					"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/fail-trombone.wav");
+			
+			StaticSoundMethods.playSound(fail);
 			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/youLose.gif")));
 			lblWinning.setVisible(true);
 			isJugando = false;

@@ -344,6 +344,87 @@ public class ChatProfeServ {
 
 			}
 		});
+		
+		btn_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("2");
+				output.flush();
+
+			}
+		});
+		
+		btn_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("3");
+				output.flush();
+
+			}
+		});
+		
+		btn_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("4");
+				output.flush();
+
+			}
+		});
+		
+		btn_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("5");
+				output.flush();
+
+			}
+		});
+		
+		btn_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("6");
+				output.flush();
+
+			}
+		});
+		
+		btn_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("7");
+				output.flush();
+
+			}
+		});
+		
+		btn_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("8");
+				output.flush();
+
+			}
+		});
+		
+		btn_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("9");
+				output.flush();
+
+			}
+		});
+		
+		btn_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("10");
+				output.flush();
+
+			}
+		});
 
 		
 

@@ -225,8 +225,8 @@ public class MainScreen {
 		
 		
 		File bsoMainScreenWindows = new File("C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\bso\\bensound-buddy.wav");
-		File bsoMainScreenMAC = new File("/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
-		
+		File bsoMainScreenMAC = new File("/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
+
 
 		
 		try {

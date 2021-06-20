@@ -2,18 +2,14 @@ package chatWindow;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
 import javax.swing.JTextArea;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JTextField;
 
+import proyectoAppInfantil.NumbersWindow;
 import proyectoAppInfantil.StaticSoundMethods;
-
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
@@ -49,6 +45,7 @@ public class ChatAlumnoCli {
 	Socket socket;
 	Socket client;
 	private String estadoJuego;
+//	private String nombreUsuario;
 
 	// added to use from main window
 	public JFrame getChatAlumnoCli() {
@@ -86,7 +83,7 @@ public class ChatAlumnoCli {
 
 		ChatAlumnoCli = new JFrame();
 		ChatAlumnoCli.getContentPane().setBackground(new Color(102, 102, 204));
-		ChatAlumnoCli.setBounds(100, 600, 449, 407);
+		ChatAlumnoCli.setBounds(100, 600, 500, 407);
 		ChatAlumnoCli.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		ChatAlumnoCli.getContentPane().setLayout(null);
 
@@ -135,8 +132,68 @@ public class ChatAlumnoCli {
 		ChatAlumnoCli.getContentPane().add(btnSend);
 		
 		
+		JButton btnEscucharAyuda = new JButton("ESCUCHAR MENSAJE");
+		btnEscucharAyuda.setForeground(new Color(255, 255, 255));
+		btnEscucharAyuda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnEscucharAyuda.setBackground(new Color(255, 153, 102));
+		btnEscucharAyuda.setBorderPainted(false);
+		btnEscucharAyuda.setOpaque(true);
+		btnEscucharAyuda.setBounds(20, 309, 200, 59);
+		ChatAlumnoCli.getContentPane().add(btnEscucharAyuda);
+		
+		JButton btnPedirAyuda = new JButton("PEDIR AYUDA");
+		btnPedirAyuda.setForeground(new Color(255, 255, 255));
+		btnPedirAyuda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnPedirAyuda.setBackground(new Color(0, 153, 102));
+		btnPedirAyuda.setBorderPainted(false);
+		btnPedirAyuda.setOpaque(true);
+		btnPedirAyuda.setBounds(250, 309, 200, 59);
+		ChatAlumnoCli.getContentPane().add(btnPedirAyuda);
+		
+		
 		File numSound1Mac = new File(
-				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroUno.wav");
+		File numSound2Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroDos.wav");
+		File numSound3Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroTres.wav");
+		File numSound4Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroCuatro.wav");
+		File numSound5Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroCinco.wav");
+		File numSound6Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroSeis.wav");
+		File numSound7Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroSiete.wav");
+		File numSound8Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroOcho.wav");
+		File numSound9Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroNueve.wav");
+		File numSound10Mac = new File(
+				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/numberSounds/elNumeroDiez.wav");
+		
+		
+		
+		File numSound1Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroUno.wav");
+		File numSound2Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroDos.wav");
+		File numSound3Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroTres.wav");
+		File numSound4Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroCuatro.wav");
+		File numSound5Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroCinco.wav");
+		File numSound6Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroSeis.wav");
+		File numSound7Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroSiete.wav");
+		File numSound8Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroOcho.wav");
+		File numSound9Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroNueve.wav");
+		File numSound10Win = new File(
+				"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\numberSounds\\elNumeroDiez.wav");
 		
 
 		// events
@@ -146,7 +203,8 @@ public class ChatAlumnoCli {
 
 //				JFrame enterUserClient = new JFrame();
 //				user = JOptionPane.showInputDialog(clientWindow, "USER?");
-		user = "Alumno";
+		
+		user = NumbersWindow.getNombreUsuario();
 
 		// boolean exit = false;// bandera para controlar ciclo del programa
 
@@ -174,24 +232,12 @@ public class ChatAlumnoCli {
 
 			Reading2 chatInput = new Reading2(input, output, textChatPanel);
 			
-			JButton btnEscucharAyuda = new JButton("ESCUCHAR MENSAJE");
-			btnEscucharAyuda.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			btnEscucharAyuda.setForeground(new Color(255, 255, 255));
-			btnEscucharAyuda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			btnEscucharAyuda.setBackground(new Color(102, 153, 102));
-			btnEscucharAyuda.setBounds(52, 309, 316, 59);
-			ChatAlumnoCli.getContentPane().add(btnEscucharAyuda);
+
 			chatInput.start();
 
 			state = CONNECTED;
 			updateEdition();
 			
-			if (input.toString() == "1") {
-				StaticSoundMethods.playSound(numSound1Mac);
-			}
 			
 
 		} catch (IOException ex) {
@@ -213,7 +259,67 @@ public class ChatAlumnoCli {
 
 				textChatPanel.append("\n" + message + "\n");
 				textField.setText("");
-				System.out.println(textChatPanel.getText());
+
+			}
+		});
+		
+		
+		
+		btnEscucharAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String texto = textChatPanel.getText();
+				String numeroAyuda = String.valueOf(texto.charAt(texto.length() - 2));
+				System.out.println(numeroAyuda);
+				
+				switch (numeroAyuda) {
+				case "1":
+					StaticSoundMethods.playSound(numSound1Mac);
+					break;
+				case "2":
+					StaticSoundMethods.playSound(numSound2Mac);
+					break;
+				case "3":
+					StaticSoundMethods.playSound(numSound3Mac);
+					break;
+				case "4":
+					StaticSoundMethods.playSound(numSound4Mac);
+					break;
+				case "5":
+					StaticSoundMethods.playSound(numSound5Mac);
+					break;
+				case "6":
+					StaticSoundMethods.playSound(numSound6Mac);
+					break;
+				case "7":
+					StaticSoundMethods.playSound(numSound7Mac);
+					break;
+				case "8":
+					StaticSoundMethods.playSound(numSound8Mac);
+					break;
+				case "9":
+					StaticSoundMethods.playSound(numSound9Mac);
+					break;
+				case "10":
+					StaticSoundMethods.playSound(numSound10Mac);
+					break;
+
+				}
+				
+				
+			}
+		});
+		
+		
+		
+		
+		btnPedirAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String message = getEstadoJuego();
+				output.flush();
+				output.println(message);
+				output.flush();
+				textChatPanel.append("\n" + message + "\n");
 
 			}
 		});
@@ -255,4 +361,12 @@ public class ChatAlumnoCli {
 	public String getEstadoJuego() {
 		return estadoJuego;
 	}
+	
+//	public void setNombreUsuario(String nombreUsuario) {
+//		this.nombreUsuario = nombreUsuario;
+//	}
+//
+//	public String getNombreUsuario() {
+//		return nombreUsuario;
+//	}
 }
