@@ -32,7 +32,7 @@ public class ChatWindowServPruebas {
 	private JFrame frame;
 	private JTextField textField;
 	private JButton btnConnectServer;
-	private JButton btnConnectClient;
+	//private JButton btnConnectClient;
 	private int port;
 	private String serverIP;
 	private BufferedReader input;
@@ -96,7 +96,7 @@ public class ChatWindowServPruebas {
 		textChatPanel.setEditable(false);
 
 
-		btnConnectServer = new JButton("Connect as Server");
+		btnConnectServer = new JButton("Conectar con profe");
 		btnConnectServer.setBounds(313, 323, 172, 55);
 		btnConnectServer.setMargin(new Insets(10, 10, 10, 10));
 		btnConnectServer.setBorderPainted(false);
@@ -105,12 +105,12 @@ public class ChatWindowServPruebas {
 		frame.getContentPane().add(btnConnectServer);
 		
 
-		btnConnectClient = new JButton("Connect as Client");
-		btnConnectClient.setBounds(134, 324, 172, 55);
-		btnConnectClient.setOpaque(true);
-		btnConnectClient.setBorderPainted(false);
-		btnConnectClient.setBackground(new Color(51, 153, 204));
-		frame.getContentPane().add(btnConnectClient);
+//		btnConnectClient = new JButton("Connect as Client");
+//		btnConnectClient.setBounds(134, 324, 172, 55);
+//		btnConnectClient.setOpaque(true);
+//		btnConnectClient.setBorderPainted(false);
+//		btnConnectClient.setBackground(new Color(51, 153, 204));
+//		frame.getContentPane().add(btnConnectClient);
 		
 		btnDisconnect = new JButton("Disconnect");
 		btnDisconnect.setBounds(13, 325, 115, 55);
@@ -215,6 +215,12 @@ public class ChatWindowServPruebas {
 					Reading2 chatInput = new Reading2(input, output, textChatPanel);
 					chatInput.start();
 					
+					String message = user + "  -->  " + "Llevo 1 y he de llegar a 10";
+					output.flush();
+					output.println(message);
+					output.flush();
+					textChatPanel.append("\n" +  message + "\n");
+					
 					
 					
 					state = CONNECTED;
@@ -227,46 +233,54 @@ public class ChatWindowServPruebas {
 			}
 		});
 
-		btnConnectClient.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				JFrame enterUserClient = new JFrame();
-				user = JOptionPane.showInputDialog(frame, "USER?");
-
-				// boolean exit = false;// bandera para controlar ciclo del programa
-
-
-				JFrame enterIp = new JFrame();
-				serverIP = JOptionPane.showInputDialog(frame, "IP?");
-
-				JFrame enterServer = new JFrame();
-				String clientPort = JOptionPane.showInputDialog(frame, "Port?");
-				port = Integer.parseInt(clientPort);
-
-				try {
-
-					socket = new Socket(serverIP, port);// open socket
-					// To read from the server
-					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					// to write to the server
-					output = new PrintStream(socket.getOutputStream());
-
-					frame.setTitle(user + " connected with port " + clientPort + " on IP " + serverIP);
-
-					Reading2 chatInput = new Reading2(input, output, textChatPanel);
-					chatInput.start();
-					
-					state = CONNECTED;
-					updateEdition();
-
-				} catch (IOException ex) {
-					System.err.println("Client -> " + ex.getMessage());
-				}
-
-			}
-		});
+//		btnConnectClient.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				JFrame enterUserClient = new JFrame();
+//				user = JOptionPane.showInputDialog(frame, "USER?");
+//
+//				// boolean exit = false;// bandera para controlar ciclo del programa
+//
+//
+//				JFrame enterIp = new JFrame();
+//				serverIP = JOptionPane.showInputDialog(frame, "IP?");
+//
+//				JFrame enterServer = new JFrame();
+//				String clientPort = JOptionPane.showInputDialog(frame, "Port?");
+//				port = Integer.parseInt(clientPort);
+//
+//				try {
+//
+//					socket = new Socket(serverIP, port);// open socket
+//					// To read from the server
+//					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//					// to write to the server
+//					output = new PrintStream(socket.getOutputStream());
+//
+//					frame.setTitle(user + " connected with port " + clientPort + " on IP " + serverIP);
+//
+//					Reading2 chatInput = new Reading2(input, output, textChatPanel);
+//					chatInput.start();
+//					
+//					state = CONNECTED;
+//					updateEdition();
+//
+//				} catch (IOException ex) {
+//					System.err.println("Client -> " + ex.getMessage());
+//				}
+//
+//			}
+//		});
 
 		// send Message
+		
+//		String message = "llevo 1 y he de llegar a 10";
+//		output.flush();
+//		output.println(message);
+//		output.flush();
+//		textChatPanel.append("\n" +  message + "\n");
+		
+		
 
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

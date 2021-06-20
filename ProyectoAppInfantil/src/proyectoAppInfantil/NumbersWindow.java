@@ -620,12 +620,12 @@ public class NumbersWindow {
 		
 		btnHelp.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
-				ChatWindowServPruebasLOCAS alumnoServidor = new ChatWindowServPruebasLOCAS();
-				//alumnoServidor.getServerWindow().setVisible(true);
+//				ChatWindowServPruebasLOCAS alumnoServidor = new ChatWindowServPruebasLOCAS();
+//				alumnoServidor.getServerWindow().setVisible(true);
 				
-//				ChatWindowCLIPruebasLOCAS profeCliente = new ChatWindowCLIPruebasLOCAS();
-//				profeCliente.getClientWindow().setVisible(true);
-//				profeCliente.setEstadoJuego(getSumaActual() + " " + getObjetivoActual());
+				ChatWindowCLIPruebasLOCAS profeCliente = new ChatWindowCLIPruebasLOCAS();
+				profeCliente.getClientWindow().setVisible(true);
+				profeCliente.setEstadoJuego(getSumaActual() + " " + getObjetivoActual());
 			}
 		});
 

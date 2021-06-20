@@ -37,7 +37,7 @@ public class ChatWindowCLIPruebasLOCAS {
 	private BufferedReader input;
 	private PrintStream output;
 	private String user;
-	private JButton btnDisconnect;
+//	private JButton btnDisconnect;
 	private final int NOT_CONNECTED = 1;
 	private final int CONNECTED = 2;
 	private int state = NOT_CONNECTED;
@@ -94,17 +94,9 @@ public class ChatWindowCLIPruebasLOCAS {
 		
 		clientWindow = new JFrame();
 		clientWindow.getContentPane().setBackground(new Color(102, 102, 204));
-		clientWindow.setBounds(100, 100, 675, 422);
-		clientWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		clientWindow.setBounds(100, 600, 500, 336);
+		clientWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		clientWindow.getContentPane().setLayout(null);
-		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(9, 4, 480, 237);
-		clientWindow.getContentPane().add(scrollPane);
-
-		textChatPanel = new JTextArea(10, 20);
-		scrollPane.setViewportView(textChatPanel);
-		textChatPanel.setEditable(false);
 
 		
 
@@ -113,16 +105,16 @@ public class ChatWindowCLIPruebasLOCAS {
 //		btnConnectClient.setOpaque(true);
 //		btnConnectClient.setBorderPainted(false);
 //		btnConnectClient.setBackground(new Color(51, 153, 204));
-//		frame.getContentPane().add(btnConnectClient);
+//		clientWindow.getContentPane().add(btnConnectClient);
 		
-		btnDisconnect = new JButton("Disconnect");
-		btnDisconnect.setBounds(13, 325, 115, 55);
-		btnDisconnect.setBorderPainted(false);
-		btnDisconnect.setOpaque(true);
-		btnDisconnect.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnDisconnect.setBackground(new Color(153, 51, 51));
-		btnDisconnect.setForeground(Color.WHITE);
-		clientWindow.getContentPane().add(btnDisconnect);
+//		btnDisconnect = new JButton("Disconnect");
+//		btnDisconnect.setBounds(13, 325, 115, 55);
+//		btnDisconnect.setBorderPainted(false);
+//		btnDisconnect.setOpaque(true);
+//		btnDisconnect.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+//		btnDisconnect.setBackground(new Color(153, 51, 51));
+//		btnDisconnect.setForeground(Color.WHITE);
+//		clientWindow.getContentPane().add(btnDisconnect);
 
 		textField = new JTextField();
 		textField.setBounds(9, 256, 395, 48);
@@ -130,6 +122,16 @@ public class ChatWindowCLIPruebasLOCAS {
 		textField.setColumns(10);
 		textField.setVisible(true);
 		updateEdition();
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(9, 4, 480, 237);
+		clientWindow.getContentPane().add(scrollPane);
+		
+				textChatPanel = new JTextArea(10, 20);
+				scrollPane.setViewportView(textChatPanel);
+				textChatPanel.setEditable(false);
+				
+									Reading2 chatInput = new Reading2(input, output, textChatPanel);
 
 		JButton btnSend = new JButton("");
 		btnSend.setBounds(409, 256, 80, 48);
@@ -142,46 +144,6 @@ public class ChatWindowCLIPruebasLOCAS {
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);
 		clientWindow.getContentPane().add(btnSend);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(502, 9, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(589, 9, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(501, 86, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_2);
-		
-		JButton btnNewButton_1_1 = new JButton("New button");
-		btnNewButton_1_1.setBounds(588, 86, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_1_1);
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(501, 166, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_3);
-		
-		JButton btnNewButton_1_2 = new JButton("New button");
-		btnNewButton_1_2.setBounds(588, 166, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_1_2);
-		
-		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setBounds(502, 243, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_4);
-		
-		JButton btnNewButton_1_3 = new JButton("New button");
-		btnNewButton_1_3.setBounds(589, 243, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_1_3);
-		
-		JButton btnNewButton_4_1 = new JButton("New button");
-		btnNewButton_4_1.setBounds(502, 319, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_4_1);
-		
-		JButton btnNewButton_1_3_1 = new JButton("New button");
-		btnNewButton_1_3_1.setBounds(589, 319, 75, 75);
-		clientWindow.getContentPane().add(btnNewButton_1_3_1);
 		
 		
 		
@@ -199,32 +161,34 @@ public class ChatWindowCLIPruebasLOCAS {
 //			public void actionPerformed(ActionEvent e) {
 				
 //				JFrame enterUserClient = new JFrame();
-//				user = JOptionPane.showInputDialog(frame, "USER?");
+//				user = JOptionPane.showInputDialog(clientWindow, "USER?");
+				user = "Alumno";
 
 				// boolean exit = false;// bandera para controlar ciclo del programa
 
 
 //				JFrame enterIp = new JFrame();
-//				serverIP = JOptionPane.showInputDialog(frame, "IP?");
+//				serverIP = JOptionPane.showInputDialog(clientWindow, "IP?");
 		
 		
 				serverIP = "127.0.0.1";
 
-				JFrame enterServer = new JFrame();
-				String clientPort = JOptionPane.showInputDialog(clientWindow, "Port?");
-				port = Integer.parseInt(clientPort);
+//				JFrame enterServer = new JFrame();
+//				String clientPort = JOptionPane.showInputDialog(clientWindow, "Port?");
+//				port = Integer.parseInt(clientPort);
+				
+				String clientPort = "5012";
+				port = 5012;
 
 				try {
 
-					socket = new Socket("127.0.0.1", port);// open socket
+					socket = new Socket(serverIP, port);// open socket
 					// To read from the server
 					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 					// to write to the server
 					output = new PrintStream(socket.getOutputStream());
 
-					clientWindow.setTitle("Conectado por puerto " + clientPort + " a IP " + serverIP);
-
-					Reading2 chatInput = new Reading2(input, output, textChatPanel);
+					clientWindow.setTitle(user + " conectado por puerto " + clientPort + " a IP " + serverIP);
 					chatInput.start();
 					
 					state = CONNECTED;
@@ -258,18 +222,18 @@ public class ChatWindowCLIPruebasLOCAS {
 		});
 		
 		
-		btnDisconnect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					client.close();
-					socket.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}
-		});
+//		btnDisconnect.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				try {
+//					client.close();
+//					socket.close();
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//
+//			}
+//		});
 		
 		
 
