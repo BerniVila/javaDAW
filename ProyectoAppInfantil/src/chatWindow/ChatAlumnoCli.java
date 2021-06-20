@@ -86,7 +86,7 @@ public class ChatAlumnoCli {
 
 		ChatAlumnoCli = new JFrame();
 		ChatAlumnoCli.getContentPane().setBackground(new Color(102, 102, 204));
-		ChatAlumnoCli.setBounds(100, 600, 500, 336);
+		ChatAlumnoCli.setBounds(100, 600, 449, 407);
 		ChatAlumnoCli.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		ChatAlumnoCli.getContentPane().setLayout(null);
 
@@ -173,6 +173,17 @@ public class ChatAlumnoCli {
 			ChatAlumnoCli.setTitle(user + " conectado por puerto " + clientPort + " a IP " + serverIP);
 
 			Reading2 chatInput = new Reading2(input, output, textChatPanel);
+			
+			JButton btnEscucharAyuda = new JButton("ESCUCHAR MENSAJE");
+			btnEscucharAyuda.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			btnEscucharAyuda.setForeground(new Color(255, 255, 255));
+			btnEscucharAyuda.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			btnEscucharAyuda.setBackground(new Color(102, 153, 102));
+			btnEscucharAyuda.setBounds(52, 309, 316, 59);
+			ChatAlumnoCli.getContentPane().add(btnEscucharAyuda);
 			chatInput.start();
 
 			state = CONNECTED;
@@ -244,5 +255,4 @@ public class ChatAlumnoCli {
 	public String getEstadoJuego() {
 		return estadoJuego;
 	}
-
 }
