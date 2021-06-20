@@ -125,7 +125,7 @@ public class ChatAlumnoCli {
 		btnSend.setMaximumSize(new Dimension(30, 29));
 		btnSend.setIconTextGap(2);
 		btnSend.setIcon(
-				new ImageIcon(ChatWindowCLIPruebasLOCAS.class.getResource("/images/icons/send-message-icon.png")));
+				new ImageIcon(ChatAlumnoCli.class.getResource("/images/icons/send-message-icon.png")));
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);
@@ -270,7 +270,6 @@ public class ChatAlumnoCli {
 				
 				String texto = textChatPanel.getText();
 				String numeroAyuda = String.valueOf(texto.charAt(texto.length() - 2));
-				System.out.println(numeroAyuda);
 				
 				switch (numeroAyuda) {
 				case "1":

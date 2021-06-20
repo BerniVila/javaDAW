@@ -140,7 +140,7 @@ public class ChatProfeServ {
 		btnSend.setMinimumSize(new Dimension(30, 29));
 		btnSend.setMaximumSize(new Dimension(30, 29));
 		btnSend.setIconTextGap(2);
-		btnSend.setIcon(new ImageIcon(ChatWindowServPruebas.class.getResource("/images/icons/send-message-icon.png")));
+		btnSend.setIcon(new ImageIcon(ChatProfeServ.class.getResource("/images/icons/send-message-icon.png")));
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);

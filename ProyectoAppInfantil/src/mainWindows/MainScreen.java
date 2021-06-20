@@ -95,7 +95,7 @@ public class MainScreen {
 		btnStart.setBounds(641, 543, 285, 97);
 		mainFrame.getContentPane().add(btnStart);
 		
-		JLabel lblCopyright = new JLabel("Copyright © 2021 BerniVilaDev. All rights reserved");
+		JLabel lblCopyright = new JLabel("Copyright © 2021 BerniVilaDev. Todos los derechos reservados");
 		lblCopyright.setBounds(641, 822, 323, 24);
 		mainFrame.getContentPane().add(lblCopyright);
 		
@@ -230,7 +230,7 @@ public class MainScreen {
 
 		
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMainScreenMAC);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMainScreenWindows);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();

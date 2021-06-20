@@ -1,21 +1,13 @@
 package proyectoAppInfantil;
 
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.File;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import addNumbers.AddNumbersLogic;
 import chatWindow.ChatAlumnoCli;
-import chatWindow.ChatWindowCLIPruebasLOCAS;
-import chatWindow.ChatWindowServPruebasLOCAS;
 import mainWindows.MainScreen;
-
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.sound.sampled.AudioInputStream;
@@ -334,7 +326,7 @@ public class NumbersWindow {
 				"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/bso/bensound-buddy.wav");
 
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bsoMAC);
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bso);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -421,7 +413,9 @@ public class NumbersWindow {
 				lblMostrarResultado.setText("");
 				File generateNum = new File(
 						"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/BOTW_Fanfare_SmallItem.wav");
-				StaticSoundMethods.playSound(generateNum);
+				File generateNumWin = new File(
+						"C:\\Users\\bernivila\\git\\DAWProject\\ProyectoAppInfantil\\src\\audioFiles\\fx\\BOTW_Fanfare_SmallItem.wav");
+				StaticSoundMethods.playSound(generateNumWin);
 				lblWinning.setVisible(false);
 				isJugando = true;
 				seguirJugando(isJugando, numberButtons);
@@ -475,7 +469,7 @@ public class NumbersWindow {
 
 		btn_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound10Mac);
+				StaticSoundMethods.playSound(numSound10Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_10.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_10.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -487,7 +481,7 @@ public class NumbersWindow {
 
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound1Mac);
+				StaticSoundMethods.playSound(numSound1Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_1.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_1.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -499,7 +493,7 @@ public class NumbersWindow {
 
 		btn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound2Mac);
+				StaticSoundMethods.playSound(numSound2Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_2.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_2.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -511,7 +505,7 @@ public class NumbersWindow {
 
 		btn_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound3Mac);
+				StaticSoundMethods.playSound(numSound3Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_3.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_3.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -523,7 +517,7 @@ public class NumbersWindow {
 
 		btn_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound4Mac);
+				StaticSoundMethods.playSound(numSound4Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_4.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_4.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -535,7 +529,7 @@ public class NumbersWindow {
 
 		btn_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound5Mac);
+				StaticSoundMethods.playSound(numSound5Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_5.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_5.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -547,7 +541,7 @@ public class NumbersWindow {
 
 		btn_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound6Mac);
+				StaticSoundMethods.playSound(numSound6Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_6.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_6.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -559,7 +553,7 @@ public class NumbersWindow {
 
 		btn_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound7Mac);
+				StaticSoundMethods.playSound(numSound7Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_7.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_7.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -571,7 +565,7 @@ public class NumbersWindow {
 
 		btn_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound8Mac);
+				StaticSoundMethods.playSound(numSound8Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_8.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_8.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -583,7 +577,7 @@ public class NumbersWindow {
 
 		btn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StaticSoundMethods.playSound(numSound9Mac);
+				StaticSoundMethods.playSound(numSound9Win);
 				numbersLogic.addNumber(numList, Integer.valueOf(btn_9.getName()));
 				lblMostrarResultado.setText(lblMostrarResultado.getText() + " " + btn_9.getName());
 				result = numbersLogic.checkResult(numList, Integer.valueOf(lblTargetNumber.getText()));
@@ -650,7 +644,7 @@ public class NumbersWindow {
 			File congratsWindows = new File(
 					"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/congrats.wav");
 			
-			StaticSoundMethods.playSound(congrats);
+			StaticSoundMethods.playSound(congratsWindows);
 			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/congrats.gif")));
 			lblWinning.setVisible(true);
 			isJugando = false;
@@ -664,7 +658,7 @@ public class NumbersWindow {
 			File failWindows = new File(
 					"/Users/berni/git/javaFinalProject/ProyectoAppInfantil/src/audioFiles/fx/fail-trombone.wav");
 			
-			StaticSoundMethods.playSound(fail);
+			StaticSoundMethods.playSound(failWindows);
 			lblWinning.setIcon(new ImageIcon(NumbersWindow.class.getResource("/images/titles/youLose.gif")));
 			lblWinning.setVisible(true);
 			isJugando = false;
