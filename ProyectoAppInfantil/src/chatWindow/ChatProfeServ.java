@@ -2,10 +2,11 @@ package chatWindow;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import java.awt.GridBagLayout;
 import javax.swing.JTextArea;
+import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
-import proyectoAppInfantil.NumbersWindow;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -21,13 +22,14 @@ import java.awt.Color;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 
-public class ChatWindowServPruebasLOCAS {
+public class ChatProfeServ {
 
-	private JFrame serverWindow;
+
+	private JFrame chatProfeServ;
 	private JTextField textField;
 	private JButton btnConnectServer;
 	//private JButton btnConnectClient;
@@ -50,8 +52,8 @@ public class ChatWindowServPruebasLOCAS {
 	
 	
 	// added to use from main window
-	public JFrame getServerWindow() {
-		return serverWindow;
+	public JFrame getChatProfeServ() {
+		return chatProfeServ;
 	}
 	
 
@@ -62,8 +64,8 @@ public class ChatWindowServPruebasLOCAS {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChatWindowServPruebasLOCAS window = new ChatWindowServPruebasLOCAS();
-					window.serverWindow.setVisible(true);
+					ChatProfeServ window = new ChatProfeServ();
+					window.chatProfeServ.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -77,7 +79,7 @@ public class ChatWindowServPruebasLOCAS {
 	/**
 	 * Create the application.
 	 */
-	public ChatWindowServPruebasLOCAS() {
+	public ChatProfeServ() {
 		initialize();
 	}
 
@@ -85,15 +87,15 @@ public class ChatWindowServPruebasLOCAS {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		serverWindow = new JFrame();
-		serverWindow.getContentPane().setBackground(new Color(102, 102, 204));
-		serverWindow.setBounds(100, 100, 675, 422);
-		serverWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		serverWindow.getContentPane().setLayout(null);
+		chatProfeServ = new JFrame();
+		chatProfeServ.getContentPane().setBackground(new Color(102, 102, 204));
+		chatProfeServ.setBounds(100, 100, 675, 422);
+		chatProfeServ.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		chatProfeServ.getContentPane().setLayout(null);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(9, 4, 480, 237);
-		serverWindow.getContentPane().add(scrollPane);
+		chatProfeServ.getContentPane().add(scrollPane);
 
 		textChatPanel = new JTextArea(10, 20);
 		scrollPane.setViewportView(textChatPanel);
@@ -101,12 +103,12 @@ public class ChatWindowServPruebasLOCAS {
 
 
 		btnConnectServer = new JButton("Conectar con alumnos");
-		btnConnectServer.setBounds(88, 316, 273, 55);
+		btnConnectServer.setBounds(98, 316, 273, 67);
 		btnConnectServer.setMargin(new Insets(10, 10, 10, 10));
 		btnConnectServer.setBorderPainted(false);
 		btnConnectServer.setOpaque(true);
 		btnConnectServer.setBackground(new Color(0, 153, 102));
-		serverWindow.getContentPane().add(btnConnectServer);
+		chatProfeServ.getContentPane().add(btnConnectServer);
 		
 
 //		btnConnectClient = new JButton("Connect as Client");
@@ -127,7 +129,7 @@ public class ChatWindowServPruebasLOCAS {
 
 		textField = new JTextField();
 		textField.setBounds(9, 256, 395, 48);
-		serverWindow.getContentPane().add(textField);
+		chatProfeServ.getContentPane().add(textField);
 		textField.setColumns(10);
 		textField.setVisible(true);
 		updateEdition();
@@ -142,47 +144,106 @@ public class ChatWindowServPruebasLOCAS {
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);
-		serverWindow.getContentPane().add(btnSend);
+		chatProfeServ.getContentPane().add(btnSend);
 		
 		JButton btn_1 = new JButton("1");
-		btn_1.setBounds(502, 9, 75, 75);
-		serverWindow.getContentPane().add(btn_1);
+		btn_1.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_1.setForeground(new Color(255, 255, 255));
+		btn_1.setBorderPainted(false);
+		btn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_1.setOpaque(true);
+		btn_1.setBackground(new Color(102, 153, 102));
+		btn_1.setBounds(501, 4, 75, 75);
+		chatProfeServ.getContentPane().add(btn_1);
 		
 		JButton btn_2 = new JButton("2");
-		btn_2.setBounds(589, 9, 75, 75);
-		serverWindow.getContentPane().add(btn_2);
+		btn_2.setOpaque(true);
+		btn_2.setBorderPainted(false);
+		btn_2.setBackground(new Color(0, 102, 153));
+		btn_2.setForeground(new Color(255, 255, 255));
+		btn_2.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_2.setBounds(588, 4, 75, 75);
+		chatProfeServ.getContentPane().add(btn_2);
 		
 		JButton btn_3 = new JButton("3");
+		btn_3.setBackground(new Color(255, 153, 102));
+		btn_3.setBorderPainted(false);
+		btn_3.setOpaque(true);
+		btn_3.setForeground(new Color(255, 255, 255));
+		btn_3.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
 		btn_3.setBounds(501, 86, 75, 75);
-		serverWindow.getContentPane().add(btn_3);
+		chatProfeServ.getContentPane().add(btn_3);
 		
 		JButton btn_4 = new JButton("4");
+		btn_4.setOpaque(true);
+		btn_4.setForeground(new Color(255, 255, 255));
+		btn_4.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_4.setBackground(new Color(255, 153, 204));
+		btn_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_4.setBorderPainted(false);
 		btn_4.setBounds(588, 86, 75, 75);
-		serverWindow.getContentPane().add(btn_4);
+		chatProfeServ.getContentPane().add(btn_4);
 		
 		JButton btn_5 = new JButton("5");
+		btn_5.setBackground(new Color(51, 204, 204));
+		btn_5.setBorderPainted(false);
+		btn_5.setForeground(new Color(255, 255, 255));
+		btn_5.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_5.setOpaque(true);
 		btn_5.setBounds(501, 166, 75, 75);
-		serverWindow.getContentPane().add(btn_5);
+		chatProfeServ.getContentPane().add(btn_5);
 		
 		JButton btn_6 = new JButton("6");
+		btn_6.setOpaque(true);
+		btn_6.setForeground(new Color(255, 255, 255));
+		btn_6.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_6.setBorderPainted(false);
+		btn_6.setBackground(new Color(102, 102, 102));
 		btn_6.setBounds(588, 166, 75, 75);
-		serverWindow.getContentPane().add(btn_6);
+		chatProfeServ.getContentPane().add(btn_6);
 		
 		JButton btn_7 = new JButton("7");
+		btn_7.setOpaque(true);
+		btn_7.setForeground(new Color(255, 255, 255));
+		btn_7.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_7.setBorderPainted(false);
+		btn_7.setBackground(new Color(204, 153, 204));
 		btn_7.setBounds(502, 243, 75, 75);
-		serverWindow.getContentPane().add(btn_7);
+		chatProfeServ.getContentPane().add(btn_7);
 		
 		JButton btn_8 = new JButton("8");
+		btn_8.setForeground(new Color(255, 255, 255));
+		btn_8.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_8.setOpaque(true);
+		btn_8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_8.setBorderPainted(false);
+		btn_8.setBackground(new Color(204, 204, 102));
 		btn_8.setBounds(589, 243, 75, 75);
-		serverWindow.getContentPane().add(btn_8);
+		chatProfeServ.getContentPane().add(btn_8);
 		
 		JButton btn_9 = new JButton("9");
+		btn_9.setForeground(new Color(255, 255, 255));
+		btn_9.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
+		btn_9.setOpaque(true);
+		btn_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_9.setBorderPainted(false);
+		btn_9.setBackground(new Color(102, 0, 0));
 		btn_9.setBounds(502, 319, 75, 75);
-		serverWindow.getContentPane().add(btn_9);
+		chatProfeServ.getContentPane().add(btn_9);
 		
 		JButton btn_10 = new JButton("10");
+		btn_10.setMargin(new Insets(0, 0, 0, 0));
+		btn_10.setHorizontalAlignment(SwingConstants.TRAILING);
+		btn_10.setOpaque(true);
+		btn_10.setForeground(new Color(255, 255, 255));
+		btn_10.setFont(new Font("Comic Sans MS", Font.PLAIN, 31));
+		btn_10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_10.setBorderPainted(false);
+		btn_10.setBackground(new Color(102, 0, 204));
 		btn_10.setBounds(589, 319, 75, 75);
-		serverWindow.getContentPane().add(btn_10);
+		chatProfeServ.getContentPane().add(btn_10);
 		
 		
 		
@@ -195,10 +256,10 @@ public class ChatWindowServPruebasLOCAS {
 			public void actionPerformed(ActionEvent e) {
 				
 				JFrame enterUserClient = new JFrame();
-				user = JOptionPane.showInputDialog(serverWindow, "Que profe eres?");
+				user = JOptionPane.showInputDialog(chatProfeServ, "Que profe eres?");
 
 				JFrame enterPort = new JFrame();
-				String serverPort = JOptionPane.showInputDialog(serverWindow, "Que puerto quieres usar?");
+				String serverPort = JOptionPane.showInputDialog(chatProfeServ, "Que puerto quieres usar?");
 				port = Integer.parseInt(serverPort);
 				
 //				String serverPort = "5012";
@@ -208,7 +269,7 @@ public class ChatWindowServPruebasLOCAS {
 
 					// Server Socket to wait for network requests
 					ServerSocket server = new ServerSocket(port);
-					serverWindow.setTitle(user + " conectado al puerto " + serverPort);
+					chatProfeServ.setTitle(user + " conectado al puerto " + serverPort);
 
 					// Client Socket
 					//Socket client;
@@ -242,12 +303,6 @@ public class ChatWindowServPruebasLOCAS {
 
 		// send Message
 		
-//		String message = "llevo 1 y he de llegar a 10";
-//		output.flush();
-//		output.println(message);
-//		output.flush();
-//		textChatPanel.append("\n" +  message + "\n");
-		
 		
 
 		btnSend.addActionListener(new ActionListener() {
@@ -260,7 +315,6 @@ public class ChatWindowServPruebasLOCAS {
 
 				textChatPanel.append("\n" +  message + "\n");
 				textField.setText("");
-				//System.out.println(textChatPanel.getText());
 
 			}
 		});
@@ -280,6 +334,16 @@ public class ChatWindowServPruebasLOCAS {
 //		});
 		
 		
+		// BOTONES CON NUMERO //////////////////////////////////////////////////////
+		
+		btn_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output.flush();
+				output.println("1");
+				output.flush();
+
+			}
+		});
 
 		
 

@@ -7,12 +7,16 @@ import javax.swing.JTextArea;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+
+import proyectoAppInfantil.StaticSoundMethods;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -23,12 +27,12 @@ import java.awt.Color;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
 
-public class ChatWindowCLIPruebasLOCAS {
 
-	private JFrame clientWindow;
+public class ChatAlumnoCli {
+
+
+	private JFrame ChatAlumnoCli;
 	private JTextField textField;
 //	private JButton btnConnectClient;
 	private int port;
@@ -47,8 +51,8 @@ public class ChatWindowCLIPruebasLOCAS {
 	private String estadoJuego;
 
 	// added to use from main window
-	public JFrame getClientWindow() {
-		return clientWindow;
+	public JFrame getChatAlumnoCli() {
+		return ChatAlumnoCli;
 	}
 
 	/**
@@ -58,8 +62,8 @@ public class ChatWindowCLIPruebasLOCAS {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ChatWindowCLIPruebasLOCAS window = new ChatWindowCLIPruebasLOCAS();
-					window.clientWindow.setVisible(true);
+					ChatAlumnoCli window = new ChatAlumnoCli();
+					window.ChatAlumnoCli.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -71,7 +75,7 @@ public class ChatWindowCLIPruebasLOCAS {
 	/**
 	 * Create the application.
 	 */
-	public ChatWindowCLIPruebasLOCAS() {
+	public ChatAlumnoCli() {
 		initialize();
 	}
 
@@ -80,11 +84,11 @@ public class ChatWindowCLIPruebasLOCAS {
 	 */
 	private void initialize() {
 
-		clientWindow = new JFrame();
-		clientWindow.getContentPane().setBackground(new Color(102, 102, 204));
-		clientWindow.setBounds(100, 600, 500, 336);
-		clientWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		clientWindow.getContentPane().setLayout(null);
+		ChatAlumnoCli = new JFrame();
+		ChatAlumnoCli.getContentPane().setBackground(new Color(102, 102, 204));
+		ChatAlumnoCli.setBounds(100, 600, 500, 336);
+		ChatAlumnoCli.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		ChatAlumnoCli.getContentPane().setLayout(null);
 
 //		btnConnectClient = new JButton("Connect as Client");
 //		btnConnectClient.setBounds(134, 324, 172, 55);
@@ -104,14 +108,14 @@ public class ChatWindowCLIPruebasLOCAS {
 
 		textField = new JTextField();
 		textField.setBounds(9, 256, 395, 48);
-		clientWindow.getContentPane().add(textField);
+		ChatAlumnoCli.getContentPane().add(textField);
 		textField.setColumns(10);
 		textField.setVisible(true);
 		updateEdition();
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(9, 4, 480, 237);
-		clientWindow.getContentPane().add(scrollPane);
+		ChatAlumnoCli.getContentPane().add(scrollPane);
 
 		textChatPanel = new JTextArea(10, 20);
 		scrollPane.setViewportView(textChatPanel);
@@ -128,7 +132,12 @@ public class ChatWindowCLIPruebasLOCAS {
 		btnSend.setForeground(Color.WHITE);
 		btnSend.setBackground(Color.WHITE);
 		btnSend.setOpaque(true);
-		clientWindow.getContentPane().add(btnSend);
+		ChatAlumnoCli.getContentPane().add(btnSend);
+		
+		
+		File numSound1Mac = new File(
+				"/Users/berni/git/JavaProjects/ProyectoAppInfantil/src/audioFiles/numberSounds/uno.wav");
+		
 
 		// events
 
@@ -147,7 +156,7 @@ public class ChatWindowCLIPruebasLOCAS {
 		serverIP = "127.0.0.1";
 
 		JFrame enterServer = new JFrame();
-		String clientPort = JOptionPane.showInputDialog(clientWindow, "Que puerto quieres usar?");
+		String clientPort = JOptionPane.showInputDialog(ChatAlumnoCli, "Que puerto quieres usar?");
 		port = Integer.parseInt(clientPort);
 
 //				String clientPort = "5012";
@@ -161,13 +170,18 @@ public class ChatWindowCLIPruebasLOCAS {
 			// to write to the server
 			output = new PrintStream(socket.getOutputStream());
 
-			clientWindow.setTitle(user + " conectado por puerto " + clientPort + " a IP " + serverIP);
+			ChatAlumnoCli.setTitle(user + " conectado por puerto " + clientPort + " a IP " + serverIP);
 
 			Reading2 chatInput = new Reading2(input, output, textChatPanel);
 			chatInput.start();
 
 			state = CONNECTED;
 			updateEdition();
+			
+			if (input.toString() == "1") {
+				StaticSoundMethods.playSound(numSound1Mac);
+			}
+			
 
 		} catch (IOException ex) {
 			System.err.println("Client -> " + ex.getMessage());

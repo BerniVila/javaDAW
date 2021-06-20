@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import addNumbers.AddNumbersLogic;
+import chatWindow.ChatAlumnoCli;
 import chatWindow.ChatWindowCLIPruebasLOCAS;
 import chatWindow.ChatWindowServPruebasLOCAS;
 import mainWindows.MainScreen;
@@ -220,6 +221,7 @@ public class NumbersWindow {
 		bg.add(btn_9);
 
 		JLabel lblTitle = new JLabel("SUMA NUMEROS CON RESULTADO");
+		lblTitle.setFocusable(false);
 		lblTitle.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
 		lblTitle.setForeground(new Color(255, 255, 255));
 		lblTitle.setBounds(722, 94, 872, 90);
@@ -615,17 +617,17 @@ public class NumbersWindow {
 			}
 		});
 
-		
-		// CHAT DE AYUDA /////////////////////////////////////////////////////////////////
-		
-		btnHelp.addActionListener(new ActionListener() { 
+		// CHAT DE AYUDA
+		// /////////////////////////////////////////////////////////////////
+
+		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				ChatWindowServPruebasLOCAS alumnoServidor = new ChatWindowServPruebasLOCAS();
 //				alumnoServidor.getServerWindow().setVisible(true);
-				
-				ChatWindowCLIPruebasLOCAS profeCliente = new ChatWindowCLIPruebasLOCAS();
-				profeCliente.getClientWindow().setVisible(true);
-				profeCliente.setEstadoJuego(getSumaActual() + " " + getObjetivoActual());
+
+				ChatAlumnoCli AlumnoCliente = new ChatAlumnoCli();
+				AlumnoCliente.getChatAlumnoCli().setVisible(true);
+				AlumnoCliente.setEstadoJuego(getSumaActual() + " " + getObjetivoActual());
 			}
 		});
 
@@ -633,6 +635,10 @@ public class NumbersWindow {
 
 	public void setNombreUsuario(String nombreUsuario) {
 		lblNombreUsuario.setText(nombreUsuario);
+	}
+
+	public void getNombreUsuario() {
+		lblNombreUsuario.getText();
 	}
 
 	public void checkGameResult(String result, JLabel lblMostrarResultado, JLabel lblWinning) {
@@ -698,12 +704,10 @@ public class NumbersWindow {
 
 		return objetivoActual;
 	}
-	
-	
-	
+
 	public void activarAyudaYPista() {
 		btnPista.setEnabled(true);
 		btnHelp.setEnabled(true);
 	}
-	
+
 }
