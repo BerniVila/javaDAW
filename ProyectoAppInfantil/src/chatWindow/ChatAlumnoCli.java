@@ -273,34 +273,34 @@ public class ChatAlumnoCli {
 				
 				switch (numeroAyuda) {
 				case "1":
-					StaticSoundMethods.playSound(numSound1Mac);
+					StaticSoundMethods.playSound(numSound1Win);
 					break;
 				case "2":
-					StaticSoundMethods.playSound(numSound2Mac);
+					StaticSoundMethods.playSound(numSound2Win);
 					break;
 				case "3":
-					StaticSoundMethods.playSound(numSound3Mac);
+					StaticSoundMethods.playSound(numSound3Win);
 					break;
 				case "4":
-					StaticSoundMethods.playSound(numSound4Mac);
+					StaticSoundMethods.playSound(numSound4Win);
 					break;
 				case "5":
-					StaticSoundMethods.playSound(numSound5Mac);
+					StaticSoundMethods.playSound(numSound5Win);
 					break;
 				case "6":
-					StaticSoundMethods.playSound(numSound6Mac);
+					StaticSoundMethods.playSound(numSound6Win);
 					break;
 				case "7":
-					StaticSoundMethods.playSound(numSound7Mac);
+					StaticSoundMethods.playSound(numSound7Win);
 					break;
 				case "8":
-					StaticSoundMethods.playSound(numSound8Mac);
+					StaticSoundMethods.playSound(numSound8Win);
 					break;
 				case "9":
-					StaticSoundMethods.playSound(numSound9Mac);
+					StaticSoundMethods.playSound(numSound9Win);
 					break;
 				case "10":
-					StaticSoundMethods.playSound(numSound10Mac);
+					StaticSoundMethods.playSound(numSound10Win);
 					break;
 
 				}
